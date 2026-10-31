@@ -1,0 +1,17 @@
+# TLS terminates here (automatic Let's Encrypt for a real domain; local CA for "localhost").
+{$VERILOOP_DOMAIN:localhost} {
+	encode zstd gzip
+
+	reverse_proxy api:8000 {
+		# Server-sent events (/verify/{id}/events) must not be buffered.
+		flush_interval -1
+		header_up X-Forwarded-Proto {scheme}
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+}

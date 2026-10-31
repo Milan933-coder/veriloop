@@ -1,0 +1,17 @@
+{
+  "platform": "youtube",
+  "version": "2026-10-31 (best effort; login required in the persistent profile)",
+  "steps": [
+    {"action": "click", "description": "Open the More actions (...) menu under the video",
+     "selectors": ["ytd-watch-metadata button[aria-label=\"More actions\"]", "#actions button[aria-label=\"More actions\"]"]},
+    {"action": "click", "description": "Choose 'Report' in the menu",
+     "selectors": ["ytd-menu-service-item-renderer:has-text(\"Report\")", "tp-yt-paper-item:has-text(\"Report\")", "yt-list-item-view-model:has-text(\"Report\")"]},
+    {"action": "wait", "description": "Wait for the report dialog",
+     "selectors": ["yt-report-form-modal-renderer", "tp-yt-paper-dialog"]},
+    {"action": "fill", "optional": true, "text": "prefilled_text",
+     "description": "Paste the confirmed text into 'Additional details' if it is already shown",
+     "selectors": ["yt-report-form-modal-renderer textarea", "tp-yt-paper-dialog textarea"]}
+  ],
+  "final_submit": ["yt-report-form-modal-renderer #submit-button", "tp-yt-paper-dialog button:has-text(\"Report\")"],
+  "notes": ["YouTube asks for a category (Misinformation) first; the details box appears after Next."]
+}

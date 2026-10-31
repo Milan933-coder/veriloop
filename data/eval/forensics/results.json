@@ -1,0 +1,4562 @@
+{
+  "generated_at": "2026-10-31T13:33:11+00:00",
+  "dataset": {
+    "id": "OpenRL/DeepFakeFace",
+    "revision": "eb2a54fbf2567790bd3dc61d09fdaade6bb6c31c",
+    "license": "openrail (dataset card metadata); README body states apache-2.0; real images from IMDB-WIKI",
+    "manifest": "data/eval/forensics/manifest.csv"
+  },
+  "n_samples": 120,
+  "class_counts": {
+    "real": 60,
+    "fake": 60
+  },
+  "subset_counts": {
+    "wiki": 60,
+    "insight": 20,
+    "inpainting": 20,
+    "text2img": 20
+  },
+  "faces": {
+    "detector": "yunet-2023mar",
+    "images_with_usable_face": 99,
+    "images_without_usable_face": 21
+  },
+  "band": {
+    "low": 0.35,
+    "high": 0.7,
+    "delta": 0.4
+  },
+  "models": {
+    "dima806/deepfake_vs_real_image_detection": {
+      "revision": "29e4cf9efc543845610045f6ba7e88e5cf9d9301",
+      "role": "face",
+      "orig": {
+        "n": 99,
+        "n_fake": 53,
+        "auc": 0.5427,
+        "accuracy_at_0.5": 0.5556,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.5319,
+          "real_vs_inpainting": 0.5797,
+          "real_vs_text2img": 0.5174
+        }
+      },
+      "q60": {
+        "n": 99,
+        "n_fake": 53,
+        "auc": 0.5185,
+        "accuracy_at_0.5": 0.5455,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.4913,
+          "real_vs_inpainting": 0.564,
+          "real_vs_text2img": 0.4978
+        }
+      },
+      "q30": {
+        "n": 99,
+        "n_fake": 53,
+        "auc": 0.5078,
+        "accuracy_at_0.5": 0.5556,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.5377,
+          "real_vs_inpainting": 0.5145,
+          "real_vs_text2img": 0.4793
+        }
+      }
+    },
+    "prithivMLmods/Deep-Fake-Detector-v2-Model": {
+      "revision": "3a99ae26f52c7ac7c3a53103b6cf3a8b617f7093",
+      "role": "face",
+      "orig": {
+        "n": 99,
+        "n_fake": 53,
+        "auc": 0.5398,
+        "accuracy_at_0.5": 0.5253,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.5101,
+          "real_vs_inpainting": 0.6232,
+          "real_vs_text2img": 0.487
+        }
+      },
+      "q60": {
+        "n": 99,
+        "n_fake": 53,
+        "auc": 0.5824,
+        "accuracy_at_0.5": 0.5253,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.5449,
+          "real_vs_inpainting": 0.6606,
+          "real_vs_text2img": 0.5402
+        }
+      },
+      "q30": {
+        "n": 99,
+        "n_fake": 53,
+        "auc": 0.58,
+        "accuracy_at_0.5": 0.5556,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.4986,
+          "real_vs_inpainting": 0.6667,
+          "real_vs_text2img": 0.563
+        }
+      }
+    },
+    "buildborderless/CommunityForensics-DeepfakeDet-ViT": {
+      "revision": "ac6ee457bea904a373065754107451793b56db00",
+      "role": "full",
+      "orig": {
+        "n": 120,
+        "n_fake": 60,
+        "auc": 0.8742,
+        "accuracy_at_0.5": 0.7833,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.635,
+          "real_vs_inpainting": 0.99,
+          "real_vs_text2img": 0.9975
+        }
+      },
+      "q60": {
+        "n": 120,
+        "n_fake": 60,
+        "auc": 0.8389,
+        "accuracy_at_0.5": 0.7083,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.555,
+          "real_vs_inpainting": 0.9633,
+          "real_vs_text2img": 0.9983
+        }
+      },
+      "q30": {
+        "n": 120,
+        "n_fake": 60,
+        "auc": 0.7603,
+        "accuracy_at_0.5": 0.5167,
+        "auc_by_fake_subset": {
+          "real_vs_insight": 0.575,
+          "real_vs_inpainting": 0.8158,
+          "real_vs_text2img": 0.89
+        }
+      }
+    }
+  },
+  "full_model_on_face_images": {
+    "n": 99,
+    "n_fake": 53,
+    "auc": 0.8876,
+    "accuracy_at_0.5": 0.7879,
+    "auc_by_fake_subset": {
+      "real_vs_insight": 0.635,
+      "real_vs_inpainting": 0.99,
+      "real_vs_text2img": 0.9975
+    }
+  },
+  "weights": {
+    "dima806/deepfake_vs_real_image_detection": 0.0854,
+    "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.0796,
+    "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7484
+  },
+  "weight_rule": "w = clip(2 * (AUC - 0.5), 0, 1), AUC on the original (non-recompressed) images",
+  "full_model_on_face_frames": true,
+  "ensemble_cross_fitted": {
+    "orig": {
+      "n": 120,
+      "auc_ensemble_score": 0.8078,
+      "abstain_rate": 0.7,
+      "coverage": 0.3,
+      "accuracy_on_decided": 0.7778,
+      "decided": 36,
+      "false_manipulated_on_real": 0,
+      "missed_fake_called_real": 8,
+      "status_counts": {
+        "real": 20,
+        "manipulated": 16,
+        "inconclusive": 84,
+        "unavailable": 0
+      },
+      "abstain_reasons": {
+        "models disagree by # > DELTA #": 58,
+        "only # model produced a weighted score (need >= #)": 21,
+        "ensemble # inside the abstain band (#, #)": 3,
+        "all scores inside the abstain band [#, #]": 2,
+        "heavily recompressed JPEG (estimated quality #)": 1
+      }
+    },
+    "q60": {
+      "n": 120,
+      "auc_ensemble_score": 0.7467,
+      "abstain_rate": 0.675,
+      "coverage": 0.325,
+      "accuracy_on_decided": 0.7179,
+      "decided": 39,
+      "false_manipulated_on_real": 0,
+      "missed_fake_called_real": 11,
+      "status_counts": {
+        "real": 29,
+        "manipulated": 10,
+        "inconclusive": 81,
+        "unavailable": 0
+      },
+      "abstain_reasons": {
+        "models disagree by # > DELTA #": 58,
+        "only # model produced a weighted score (need >= #)": 21,
+        "ensemble # inside the abstain band (#, #)": 2
+      }
+    },
+    "q30": {
+      "n": 120,
+      "auc_ensemble_score": 0.58,
+      "abstain_rate": 1.0,
+      "coverage": 0.0,
+      "accuracy_on_decided": null,
+      "decided": 0,
+      "false_manipulated_on_real": 0,
+      "missed_fake_called_real": 0,
+      "status_counts": {
+        "real": 0,
+        "manipulated": 0,
+        "inconclusive": 120,
+        "unavailable": 0
+      },
+      "abstain_reasons": {
+        "heavily recompressed JPEG (estimated quality #)": 120,
+        "models disagree by # > DELTA #": 62,
+        "only # model produced a weighted score (need >= #)": 21,
+        "all scores inside the abstain band [#, #]": 1
+      }
+    }
+  },
+  "e7_quality_gate_flagged": {
+    "orig": 1,
+    "q60": 0,
+    "q30": 120
+  },
+  "timings": {
+    "download_s": 80.0,
+    "score_orig_s": 415.7,
+    "score_q60_s": 97.0,
+    "score_q30_s": 86.1
+  },
+  "per_sample": [
+    {
+      "sample_id": "wiki/03_8204003_1948-04-09_1970.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/03_882403_1973-04-24_2005.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0074,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6351,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "wiki/04_13421104_1948-11-22_1969.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0048,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7154,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/04_501404_1957-10-09_1998.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 33)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0003
+      }
+    },
+    {
+      "sample_id": "wiki/06_19920006_1989-07-05_2011.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0373,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6114,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/06_36701506_1985-03-21_2012.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9946,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2137,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/07_5097907_1972-07-07_2007.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0073,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7377,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/09_3296309_1951-07-02_2000.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/09_5606009_1981-05-26_2008.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9981,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2639,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/10_1363010_1935-08-09_1960.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0218,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6038,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/11_45015211_1987-08-19_2013.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1328,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7773,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "wiki/12_34630412_1988-10-07_2013.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/18_7339418_1933-02-12_2009.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0021,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7511,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/19_965919_1936-05-23_1989.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.996,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3743,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/20_20276020_1967-03-20_2011.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9583,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2791,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/22_19138622_1981-09-29_2012.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2917,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4734,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/23_495323_1884-04-08_1943.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9965,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6647,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0006
+      }
+    },
+    {
+      "sample_id": "wiki/24_154224_1938-09-23_1973.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9969,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4252,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/25_42877025_1972-07-14_2005.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0006,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.779,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/28_1514728_1943-12-20_2005.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0207,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2192,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/28_42088628_1984-06-23_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9973,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6589,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/32_10824832_1947-08-09_1960.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0021,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6954,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/32_33413332_1960-02-14_2012.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5333,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7947,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "wiki/33_33468333_1991-11-22_2013.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9993,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1494,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/35_2402435_1979-11-11_2010.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/38_7197238_1906-12-25_1972.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5275,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1199,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/40_9390740_1970-09-06_2011.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/41_19258941_1946-01-01_2007.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6071,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5829,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/45_29728745_1983-12-16_2013.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0396,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5481,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/47_595147_1918-04-20_1960.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9874,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2697,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/48_528748_1931-09-30_1982.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0023,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7394,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/49_27969549_1991-07-27_2009.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0247,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7686,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0008
+      }
+    },
+    {
+      "sample_id": "wiki/50_4863950_1981-05-10_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9989,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1438,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0028
+      }
+    },
+    {
+      "sample_id": "wiki/54_28345954_1976-05-04_2012.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0032,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8094,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/54_3192454_1973-07-21_1988.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/55_19029755_1990-06-16_2015.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0118,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6413,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/59_45251159_1990-04-18_2012.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.008,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7193,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/60_31117060_1988-04-14_2010.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2833,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6439,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/62_1447162_1980-04-09_2013.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.067,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7308,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/67_12714967_1926-06-30_1962.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0128,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7032,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "wiki/68_435368_1957-01-27_2010.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0253,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2396,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/69_5008869_1970-10-16_2011.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5825,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6775,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/70_16820270_1986-09-29_2013.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.3834,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6563,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/70_4095670_1969-03-07_2012.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/70_5640270_1952-08-23_2009.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0877,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6286,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/74_2983474_1964-10-24_2007.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/74_486174_1978-05-12_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1294,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8407,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/76_26613876_1939-04-27_1978.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/79_34457079_1989-01-05_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0016,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7573,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/79_44538679_1954-05-30_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/80_6605280_1982-07-08_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9883,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3555,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.5279
+      }
+    },
+    {
+      "sample_id": "wiki/85_2177385_1943-09-30_2007.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.001,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6582,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9031
+      }
+    },
+    {
+      "sample_id": "wiki/88_4028488_1979-09-22_2007.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9761,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2723,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/89_167289_1916-11-04_2004.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0249,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5984,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "wiki/89_43990389_1990-08-11_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0064,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.526,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.002
+      }
+    },
+    {
+      "sample_id": "wiki/90_28016890_1989-09-30_2009.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/90_39679690_1990-11-29_2014.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2571,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6323,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/92_36401492_1990-04-01_2011.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/92_37251292_1946-12-28_2011.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1448,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6738,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/99_22703399_1928-11-29_1950.jpg",
+      "label": "real",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0087
+      }
+    },
+    {
+      "sample_id": "insight/06_1633206_1982-10-02_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0131,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4929,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/17_8164017_1951-02-23_1976.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8405,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8042,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/22_17927522_1916-03-18_1948.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0005
+      }
+    },
+    {
+      "sample_id": "insight/25_588325_1973-03-26_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_13025426_1974-03-15_2004.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9875,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.222,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_2167226_1969-08-25_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_37293926_1924-04-21_1964.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.167,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6252,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.3961
+      }
+    },
+    {
+      "sample_id": "insight/43_37587043_1993-07-24_2012.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9934,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7187,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0003
+      }
+    },
+    {
+      "sample_id": "insight/52_2691952_1976-01-19_2010.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0141
+      }
+    },
+    {
+      "sample_id": "insight/53_7624553_1936-11-28_2002.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0031,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7776,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0049
+      }
+    },
+    {
+      "sample_id": "insight/59_1234159_1971-07-24_1991.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9847,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5758,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0016
+      }
+    },
+    {
+      "sample_id": "insight/69_37727569_1994-09-08_2015.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0384,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5947,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/71_351071_1944-06-17_1979.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1424,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.226,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/73_37809973_1991-01-01_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0024,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5835,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/75_2883375_1959-01-19_2010.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0011,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.807,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/75_41637275_1937-12-12_1966.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.4644,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7358,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/76_2341876_1958-04-26_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0468,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7743,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/77_16481877_1954-06-11_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.838,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.142,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0285
+      }
+    },
+    {
+      "sample_id": "insight/87_1208487_1972-02-19_2010.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/95_3828195_1920-05-26_1952.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9939,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5651,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "inpainting/02_9123202_1959-08-31_2013.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0016,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8121,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9999
+      }
+    },
+    {
+      "sample_id": "inpainting/03_23203203_1987-11-02_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9311
+      }
+    },
+    {
+      "sample_id": "inpainting/04_39908504_1990-02-16_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1683,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6786,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9739
+      }
+    },
+    {
+      "sample_id": "inpainting/05_54705_1937-08-18_1976.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9976,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1058,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.3019
+      }
+    },
+    {
+      "sample_id": "inpainting/15_1431415_1977-08-07_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6708,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7145,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "inpainting/17_11963317_1985-10-31_2008.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9969,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5907,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.8419
+      }
+    },
+    {
+      "sample_id": "inpainting/17_24235317_1985-10-11_2012.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0205,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2394,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9987
+      }
+    },
+    {
+      "sample_id": "inpainting/18_38188718_1989-02-03_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0033,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8505,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9999
+      }
+    },
+    {
+      "sample_id": "inpainting/24_21718324_1990-06-21_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0746,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6977,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.3448
+      }
+    },
+    {
+      "sample_id": "inpainting/39_43286039_1995-10-18_2013.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.8541
+      }
+    },
+    {
+      "sample_id": "inpainting/47_961547_1934-03-21_1975.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9652,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8158,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.8312
+      }
+    },
+    {
+      "sample_id": "inpainting/49_6153449_1987-07-21_2013.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9985,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.14,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "inpainting/66_3387366_1971-12-24_2010.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9861,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7688,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "inpainting/66_33976366_1981-10-12_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0019,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5829,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0474
+      }
+    },
+    {
+      "sample_id": "inpainting/67_657267_1961-03-25_2011.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1136,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8298,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7202
+      }
+    },
+    {
+      "sample_id": "inpainting/73_2148973_1970-02-23_2010.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0626,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8283,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "inpainting/77_6624377_1928-04-18_2007.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8422,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7094,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9944
+      }
+    },
+    {
+      "sample_id": "inpainting/89_6161289_1985-01-19_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8491,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5924,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.2258
+      }
+    },
+    {
+      "sample_id": "inpainting/90_7342090_1982-05-13_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.249,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8053,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9999
+      }
+    },
+    {
+      "sample_id": "inpainting/95_1371395_1974-04-01_2008.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8326,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6177,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9999
+      }
+    },
+    {
+      "sample_id": "text2img/01_34581101_1965-07-14_2011.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0011,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.793,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9997
+      }
+    },
+    {
+      "sample_id": "text2img/01_367901_1908-06-16_1946.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0157,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4663,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9986
+      }
+    },
+    {
+      "sample_id": "text2img/03_5839203_1965-08-12_1983.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8169,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4747,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9994
+      }
+    },
+    {
+      "sample_id": "text2img/14_6093414_1980-11-03_2013.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9988,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4801,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/21_30496921_1916-02-13_1977.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.989,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3124,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/24_13064424_1988-04-10_2011.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9279,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7888,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/29_34199729_1946-08-12_1970.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0061,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5356,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/32_26147732_1991-07-22_2015.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.983,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5029,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7381
+      }
+    },
+    {
+      "sample_id": "text2img/37_2213837_1978-10-09_2008.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0014,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8473,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/43_10893043_1944-06-25_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0021,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5051,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/46_30872446_1972-02-29_2006.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.063,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8486,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9838
+      }
+    },
+    {
+      "sample_id": "text2img/47_17592247_1951-05-25_1977.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9772,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5182,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7608
+      }
+    },
+    {
+      "sample_id": "text2img/57_1349757_1934-12-03_2005.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1512,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6719,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9997
+      }
+    },
+    {
+      "sample_id": "text2img/65_11043165_1981-03-01_2013.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9994,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1294,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9653
+      }
+    },
+    {
+      "sample_id": "text2img/70_989870_1948-11-26_2012.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0048,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7883,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9997
+      }
+    },
+    {
+      "sample_id": "text2img/74_1638474_1962-09-15_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.002,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4627,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9999
+      }
+    },
+    {
+      "sample_id": "text2img/82_45131582_1932-07-01_1954.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6177,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4455,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9998
+      }
+    },
+    {
+      "sample_id": "text2img/94_15479194_1927-06-10_1955.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9962,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5927,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.6529
+      }
+    },
+    {
+      "sample_id": "text2img/99_19166199_1947-07-31_2014.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0071,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8103,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/99_4773199_1946-10-14_2009.jpg",
+      "label": "fake",
+      "variant": "orig",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9878,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1208,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "wiki/03_8204003_1948-04-09_1970.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/03_882403_1973-04-24_2005.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.7767,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5277,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/04_13421104_1948-11-22_1969.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0347,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.781,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/04_501404_1957-10-09_1998.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "wiki/06_19920006_1989-07-05_2011.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0367,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6002,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/06_36701506_1985-03-21_2012.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9791,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2075,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/07_5097907_1972-07-07_2007.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0033,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7205,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/09_3296309_1951-07-02_2000.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/09_5606009_1981-05-26_2008.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9987,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.163,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/10_1363010_1935-08-09_1960.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0009,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7123,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/11_45015211_1987-08-19_2013.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2214,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6661,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0003
+      }
+    },
+    {
+      "sample_id": "wiki/12_34630412_1988-10-07_2013.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/18_7339418_1933-02-12_2009.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2372,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.772,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/19_965919_1936-05-23_1989.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9871,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5668,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0006
+      }
+    },
+    {
+      "sample_id": "wiki/20_20276020_1967-03-20_2011.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9574,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.191,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/22_19138622_1981-09-29_2012.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.4594,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4567,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "wiki/23_495323_1884-04-08_1943.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9884,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.632,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0003
+      }
+    },
+    {
+      "sample_id": "wiki/24_154224_1938-09-23_1973.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9977,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2602,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/25_42877025_1972-07-14_2005.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0006,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7256,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "wiki/28_1514728_1943-12-20_2005.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0086,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1707,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/28_42088628_1984-06-23_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9945,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4192,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/32_10824832_1947-08-09_1960.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0026,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6589,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/32_33413332_1960-02-14_2012.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.196,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7822,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/33_33468333_1991-11-22_2013.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9992,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1385,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/35_2402435_1979-11-11_2010.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/38_7197238_1906-12-25_1972.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5156,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.118,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/40_9390740_1970-09-06_2011.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/41_19258941_1946-01-01_2007.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.3219,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4184,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/45_29728745_1983-12-16_2013.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0247,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4052,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0005
+      }
+    },
+    {
+      "sample_id": "wiki/47_595147_1918-04-20_1960.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9873,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3876,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/48_528748_1931-09-30_1982.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0027,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7452,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/49_27969549_1991-07-27_2009.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0618,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7092,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/50_4863950_1981-05-10_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.999,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.138,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0008
+      }
+    },
+    {
+      "sample_id": "wiki/54_28345954_1976-05-04_2012.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0029,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7531,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/54_3192454_1973-07-21_1988.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/55_19029755_1990-06-16_2015.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5149,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6342,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/59_45251159_1990-04-18_2012.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0043,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7295,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/60_31117060_1988-04-14_2010.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2744,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6555,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/62_1447162_1980-04-09_2013.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1591,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5781,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/67_12714967_1926-06-30_1962.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0141,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.693,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/68_435368_1957-01-27_2010.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0927,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.111,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/69_5008869_1970-10-16_2011.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.3661,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6816,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/70_16820270_1986-09-29_2013.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8366,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5646,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/70_4095670_1969-03-07_2012.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/70_5640270_1952-08-23_2009.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0996,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.658,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/74_2983474_1964-10-24_2007.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "wiki/74_486174_1978-05-12_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.023,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.844,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/76_26613876_1939-04-27_1978.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/79_34457079_1989-01-05_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0128,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1977,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0007
+      }
+    },
+    {
+      "sample_id": "wiki/79_44538679_1954-05-30_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/80_6605280_1982-07-08_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9884,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3214,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0079
+      }
+    },
+    {
+      "sample_id": "wiki/85_2177385_1943-09-30_2007.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.001,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5429,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.1129
+      }
+    },
+    {
+      "sample_id": "wiki/88_4028488_1979-09-22_2007.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1403,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3963,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/89_167289_1916-11-04_2004.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2038,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6298,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "wiki/89_43990389_1990-08-11_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0096,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4726,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/90_28016890_1989-09-30_2009.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/90_39679690_1990-11-29_2014.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.3014,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3318,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/92_36401492_1990-04-01_2011.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/92_37251292_1946-12-28_2011.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8385,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3389,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/99_22703399_1928-11-29_1950.jpg",
+      "label": "real",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/06_1633206_1982-10-02_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0095,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5747,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/17_8164017_1951-02-23_1976.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9721,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7464,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/22_17927522_1916-03-18_1948.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/25_588325_1973-03-26_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_13025426_1974-03-15_2004.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9879,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2516,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_2167226_1969-08-25_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_37293926_1924-04-21_1964.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1094,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5027,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0897
+      }
+    },
+    {
+      "sample_id": "insight/43_37587043_1993-07-24_2012.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0069,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7105,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0013
+      }
+    },
+    {
+      "sample_id": "insight/52_2691952_1976-01-19_2010.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/53_7624553_1936-11-28_2002.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0043,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.748,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "insight/59_1234159_1971-07-24_1991.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9984,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.512,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "insight/69_37727569_1994-09-08_2015.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.7638,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2555,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/71_351071_1944-06-17_1979.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2026,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2841,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/73_37809973_1991-01-01_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0047,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4349,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/75_2883375_1959-01-19_2010.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0008,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7968,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/75_41637275_1937-12-12_1966.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.184,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7668,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/76_2341876_1958-04-26_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0377,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7637,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/77_16481877_1954-06-11_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8466,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1309,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0101
+      }
+    },
+    {
+      "sample_id": "insight/87_1208487_1972-02-19_2010.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/95_3828195_1920-05-26_1952.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9976,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4184,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/02_9123202_1959-08-31_2013.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0025,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7924,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.8741
+      }
+    },
+    {
+      "sample_id": "inpainting/03_23203203_1987-11-02_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0009
+      }
+    },
+    {
+      "sample_id": "inpainting/04_39908504_1990-02-16_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0156,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7189,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0542
+      }
+    },
+    {
+      "sample_id": "inpainting/05_54705_1937-08-18_1976.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9978,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1007,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "inpainting/15_1431415_1977-08-07_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.7118,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5601,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9966
+      }
+    },
+    {
+      "sample_id": "inpainting/17_11963317_1985-10-31_2008.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9961,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6404,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0064
+      }
+    },
+    {
+      "sample_id": "inpainting/17_24235317_1985-10-11_2012.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2234,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2491,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9739
+      }
+    },
+    {
+      "sample_id": "inpainting/18_38188718_1989-02-03_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0054,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8472,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9945
+      }
+    },
+    {
+      "sample_id": "inpainting/24_21718324_1990-06-21_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0402,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6611,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "inpainting/39_43286039_1995-10-18_2013.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 0,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0348
+      }
+    },
+    {
+      "sample_id": "inpainting/47_961547_1934-03-21_1975.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9799,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7559,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0226
+      }
+    },
+    {
+      "sample_id": "inpainting/49_6153449_1987-07-21_2013.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9986,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1561,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9987
+      }
+    },
+    {
+      "sample_id": "inpainting/66_3387366_1971-12-24_2010.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.4627,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8221,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.999
+      }
+    },
+    {
+      "sample_id": "inpainting/66_33976366_1981-10-12_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0013,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5932,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0077
+      }
+    },
+    {
+      "sample_id": "inpainting/67_657267_1961-03-25_2011.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.7942,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8103,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0104
+      }
+    },
+    {
+      "sample_id": "inpainting/73_2148973_1970-02-23_2010.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0321,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8267,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "inpainting/77_6624377_1928-04-18_2007.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2819,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7223,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9887
+      }
+    },
+    {
+      "sample_id": "inpainting/89_6161289_1985-01-19_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8158,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4524,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.1407
+      }
+    },
+    {
+      "sample_id": "inpainting/90_7342090_1982-05-13_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6254,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8326,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9942
+      }
+    },
+    {
+      "sample_id": "inpainting/95_1371395_1974-04-01_2008.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9715,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4899,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9952
+      }
+    },
+    {
+      "sample_id": "text2img/01_34581101_1965-07-14_2011.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0018,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7049,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.8961
+      }
+    },
+    {
+      "sample_id": "text2img/01_367901_1908-06-16_1946.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0045,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4544,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9606
+      }
+    },
+    {
+      "sample_id": "text2img/03_5839203_1965-08-12_1983.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.4063,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5326,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.1742
+      }
+    },
+    {
+      "sample_id": "text2img/14_6093414_1980-11-03_2013.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9986,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5879,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9956
+      }
+    },
+    {
+      "sample_id": "text2img/21_30496921_1916-02-13_1977.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9877,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3077,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9985
+      }
+    },
+    {
+      "sample_id": "text2img/24_13064424_1988-04-10_2011.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6857,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8142,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 1.0
+      }
+    },
+    {
+      "sample_id": "text2img/29_34199729_1946-08-12_1970.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0083,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4991,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9934
+      }
+    },
+    {
+      "sample_id": "text2img/32_26147732_1991-07-22_2015.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9753,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4376,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7058
+      }
+    },
+    {
+      "sample_id": "text2img/37_2213837_1978-10-09_2008.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0018,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.83,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9976
+      }
+    },
+    {
+      "sample_id": "text2img/43_10893043_1944-06-25_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0015,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3005,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.988
+      }
+    },
+    {
+      "sample_id": "text2img/46_30872446_1972-02-29_2006.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0068,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.875,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.2913
+      }
+    },
+    {
+      "sample_id": "text2img/47_17592247_1951-05-25_1977.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9943,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4278,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0092
+      }
+    },
+    {
+      "sample_id": "text2img/57_1349757_1934-12-03_2005.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1767,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7076,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9655
+      }
+    },
+    {
+      "sample_id": "text2img/65_11043165_1981-03-01_2013.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.999,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1553,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.3819
+      }
+    },
+    {
+      "sample_id": "text2img/70_989870_1948-11-26_2012.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0029,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7893,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9173
+      }
+    },
+    {
+      "sample_id": "text2img/74_1638474_1962-09-15_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0017,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4248,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9819
+      }
+    },
+    {
+      "sample_id": "text2img/82_45131582_1932-07-01_1954.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.756,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3401,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.6045
+      }
+    },
+    {
+      "sample_id": "text2img/94_15479194_1927-06-10_1955.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 2,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9984,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6178,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0732
+      }
+    },
+    {
+      "sample_id": "text2img/99_19166199_1947-07-31_2014.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.039,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8226,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9994
+      }
+    },
+    {
+      "sample_id": "text2img/99_4773199_1946-10-14_2009.jpg",
+      "label": "fake",
+      "variant": "q60",
+      "usable_faces": 1,
+      "quality_issue": null,
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9906,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1034,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.9999
+      }
+    },
+    {
+      "sample_id": "wiki/03_8204003_1948-04-09_1970.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/03_882403_1973-04-24_2005.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.4305,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3271,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/04_13421104_1948-11-22_1969.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0071,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7637,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/04_501404_1957-10-09_1998.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "wiki/06_19920006_1989-07-05_2011.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0474,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4094,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/06_36701506_1985-03-21_2012.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9925,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3251,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/07_5097907_1972-07-07_2007.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0146,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7627,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/09_3296309_1951-07-02_2000.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/09_5606009_1981-05-26_2008.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9947,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1608,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/10_1363010_1935-08-09_1960.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.015,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.578,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/11_45015211_1987-08-19_2013.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0329,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7566,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/12_34630412_1988-10-07_2013.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/18_7339418_1933-02-12_2009.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.992,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5703,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/19_965919_1936-05-23_1989.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.999,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2366,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/20_20276020_1967-03-20_2011.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9631,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1574,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/22_19138622_1981-09-29_2012.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9758,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2095,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/23_495323_1884-04-08_1943.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9717,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.676,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/24_154224_1938-09-23_1973.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9967,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2903,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/25_42877025_1972-07-14_2005.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0008,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.771,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0026
+      }
+    },
+    {
+      "sample_id": "wiki/28_1514728_1943-12-20_2005.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0262,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.169,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/28_42088628_1984-06-23_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9861,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5985,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/32_10824832_1947-08-09_1960.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0045,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6155,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/32_33413332_1960-02-14_2012.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.975,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.749,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/33_33468333_1991-11-22_2013.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9993,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1074,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/35_2402435_1979-11-11_2010.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/38_7197238_1906-12-25_1972.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.3992,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1042,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/40_9390740_1970-09-06_2011.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/41_19258941_1946-01-01_2007.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0469,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2841,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/45_29728745_1983-12-16_2013.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0724,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3528,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/47_595147_1918-04-20_1960.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9776,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2471,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/48_528748_1931-09-30_1982.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.005,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6246,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/49_27969549_1991-07-27_2009.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0155,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7537,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "wiki/50_4863950_1981-05-10_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.999,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1325,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0052
+      }
+    },
+    {
+      "sample_id": "wiki/54_28345954_1976-05-04_2012.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0035,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8471,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/54_3192454_1973-07-21_1988.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/55_19029755_1990-06-16_2015.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1418,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6358,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/59_45251159_1990-04-18_2012.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0038,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7641,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/60_31117060_1988-04-14_2010.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2509,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6449,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/62_1447162_1980-04-09_2013.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9778,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7273,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/67_12714967_1926-06-30_1962.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0296,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6839,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/68_435368_1957-01-27_2010.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.285,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1582,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/69_5008869_1970-10-16_2011.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.922,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6686,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0003
+      }
+    },
+    {
+      "sample_id": "wiki/70_16820270_1986-09-29_2013.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9671,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4051,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/70_4095670_1969-03-07_2012.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/70_5640270_1952-08-23_2009.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0335,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6527,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/74_2983474_1964-10-24_2007.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0015
+      }
+    },
+    {
+      "sample_id": "wiki/74_486174_1978-05-12_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0129,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8373,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0023
+      }
+    },
+    {
+      "sample_id": "wiki/76_26613876_1939-04-27_1978.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/79_34457079_1989-01-05_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0116,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6691,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/79_44538679_1954-05-30_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/80_6605280_1982-07-08_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9955,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2587,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0005
+      }
+    },
+    {
+      "sample_id": "wiki/85_2177385_1943-09-30_2007.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0018,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5884,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0008
+      }
+    },
+    {
+      "sample_id": "wiki/88_4028488_1979-09-22_2007.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8864,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4882,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/89_167289_1916-11-04_2004.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.113,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6178,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/89_43990389_1990-08-11_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1215,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.398,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/90_28016890_1989-09-30_2009.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/90_39679690_1990-11-29_2014.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.3632,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6493,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/92_36401492_1990-04-01_2011.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/92_37251292_1946-12-28_2011.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9117,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2698,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "wiki/99_22703399_1928-11-29_1950.jpg",
+      "label": "real",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/06_1633206_1982-10-02_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0205,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1866,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/17_8164017_1951-02-23_1976.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 2,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9866,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.607,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/22_17927522_1916-03-18_1948.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/25_588325_1973-03-26_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_13025426_1974-03-15_2004.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9179,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2784,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_2167226_1969-08-25_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/26_37293926_1924-04-21_1964.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8995,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3529,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.014
+      }
+    },
+    {
+      "sample_id": "insight/43_37587043_1993-07-24_2012.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9969,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6624,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/52_2691952_1976-01-19_2010.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/53_7624553_1936-11-28_2002.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0152,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.701,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/59_1234159_1971-07-24_1991.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.995,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5353,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/69_37727569_1994-09-08_2015.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0895,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2619,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/71_351071_1944-06-17_1979.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8838,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1553,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/73_37809973_1991-01-01_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0103,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8103,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/75_2883375_1959-01-19_2010.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.003,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7742,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/75_41637275_1937-12-12_1966.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2734,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7981,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/76_2341876_1958-04-26_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0484,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7528,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/77_16481877_1954-06-11_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9274,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1116,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "insight/87_1208487_1972-02-19_2010.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "insight/95_3828195_1920-05-26_1952.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9975,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.233,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/02_9123202_1959-08-31_2013.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0019,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8015,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/03_23203203_1987-11-02_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "inpainting/04_39908504_1990-02-16_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5255,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6651,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "inpainting/05_54705_1937-08-18_1976.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9988,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1148,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/15_1431415_1977-08-07_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.2699,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6141,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.1508
+      }
+    },
+    {
+      "sample_id": "inpainting/17_11963317_1985-10-31_2008.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9967,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5912,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "inpainting/17_24235317_1985-10-11_2012.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0817,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.3941,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7463
+      }
+    },
+    {
+      "sample_id": "inpainting/18_38188718_1989-02-03_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0445,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8424,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0007
+      }
+    },
+    {
+      "sample_id": "inpainting/24_21718324_1990-06-21_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0119,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7231,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/39_43286039_1995-10-18_2013.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 0,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": null,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": null,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/47_961547_1934-03-21_1975.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6809,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.793,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/49_6153449_1987-07-21_2013.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9805,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1823,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "inpainting/66_3387366_1971-12-24_2010.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9972,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7686,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "inpainting/66_33976366_1981-10-12_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0032,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4782,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/67_657267_1961-03-25_2011.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.6007,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.84,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "inpainting/73_2148973_1970-02-23_2010.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0251,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8412,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.2624
+      }
+    },
+    {
+      "sample_id": "inpainting/77_6624377_1928-04-18_2007.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.043,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7344,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "inpainting/89_6161289_1985-01-19_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.4033,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5038,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "inpainting/90_7342090_1982-05-13_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8887,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.831,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.2885
+      }
+    },
+    {
+      "sample_id": "inpainting/95_1371395_1974-04-01_2008.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8026,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5436,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0008
+      }
+    },
+    {
+      "sample_id": "text2img/01_34581101_1965-07-14_2011.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.001,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.764,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0006
+      }
+    },
+    {
+      "sample_id": "text2img/01_367901_1908-06-16_1946.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0912,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4816,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "text2img/03_5839203_1965-08-12_1983.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5065,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5361,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "text2img/14_6093414_1980-11-03_2013.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9989,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.2664,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.3532
+      }
+    },
+    {
+      "sample_id": "text2img/21_30496921_1916-02-13_1977.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9081,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4928,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0004
+      }
+    },
+    {
+      "sample_id": "text2img/24_13064424_1988-04-10_2011.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.5682,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8344,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.014
+      }
+    },
+    {
+      "sample_id": "text2img/29_34199729_1946-08-12_1970.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0073,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4876,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.6764
+      }
+    },
+    {
+      "sample_id": "text2img/32_26147732_1991-07-22_2015.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9924,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.4661,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.002
+      }
+    },
+    {
+      "sample_id": "text2img/37_2213837_1978-10-09_2008.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0015,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8389,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0025
+      }
+    },
+    {
+      "sample_id": "text2img/43_10893043_1944-06-25_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.009,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5617,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.001
+      }
+    },
+    {
+      "sample_id": "text2img/46_30872446_1972-02-29_2006.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0082,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.879,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0002
+      }
+    },
+    {
+      "sample_id": "text2img/47_17592247_1951-05-25_1977.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.974,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.497,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0001
+      }
+    },
+    {
+      "sample_id": "text2img/57_1349757_1934-12-03_2005.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.1037,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.7185,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0007
+      }
+    },
+    {
+      "sample_id": "text2img/65_11043165_1981-03-01_2013.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9991,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1794,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0007
+      }
+    },
+    {
+      "sample_id": "text2img/70_989870_1948-11-26_2012.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0025,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.8126,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "text2img/74_1638474_1962-09-15_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.0012,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.53,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0092
+      }
+    },
+    {
+      "sample_id": "text2img/82_45131582_1932-07-01_1954.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8933,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5115,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0009
+      }
+    },
+    {
+      "sample_id": "text2img/94_15479194_1927-06-10_1955.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 2,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9966,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.506,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0
+      }
+    },
+    {
+      "sample_id": "text2img/99_19166199_1947-07-31_2014.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.8476,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.6997,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0188
+      }
+    },
+    {
+      "sample_id": "text2img/99_4773199_1946-10-14_2009.jpg",
+      "label": "fake",
+      "variant": "q30",
+      "usable_faces": 1,
+      "quality_issue": "heavily recompressed JPEG (estimated quality 30)",
+      "scores": {
+        "dima806/deepfake_vs_real_image_detection": 0.9919,
+        "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.1037,
+        "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.0011
+      }
+    }
+  ]
+}

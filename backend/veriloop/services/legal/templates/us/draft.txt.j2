@@ -1,0 +1,61 @@
+{{ banner }}
+
+Template {{ template_version }} | VeriLoop job {{ job_id }} | generated {{ today }}
+
+Use Section A ONLY if you own the copyright in the original photo or video that was manipulated (for example, you took it yourself). Use Section B ONLY if the content is an intimate depiction. Section C is background. Delete what does not apply.
+
+======================================================================
+SECTION A - DMCA TAKEDOWN NOTICE, 17 U.S.C. 512(c)(3)
+(only if you own the copyright in the original work)
+======================================================================
+
+To:   Designated DMCA Agent, {{ platform_name }}
+      [AGENT NAME AND ADDRESS FROM THE PLATFORM'S COPYRIGHT PAGE OR THE U.S. COPYRIGHT OFFICE DIRECTORY]
+Date: [DATE]
+
+1. Copyrighted work: [DESCRIBE THE ORIGINAL PHOTO OR VIDEO YOU CREATED, WITH A LINK OR COPY].
+2. Infringing material: the content at
+   {{ content_url }}
+   (posted by [ACCOUNT HANDLE THAT POSTED IT]) is an unauthorised, manipulated copy of my work. {{ content_description }}
+{% if media_hashes %}
+   SHA-256 of the analysed media: {{ media_hashes|join(", ") }}
+{% endif %}
+3. Contact information: [FULL NAME], [POSTAL ADDRESS], [PHONE NUMBER], [EMAIL ADDRESS].
+4. I have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.
+5. The information in this notification is accurate, and under penalty of perjury, I am the owner, or am authorized to act on behalf of the owner, of an exclusive right that is allegedly infringed.
+6. Signature: [YOUR PHYSICAL OR ELECTRONIC SIGNATURE]
+
+Supporting evidence that the copy was manipulated: {{ manipulation_summary }} Signed audit record: {{ audit_pdf_url }}
+
+======================================================================
+SECTION B - TAKE IT DOWN ACT REMOVAL REQUEST (intimate imagery only)
+======================================================================
+
+To:   {{ platform_name }}, via its TAKE IT DOWN Act / non-consensual intimate imagery removal form
+Date: [DATE]
+
+1. Identification and location of the depiction: {{ content_url }} (posted by [ACCOUNT HANDLE THAT POSTED IT]).
+{% if media_hashes %}
+   SHA-256 of the analysed media: {{ media_hashes|join(", ") }}
+{% endif %}
+2. I, [FULL NAME], am [THE PERSON DEPICTED / AUTHORISED TO ACT ON THEIR BEHALF (STATE RELATIONSHIP)].
+3. I have a good faith belief that this intimate visual depiction was published without my consent. It is a computer-generated digital forgery: {{ manipulation_summary }}
+   Signed audit record: {{ audit_pdf_url }} (verification: {{ audit_verify_url }})
+4. Contact information: [EMAIL ADDRESS], [PHONE NUMBER].
+5. Signature: [YOUR PHYSICAL OR ELECTRONIC SIGNATURE]
+
+I request removal of the depiction, and of known identical copies, within 48 hours of this request.
+
+======================================================================
+SECTION C - NOTE ON STATE LAW
+======================================================================
+Most U.S. states criminalise or create civil remedies for non-consensual intimate imagery, and a growing number have statutes specifically on sexual or election-related deepfakes; some allow victims to sue. Names, elements and deadlines differ by state. Check your state's current statute with a lawyer or a victim-support organisation before relying on it.
+
+Evidence reviewed by VeriLoop:
+{% for s in sources %}
+   - {{ s.name }}{% if s.date %} ({{ s.date }}){% endif %}: {{ s.title }}
+     {{ s.url }}
+{% endfor %}
+   Forensic analysis: {{ forensic_line }}
+
+{{ banner }}

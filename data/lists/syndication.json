@@ -1,0 +1,1114 @@
+{
+  "_source": [
+    {
+      "title": "English Wikipedia articles per group (see evidence_urls)",
+      "url": "https://en.wikipedia.org/",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Vishvas News 'About us' (reports to Jagran New Media)",
+      "url": "https://www.vishvasnews.com/about-us/",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Observed syndication markers: 10 Indian outlet RSS feeds + 12 sampled article pages each (see observed_markers)",
+      "url": "(per outlet in observed_markers)",
+      "accessed": "2026-10-31"
+    }
+  ],
+  "_verified_at": "2026-10-31",
+  "_notes": "Every group's ownership claim was checked against the cited Wikipedia/about page text on 2026-10-31 (keyword + context). Domains were checked live (HTTP 200, or 401/403 bot walls where noted). Not included (unverified): devdiscourse.com as an aggregator (no Wikipedia article; homepage shows no verifiable wire label), news9live.com ownership, TV9 regional domains, ANI-Reuters relationship.",
+  "wires": {
+    "pti": {
+      "name": "Press Trust of India",
+      "domains": [
+        "ptinews.com"
+      ],
+      "country": "IN",
+      "byline_markers": [
+        "(PTI)",
+        "PTI (as byline/dateline token, e.g. 'New Delhi PTI')",
+        "Press Trust of India (as author/dc:creator/bs:source)",
+        "With inputs from PTI"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Press_Trust_of_India",
+      "evidence_note": "Wikipedia: Indian news agency, type 'Non-profit cooperative'.",
+      "site_check": "ptinews.com HTTP 200"
+    },
+    "ani": {
+      "name": "Asian News International",
+      "domains": [
+        "aninews.in"
+      ],
+      "country": "IN",
+      "byline_markers": [
+        "(ANI)",
+        "ANI (byline)",
+        "Asian News International (RSS author)",
+        "With inputs from ANI"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Asian_News_International",
+      "evidence_note": "Wikipedia: Indian news agency.",
+      "site_check": "aninews.in HTTP 200"
+    },
+    "ians": {
+      "name": "Indo-Asian News Service",
+      "domains": [
+        "ianslive.in"
+      ],
+      "country": "IN",
+      "byline_markers": [
+        "(IANS)",
+        "IANS (byline)",
+        "With inputs from IANS"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Indo-Asian_News_Service",
+      "evidence_note": "Wikipedia: 'Private news agency in India'.",
+      "site_check": "ianslive.in HTTP 200 'IANS LIVE'"
+    },
+    "uni": {
+      "name": "United News of India",
+      "domains": [
+        "uniindia.com"
+      ],
+      "country": "IN",
+      "byline_markers": [
+        "(UNI)",
+        "UNI (byline)"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/United_News_of_India",
+      "evidence_note": "Wikipedia: news agency.",
+      "site_check": "uniindia.com HTTP 200"
+    },
+    "reuters": {
+      "name": "Reuters",
+      "domains": [
+        "reuters.com",
+        "reutersagency.com"
+      ],
+      "country": "GB",
+      "byline_markers": [
+        "(Reuters)",
+        "Reuters (byline)",
+        "Reporting by ... ; Editing by ..."
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Reuters",
+      "evidence_note": "Wikipedia: news agency owned by Thomson Reuters.",
+      "site_check": "reuters.com HTTP 401 to scripted fetch (bot wall)"
+    },
+    "ap": {
+      "name": "Associated Press",
+      "domains": [
+        "apnews.com",
+        "ap.org"
+      ],
+      "country": "US",
+      "byline_markers": [
+        "(AP)",
+        "Associated Press (byline)"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Associated_Press",
+      "evidence_note": "Wikipedia: news agency, a cooperative.",
+      "site_check": "apnews.com HTTP 403 to scripted fetch (bot wall)"
+    },
+    "afp": {
+      "name": "Agence France-Presse",
+      "domains": [
+        "afp.com",
+        "factcheck.afp.com",
+        "factcheckhindi.afp.com"
+      ],
+      "country": "FR",
+      "byline_markers": [
+        "(AFP)",
+        "AFP (byline)"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Agence_France-Presse",
+      "evidence_note": "Wikipedia: news agency.",
+      "site_check": "afp.com HTTP 200"
+    },
+    "bloomberg": {
+      "name": "Bloomberg News",
+      "domains": [
+        "bloomberg.com"
+      ],
+      "country": "US",
+      "byline_markers": [
+        "(Bloomberg)",
+        "Bloomberg (author/dc:creator)"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Bloomberg_News",
+      "evidence_note": "Wikipedia: owned by Bloomberg L.P.",
+      "site_check": "bloomberg.com HTTP 403 to scripted fetch"
+    }
+  },
+  "ownership_groups": {
+    "ht_media": {
+      "name": "HT Media",
+      "parent": "HT Media Ltd (K.K. Birla group)",
+      "type": "ownership",
+      "domains": [
+        "hindustantimes.com",
+        "livemint.com",
+        "livehindustan.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/HT_Media",
+        "https://en.wikipedia.org/wiki/Mint_(newspaper)"
+      ],
+      "evidence_note": "HT Media article lists Hindustan Times, Mint, Hindustan; Mint article cites HT Media as publisher."
+    },
+    "times_group": {
+      "name": "The Times Group",
+      "parent": "Bennett, Coleman & Co. Ltd",
+      "type": "ownership",
+      "domains": [
+        "indiatimes.com",
+        "timesofindia.indiatimes.com",
+        "economictimes.indiatimes.com",
+        "navbharattimes.indiatimes.com",
+        "maharashtratimes.com",
+        "timesnownews.com",
+        "mumbaimirror.com",
+        "eisamay.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Times_Group"
+      ],
+      "evidence_note": "Article names Bennett, Coleman; The Times of India; The Economic Times; Navbharat Times; Maharashtra Times; Times Now; Mumbai Mirror; Ei Samay."
+    },
+    "india_today_group": {
+      "name": "India Today Group",
+      "parent": "Living Media India Ltd / TV Today Network",
+      "type": "ownership",
+      "domains": [
+        "indiatoday.in",
+        "aajtak.in",
+        "businesstoday.in",
+        "thelallantop.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/India_Today_Group",
+        "https://en.wikipedia.org/wiki/Aaj_Tak"
+      ],
+      "evidence_note": "Article names Living Media, Aaj Tak, India Today, Business Today, The Lallantop, TV Today."
+    },
+    "ndtv_adani": {
+      "name": "NDTV",
+      "parent": "Adani Group (since 2022)",
+      "type": "ownership",
+      "domains": [
+        "ndtv.com",
+        "ndtv.in",
+        "ndtvprofit.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/NDTV"
+      ],
+      "evidence_note": "NDTV article section '2022 onwards: Acquisition by Adani Group'. ndtv.in / ndtvprofit.com returned HTTP 403 to scripted fetch (bot wall)."
+    },
+    "network18_reliance": {
+      "name": "Network18",
+      "parent": "Reliance Industries",
+      "type": "ownership",
+      "domains": [
+        "news18.com",
+        "firstpost.com",
+        "moneycontrol.com",
+        "cnbctv18.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Network18_Group",
+        "https://en.wikipedia.org/wiki/Firstpost",
+        "https://en.wikipedia.org/wiki/Moneycontrol"
+      ],
+      "evidence_note": "Network18 article: 'Takeover by Reliance Industries'; owned assets include CNBC TV18, News18, Moneycontrol, Firstpost."
+    },
+    "abp_group": {
+      "name": "ABP Group",
+      "parent": "ABP Pvt Ltd",
+      "type": "ownership",
+      "domains": [
+        "abplive.com",
+        "telegraphindia.com",
+        "anandabazar.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/ABP_Group",
+        "https://en.wikipedia.org/wiki/The_Telegraph_(India)"
+      ],
+      "evidence_note": "ABP Group article names ABP News, ABP Ananda, The Telegraph, Anandabazar Patrika."
+    },
+    "zee_essel": {
+      "name": "Zee Media",
+      "parent": "Essel Group",
+      "type": "ownership",
+      "domains": [
+        "zeenews.india.com",
+        "wionews.com",
+        "dnaindia.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Zee_Media_Corporation",
+        "https://en.wikipedia.org/wiki/WION",
+        "https://en.wikipedia.org/wiki/DNA_India"
+      ],
+      "evidence_note": "Zee Media infobox owner Essel Group; WION network Zee Media Corporation / owner Essel Group; DNA owner Zee Media Corporation."
+    },
+    "the_hindu_group": {
+      "name": "The Hindu Group",
+      "parent": "Kasturi & Sons Ltd",
+      "type": "ownership",
+      "domains": [
+        "thehindu.com",
+        "thehindubusinessline.com",
+        "frontline.thehindu.com",
+        "sportstar.thehindu.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Hindu_Group",
+        "https://en.wikipedia.org/wiki/The_Hindu_Businessline"
+      ],
+      "evidence_note": "Group article: The Hindu, Frontline, Sportstar; BusinessLine infobox owner Kasturi & Sons, publisher The Hindu Group."
+    },
+    "indian_express_group": {
+      "name": "The Indian Express Group",
+      "parent": "Indian Express Pvt Ltd",
+      "type": "ownership",
+      "domains": [
+        "indianexpress.com",
+        "financialexpress.com",
+        "loksatta.com",
+        "jansatta.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Indian_Express_Group"
+      ],
+      "evidence_note": "Group article names The Indian Express, Financial Express, Loksatta, Jansatta. NOTE newindianexpress.com is a DIFFERENT owner (see new_indian_express)."
+    },
+    "new_indian_express": {
+      "name": "The New Indian Express",
+      "parent": "Express Publications (Madurai) Ltd",
+      "type": "ownership",
+      "domains": [
+        "newindianexpress.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_New_Indian_Express"
+      ],
+      "evidence_note": "Infobox owner Express Publications (Madurai) Limited - independent of indian_express_group."
+    },
+    "db_corp": {
+      "name": "DB Corp (Dainik Bhaskar Group)",
+      "parent": "DB Corp Ltd",
+      "type": "ownership",
+      "domains": [
+        "bhaskar.com",
+        "divyabhaskar.co.in"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/DB_Corp"
+      ],
+      "evidence_note": "Article names Dainik Bhaskar, Divya Bhaskar, Divya Marathi."
+    },
+    "jagran": {
+      "name": "Jagran Prakashan / Jagran New Media",
+      "parent": "Jagran Prakashan Ltd",
+      "type": "ownership",
+      "domains": [
+        "jagran.com",
+        "naidunia.com",
+        "mid-day.com",
+        "jagranjosh.com",
+        "vishvasnews.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Jagran_Prakashan",
+        "https://en.wikipedia.org/wiki/Mid-Day",
+        "https://www.vishvasnews.com/about-us/"
+      ],
+      "evidence_note": "Jagran Prakashan article lists Dainik Jagran, Mid-Day, Nai Dunia, Jagran New Media, Jagran.com, Jagranjosh.com; Vishvas News about page: editorial team reports to the COO of Jagran New Media. A Vishvas fact-check and a Dainik Jagran report on the same claim are NOT independent."
+    },
+    "malayala_manorama": {
+      "name": "Malayala Manorama",
+      "parent": "The Malayala Manorama Co. Pvt Ltd",
+      "type": "ownership",
+      "domains": [
+        "manoramaonline.com",
+        "theweek.in"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Malayala_Manorama",
+        "https://en.wikipedia.org/wiki/The_Week_(Indian_magazine)"
+      ],
+      "evidence_note": "The Week infobox company: The Malayala Manorama Co. Pvt. Ltd."
+    },
+    "mathrubhumi": {
+      "name": "Mathrubhumi",
+      "parent": "The Mathrubhumi Printing & Publishing Co.",
+      "type": "ownership",
+      "domains": [
+        "mathrubhumi.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Mathrubhumi"
+      ],
+      "evidence_note": "Own group."
+    },
+    "ramoji_eenadu": {
+      "name": "Ramoji Group (Eenadu / ETV Bharat)",
+      "parent": "Ramoji Group / Ushodaya Enterprises",
+      "type": "ownership",
+      "domains": [
+        "eenadu.net",
+        "etvbharat.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Eenadu",
+        "https://en.wikipedia.org/wiki/ETV_Bharat"
+      ],
+      "evidence_note": "Eenadu article names Ramoji and Ushodaya; ETV Bharat article names Ramoji and Eenadu."
+    },
+    "sakal": {
+      "name": "Sakal Media Group",
+      "parent": "Sakal Media (Pawar family)",
+      "type": "ownership",
+      "domains": [
+        "esakal.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Sakal_Media_Group"
+      ],
+      "evidence_note": "Own group."
+    },
+    "lokmat": {
+      "name": "Lokmat Media",
+      "parent": "Lokmat Media Pvt Ltd (Darda family)",
+      "type": "ownership",
+      "domains": [
+        "lokmat.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Lokmat"
+      ],
+      "evidence_note": "Own group."
+    },
+    "printers_mysore": {
+      "name": "The Printers (Mysore)",
+      "parent": "The Printers (Mysore) Pvt Ltd",
+      "type": "ownership",
+      "domains": [
+        "deccanherald.com",
+        "prajavani.net"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Deccan_Herald",
+        "https://en.wikipedia.org/wiki/Prajavani"
+      ],
+      "evidence_note": "Prajavani infobox owner The Printers (Mysore) Private Limited; Deccan Herald article names The Printers and Prajavani."
+    },
+    "republic": {
+      "name": "Republic Media Network",
+      "parent": "ARG Outlier Media",
+      "type": "ownership",
+      "domains": [
+        "republicworld.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Republic_Media_Network"
+      ],
+      "evidence_note": "Article names ARG Outlier, Arnab Goswami, Republic Bharat. Observed: ~36 of 99 items in its India RSS had author '(Asian News International)' - ANI copy is common."
+    },
+    "india_tv": {
+      "name": "India TV",
+      "parent": "Independent News Service Pvt Ltd",
+      "type": "ownership",
+      "domains": [
+        "indiatvnews.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/India_TV"
+      ],
+      "evidence_note": "Article names Independent News Service, Rajat Sharma."
+    },
+    "tv9_abcpl": {
+      "name": "TV9 Network",
+      "parent": "Associated Broadcasting Company Pvt Ltd (ABCPL)",
+      "type": "ownership",
+      "domains": [
+        "tv9hindi.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/TV9_Bharatvarsh"
+      ],
+      "evidence_note": "TV9 Bharatvarsh infobox owner ABCPL; sister channels TV9 Bangla/Telugu/Kannada/Marathi/Gujarati (their domains were not verified here; news9live.com ownership not verified, left out)."
+    },
+    "outlook": {
+      "name": "Outlook",
+      "parent": "Rajan Raheja Group (Outlook Publishing (India) Pvt Ltd)",
+      "type": "ownership",
+      "domains": [
+        "outlookindia.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Outlook_(Indian_magazine)"
+      ],
+      "evidence_note": "Infobox company Rajan Raheja Group."
+    },
+    "quintillion": {
+      "name": "The Quint",
+      "parent": "Quintillion Media",
+      "type": "ownership",
+      "domains": [
+        "thequint.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Quint"
+      ],
+      "evidence_note": "Article: founders' digital media company Quintillion Media."
+    },
+    "scroll": {
+      "name": "Scroll.in",
+      "parent": "Scroll Media Inc",
+      "type": "ownership",
+      "domains": [
+        "scroll.in"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Scroll.in"
+      ],
+      "evidence_note": "Own group."
+    },
+    "the_wire": {
+      "name": "The Wire",
+      "parent": "Foundation for Independent Journalism",
+      "type": "ownership",
+      "domains": [
+        "thewire.in"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Wire_(India)"
+      ],
+      "evidence_note": "Own group."
+    },
+    "tribune": {
+      "name": "The Tribune",
+      "parent": "The Tribune Trust",
+      "type": "ownership",
+      "domains": [
+        "tribuneindia.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Tribune_(Chandigarh)"
+      ],
+      "evidence_note": "Own group."
+    },
+    "deccan_chronicle": {
+      "name": "Deccan Chronicle",
+      "parent": "Deccan Chronicle Holdings Ltd",
+      "type": "ownership",
+      "domains": [
+        "deccanchronicle.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Deccan_Chronicle"
+      ],
+      "evidence_note": "Own group."
+    },
+    "business_standard": {
+      "name": "Business Standard",
+      "parent": "Business Standard Pvt Ltd",
+      "type": "ownership",
+      "domains": [
+        "business-standard.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Business_Standard"
+      ],
+      "evidence_note": "Own group (ownership chain not asserted here). Observed: its RSS exposes <bs:source> ('Press Trust of India' on 22/100 items) and article pages carry 'the rest of the content is auto-generated from a syndicated feed.'"
+    },
+    "theprint": {
+      "name": "ThePrint",
+      "parent": "Printline Media (Shekhar Gupta)",
+      "type": "ownership",
+      "domains": [
+        "theprint.in"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/ThePrint"
+      ],
+      "evidence_note": "Wikipedia names Shekhar Gupta. ThePrint has a PTI wire section (theprint.in/category/pti-feed/ answered HTTP 200 but behind a Cloudflare challenge, so the per-article disclaimer could NOT be verified). Treat URLs containing '/pti-feed/' as PTI copy only after confirming on a live page."
+    },
+    "prasar_bharati_govt": {
+      "name": "Government of India (PIB + Prasar Bharati)",
+      "parent": "Government of India",
+      "type": "government",
+      "domains": [
+        "pib.gov.in",
+        "ddnews.gov.in",
+        "newsonair.gov.in",
+        "prasarbharati.gov.in"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Prasar_Bharati"
+      ],
+      "evidence_note": "Single independence group 'govt_india' - see government_sources.json."
+    },
+    "bbc": {
+      "name": "BBC",
+      "parent": "British Broadcasting Corporation (Royal Charter public broadcaster)",
+      "type": "ownership",
+      "domains": [
+        "bbc.com",
+        "bbc.co.uk"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/BBC"
+      ],
+      "evidence_note": "Public service broadcaster under Royal Charter."
+    },
+    "guardian": {
+      "name": "The Guardian",
+      "parent": "Guardian Media Group (Scott Trust)",
+      "type": "ownership",
+      "domains": [
+        "theguardian.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Guardian"
+      ],
+      "evidence_note": "Infobox owner Guardian Media Group."
+    },
+    "nyt": {
+      "name": "The New York Times",
+      "parent": "The New York Times Company",
+      "type": "ownership",
+      "domains": [
+        "nytimes.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_New_York_Times"
+      ],
+      "evidence_note": ""
+    },
+    "wapo": {
+      "name": "The Washington Post",
+      "parent": "Nash Holdings (Jeff Bezos)",
+      "type": "ownership",
+      "domains": [
+        "washingtonpost.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/The_Washington_Post"
+      ],
+      "evidence_note": ""
+    },
+    "cnn_wbd": {
+      "name": "CNN",
+      "parent": "Warner Bros. Discovery",
+      "type": "ownership",
+      "domains": [
+        "cnn.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/CNN"
+      ],
+      "evidence_note": ""
+    },
+    "fox": {
+      "name": "Fox News",
+      "parent": "Fox Corporation",
+      "type": "ownership",
+      "domains": [
+        "foxnews.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Fox_News"
+      ],
+      "evidence_note": ""
+    },
+    "al_jazeera": {
+      "name": "Al Jazeera Media Network",
+      "parent": "Qatar (statutory private foundation primarily funded by the government of Qatar)",
+      "type": "ownership",
+      "domains": [
+        "aljazeera.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Al_Jazeera_Media_Network"
+      ],
+      "evidence_note": "Wikipedia: 'primarily funded by the government of Qatar'. Not in state_affiliated.json (context only if needed)."
+    },
+    "dw": {
+      "name": "Deutsche Welle",
+      "parent": "Federal Government of Germany (public broadcaster)",
+      "type": "ownership",
+      "domains": [
+        "dw.com"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Deutsche_Welle"
+      ],
+      "evidence_note": "Wikipedia: 'German state-funded ... international broadcaster funded by the Federal Government of Germany'. Also an IFCN-verified fact-checker."
+    }
+  },
+  "aggregators": {
+    "yahoo": {
+      "name": "Yahoo News",
+      "domains": [
+        "yahoo.com",
+        "news.yahoo.com",
+        "in.news.yahoo.com"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Yahoo_News",
+      "evidence_note": "Wikipedia: 'News aggregator from Yahoo!'. Observed 2026-10-31 in Google News RSS: Yahoo items republishing Lead Stories fact checks ('Fact Check: FAKE Video of Susan Dell...' - Yahoo)."
+    },
+    "msn": {
+      "name": "MSN / Microsoft Start",
+      "domains": [
+        "msn.com"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Microsoft_Start",
+      "evidence_note": "Wikipedia category 'News aggregators'."
+    },
+    "dailyhunt": {
+      "name": "Dailyhunt",
+      "domains": [
+        "dailyhunt.in",
+        "m.dailyhunt.in"
+      ],
+      "evidence_url": "https://en.wikipedia.org/wiki/Dailyhunt",
+      "evidence_note": "Wikipedia: 'Indian content and news aggregator application'."
+    },
+    "google_news": {
+      "name": "Google News",
+      "domains": [
+        "news.google.com"
+      ],
+      "evidence_url": "https://news.google.com/rss/search?q=fact+check&hl=en-IN&gl=IN&ceid=IN:en",
+      "evidence_note": "RSS item <link> values are news.google.com/rss/articles/<id> redirects; the real publisher is in <source url=...>. Never treat news.google.com as the publisher."
+    }
+  },
+  "domain_to_group": {
+    "aajtak.in": "india_today_group",
+    "abplive.com": "abp_group",
+    "afp.com": "afp",
+    "aljazeera.com": "al_jazeera",
+    "anandabazar.com": "abp_group",
+    "aninews.in": "ani",
+    "ap.org": "ap",
+    "apnews.com": "ap",
+    "bbc.co.uk": "bbc",
+    "bbc.com": "bbc",
+    "bhaskar.com": "db_corp",
+    "bloomberg.com": "bloomberg",
+    "business-standard.com": "business_standard",
+    "businesstoday.in": "india_today_group",
+    "cnbctv18.com": "network18_reliance",
+    "cnn.com": "cnn_wbd",
+    "dailyhunt.in": "aggregator:dailyhunt",
+    "ddnews.gov.in": "govt_india",
+    "deccanchronicle.com": "deccan_chronicle",
+    "deccanherald.com": "printers_mysore",
+    "divyabhaskar.co.in": "db_corp",
+    "dnaindia.com": "zee_essel",
+    "dw.com": "dw",
+    "economictimes.indiatimes.com": "times_group",
+    "eenadu.net": "ramoji_eenadu",
+    "eisamay.com": "times_group",
+    "esakal.com": "sakal",
+    "etvbharat.com": "ramoji_eenadu",
+    "factcheck.afp.com": "afp",
+    "factcheckhindi.afp.com": "afp",
+    "financialexpress.com": "indian_express_group",
+    "firstpost.com": "network18_reliance",
+    "foxnews.com": "fox",
+    "frontline.thehindu.com": "the_hindu_group",
+    "hindustantimes.com": "ht_media",
+    "ianslive.in": "ians",
+    "in.news.yahoo.com": "aggregator:yahoo",
+    "indianexpress.com": "indian_express_group",
+    "indiatimes.com": "times_group",
+    "indiatoday.in": "india_today_group",
+    "indiatvnews.com": "india_tv",
+    "jagran.com": "jagran",
+    "jagranjosh.com": "jagran",
+    "jansatta.com": "indian_express_group",
+    "livehindustan.com": "ht_media",
+    "livemint.com": "ht_media",
+    "lokmat.com": "lokmat",
+    "loksatta.com": "indian_express_group",
+    "m.dailyhunt.in": "aggregator:dailyhunt",
+    "maharashtratimes.com": "times_group",
+    "manoramaonline.com": "malayala_manorama",
+    "mathrubhumi.com": "mathrubhumi",
+    "mid-day.com": "jagran",
+    "moneycontrol.com": "network18_reliance",
+    "msn.com": "aggregator:msn",
+    "mumbaimirror.com": "times_group",
+    "naidunia.com": "jagran",
+    "navbharattimes.indiatimes.com": "times_group",
+    "ndtv.com": "ndtv_adani",
+    "ndtv.in": "ndtv_adani",
+    "ndtvprofit.com": "ndtv_adani",
+    "newindianexpress.com": "new_indian_express",
+    "news.google.com": "aggregator:google_news",
+    "news.yahoo.com": "aggregator:yahoo",
+    "news18.com": "network18_reliance",
+    "newsonair.gov.in": "govt_india",
+    "nytimes.com": "nyt",
+    "outlookindia.com": "outlook",
+    "pib.gov.in": "govt_india",
+    "prajavani.net": "printers_mysore",
+    "prasarbharati.gov.in": "govt_india",
+    "ptinews.com": "pti",
+    "republicworld.com": "republic",
+    "reuters.com": "reuters",
+    "reutersagency.com": "reuters",
+    "scroll.in": "scroll",
+    "sportstar.thehindu.com": "the_hindu_group",
+    "telegraphindia.com": "abp_group",
+    "theguardian.com": "guardian",
+    "thehindu.com": "the_hindu_group",
+    "thehindubusinessline.com": "the_hindu_group",
+    "thelallantop.com": "india_today_group",
+    "theprint.in": "theprint",
+    "thequint.com": "quintillion",
+    "theweek.in": "malayala_manorama",
+    "thewire.in": "the_wire",
+    "timesnownews.com": "times_group",
+    "timesofindia.indiatimes.com": "times_group",
+    "tribuneindia.com": "tribune",
+    "tv9hindi.com": "tv9_abcpl",
+    "uniindia.com": "uni",
+    "vishvasnews.com": "jagran",
+    "washingtonpost.com": "wapo",
+    "wionews.com": "zee_essel",
+    "yahoo.com": "aggregator:yahoo",
+    "zeenews.india.com": "zee_essel"
+  },
+  "observed_markers": {
+    "hindustantimes.com": {
+      "feed": "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml",
+      "feed_items": 100,
+      "feed_creator_fields_top": [],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "PTI word": 6,
+        "ANI word": 2,
+        "With inputs from": 1
+      },
+      "examples": {
+        "With inputs from": {
+          "url": "https://www.hindustantimes.com/india-news/6-year-old-girl-in-critical-condition-after-class-3-student-assaults-her-with-stone-flower-pot-at-panchkula-school-haryana-101793433872009.html",
+          "snippet": "a fight, during which one of the accused allegedly stabbed him, a police officer said. (With inputs from ANI) ABOUT THE AUTHOR Anagha Deshpande Anagha Deshpande is Deputy C"
+        },
+        "PTI word": {
+          "url": "https://www.hindustantimes.com/india-news/cji-honours-legal-educationist-madhava-menon-presents-memorial-award-to-attorney-general-101793436975087.html",
+          "snippet": "s memorial award to Attorney General Published on: Oct 31, 2026, 14:26:14 IST PTI Prefer HT on Google Share via Copy link "
+        },
+        "ANI word": {
+          "url": "https://www.hindustantimes.com/india-news/6-year-old-girl-in-critical-condition-after-class-3-student-assaults-her-with-stone-flower-pot-at-panchkula-school-haryana-101793433872009.html",
+          "snippet": "led for her. She was allegedly attacked there with a stone and a flower pot, news agency ANI reported. The girl was dragged for a considerable distance, leaving her severely injure"
+        }
+      }
+    },
+    "livemint.com": {
+      "feed": "https://www.livemint.com/rss/news",
+      "feed_items": 35,
+      "feed_creator_fields_top": [],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "PTI word": 3,
+        "ANI word": 3,
+        "IANS word": 1,
+        "Reuters": 2,
+        "AFP": 1,
+        "(ANI)": 1
+      },
+      "examples": {
+        "(ANI)": {
+          "url": "https://www.livemint.com/news/india/weather-today-new-depression-to-bring-heavy-rain-to-andhra-kerala-no-showers-for-delhi-check-full-imd-forecast-11793408255525.html",
+          "snippet": " AM IST Prefer Livemint on Google Hyderabad, Oct 30 (ANI): People cross a road amid rain, in Hyderabad on Friday. (ANI Photo) ( Mohammed Aleemuddin"
+        },
+        "PTI word": {
+          "url": "https://www.livemint.com/news/india/kaante-filmmaker-sanjay-gupta-dies-at-59-heres-what-we-know-about-the-cause-of-death-11793431390841.html",
+          "snippet": "t the cause of death Sanjay Gupta fell and hit his head, one of his closest friends told PTI. Livemint Updated 31 Oct 2026, 02:14 PM IST Prefer Livemint on Goog"
+        },
+        "ANI word": {
+          "url": "https://www.livemint.com/news/india/kaante-filmmaker-sanjay-gupta-dies-at-59-heres-what-we-know-about-the-cause-of-death-11793431390841.html",
+          "snippet": "nawala, another of Gupta's close friends, expressed shock over his sudden demise and told ANI that the filmmaker fell in the kitchen and sustained a head injury. “He fell in the k"
+        }
+      }
+    },
+    "ndtv.com": {
+      "feed": "https://feeds.feedburner.com/ndtvnews-top-stories",
+      "feed_items": 20,
+      "feed_creator_fields_top": [
+        [
+          "media:credit=NDTV",
+          1
+        ]
+      ],
+      "articles_sampled": 0,
+      "marker_counts": {},
+      "examples": {}
+    },
+    "business-standard.com": {
+      "feed": "https://www.business-standard.com/rss/latest.rss",
+      "feed_items": 100,
+      "feed_creator_fields_top": [
+        [
+          "bs:source=Business Standard",
+          57
+        ],
+        [
+          "bs:source=Press Trust of India",
+          22
+        ],
+        [
+          "dc:creator=Press Trust of India",
+          17
+        ],
+        [
+          "dc:creator=Our Bureau",
+          8
+        ],
+        [
+          "dc:creator=Bloomberg",
+          7
+        ]
+      ],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "auto-generated from a syndicated feed": 6,
+        "syndicated feed": 6,
+        "PTI word": 3,
+        "Reuters": 1
+      },
+      "examples": {
+        "auto-generated from a syndicated feed": {
+          "url": "https://www.business-standard.com/industry/news/meity-launches-depa-handbook-to-enable-secure-data-sharing-for-ai-training-126103100585_1.html",
+          "snippet": " report may have been reworked by the Business Standard staff; the rest of the content is auto-generated from a syndicated feed.) More From This Section IBBI amends rules to speed up resolut"
+        },
+        "PTI word": {
+          "url": "https://www.business-standard.com/markets/news/sebi-aims-to-make-capital-markets-more-accessible-resilient-chairman-126103100530_1.html",
+          "snippet": " 12 lakh in FY15 to over 90 lakh Sebi Chairman Tuhin Kanta Pandey (Photo:PTI) Press Trust of India Kolkata 2 min read Last Updated : Oct 31 2026 | 2:"
+        }
+      }
+    },
+    "news18.com": {
+      "feed": "https://www.news18.com/commonfeeds/v1/eng/rss/india.xml",
+      "feed_items": 200,
+      "feed_creator_fields_top": [
+        [
+          "dc:creator=News18",
+          200
+        ]
+      ],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "(PTI)": 2,
+        "PTI word": 2,
+        "AFP": 2
+      },
+      "examples": {
+        "(PTI)": {
+          "url": "https://www.news18.com/india/man-attacks-class-10-girl-with-chainsaw-over-rejected-love-proposal-in-andhra-cm-orders-swift-action-ws-kl-10406410.html",
+          "snippet": "p to her death. (Representative image)\",\"alt\":\"Delhi Police image used for representation (PTI)\",\"attribution\":\"News18\"},\"images_all_sizes\":{\"mime_type\":\"image/jpeg\",\"url\":\"https://imag"
+        },
+        "PTI word": {
+          "url": "https://www.news18.com/india/man-attacks-class-10-girl-with-chainsaw-over-rejected-love-proposal-in-andhra-cm-orders-swift-action-ws-kl-10406410.html",
+          "snippet": " to her death. (Representative image)\",\"alt\":\"Delhi Police image used for representation (PTI)\",\"attribution\":\"News18\"},\"images_all_sizes\":{\"mime_type\":\"image/jpeg\",\"url\":\"https://ima"
+        }
+      }
+    },
+    "thehindu.com": {
+      "feed": "https://www.thehindu.com/news/national/feeder/default.rss",
+      "feed_items": 60,
+      "feed_creator_fields_top": [],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "PTI word": 5,
+        "ANI word": 4
+      },
+      "examples": {
+        "PTI word": {
+          "url": "https://www.thehindu.com/news/national/distorians-cannot-erase-the-profound-respect-indira-gandhi-had-for-vallabhbhai-patel-jairam-ramesh/article71648606.ece",
+          "snippet": " Gandhi’s death anniversary Updated - October 31, 2026 02:49 pm IST - New Delhi PTI READ LATER SEE ALL "
+        },
+        "ANI word": {
+          "url": "https://www.thehindu.com/news/national/distorians-cannot-erase-the-profound-respect-indira-gandhi-had-for-vallabhbhai-patel-jairam-ramesh/article71648606.ece",
+          "snippet": "tal geography and history. File | Photo Credit: ANI Congress leader Jairam Ramesh on Saturday (Oct"
+        }
+      }
+    },
+    "indianexpress.com": {
+      "feed": "https://indianexpress.com/section/india/feed/",
+      "feed_items": 200,
+      "feed_creator_fields_top": [
+        [
+          "dc:creator=Anish Mondal",
+          21
+        ],
+        [
+          "dc:creator=Vidheesha Kuntamalla",
+          11
+        ],
+        [
+          "dc:creator=Anand Mohan J",
+          10
+        ],
+        [
+          "dc:creator=Sujit Bisoyi",
+          6
+        ],
+        [
+          "dc:creator=Naveed Iqbal",
+          6
+        ]
+      ],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "PTI word": 5,
+        "ANI word": 2,
+        "(ANI)": 1
+      },
+      "examples": {
+        "(ANI)": {
+          "url": "https://indianexpress.com/article/india/pilot-five-pilgrims-killed-as-helicopter-returning-from-badrinath-crashes-10944254/",
+          "snippet": "rds a lower altitude”. Wreckage of the helicopter in Chamoli, Uttarakhand, on Friday. (ANI) The Army team reached the accident site and located all six bodies. However, dense fore"
+        },
+        "PTI word": {
+          "url": "https://indianexpress.com/article/india/uttarakhand-chopper-crash-operation-underway-to-retrieve-bodies-of-six-victims-10944803/",
+          "snippet": "her security personnel conduct a search and rescue operation at the crash site on Friday.(PTI Photo) Make us preferred source on Google "
+        },
+        "ANI word": {
+          "url": "https://indianexpress.com/article/india/india-breaking-news-live-updates-31-october-2026-delhi-mumbai-weather-today-fire-rahul-gandhi-modi-gyanesh-kumar-10944278/",
+          "snippet": "missioning the 'Statue of Unity'—a monumental structure that reaches toward the skies.\" — ANI (@ANI) October 31, 2026 "
+        }
+      }
+    },
+    "timesofindia.indiatimes.com": {
+      "feed": "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms",
+      "feed_items": 20,
+      "feed_creator_fields_top": [
+        [
+          "dc:creator=Abhishek Mishra",
+          5
+        ],
+        [
+          "dc:creator=Subhadra Srivastava",
+          3
+        ],
+        [
+          "dc:creator=Ayush Pandey",
+          3
+        ],
+        [
+          "dc:creator=Karan Manral",
+          2
+        ],
+        [
+          "dc:creator=Priyanka Jaiswal",
+          2
+        ]
+      ],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "ANI word": 3
+      },
+      "examples": {
+        "ANI word": {
+          "url": "https://timesofindia.indiatimes.com/india/if-match-umpire-is-biased-what-is-the-point-of-playing-sachin-pilot-questions-cecs-neutrality/articleshow/135394502.cms",
+          "snippet": "erns about the independence of the Election Commission. In an interview with news agency ANI, Pilot alleged that the CEC's actions had undermined public confidence in the electoral i"
+        }
+      }
+    },
+    "firstpost.com": {
+      "feed": "https://www.firstpost.com/commonfeeds/v1/mfp/rss/india.xml",
+      "feed_items": 200,
+      "feed_creator_fields_top": [
+        [
+          "dc:creator=Dheeraj Kumar",
+          36
+        ],
+        [
+          "dc:creator=Chandan Prakash",
+          33
+        ],
+        [
+          "dc:creator=KSHITIZ.BHARDWAJ",
+          32
+        ],
+        [
+          "dc:creator=Sneha Swaminathan",
+          27
+        ],
+        [
+          "dc:creator=Tanishq.Priya",
+          14
+        ]
+      ],
+      "articles_sampled": 11,
+      "marker_counts": {
+        "ANI word": 5,
+        "Reuters": 2,
+        "PTI word": 2,
+        "With inputs from": 3
+      },
+      "examples": {
+        "With inputs from": {
+          "url": "https://www.firstpost.com/india/pm-modi-congratulates-isro-on-successful-gslv-f18-launch-carrying-nvs-03-satellite-14056731.html",
+          "snippet": "lite, launched in September, was functioning as expected and providing outstanding data. With inputs from PTI Handpicked stories, in your inbox Global stories. Indian perspective. Zer"
+        },
+        "PTI word": {
+          "url": "https://www.firstpost.com/india/pm-modi-congratulates-isro-on-successful-gslv-f18-launch-carrying-nvs-03-satellite-14056731.html",
+          "snippet": " September, was functioning as expected and providing outstanding data. With inputs from PTI Handpicked stories, in your inbox Global stories. Indian perspective. Zero no"
+        },
+        "ANI word": {
+          "url": "https://www.firstpost.com/india/weekly-defence-dispatch-drones-top-indias-rs-2-12-lakh-crore-shopping-list-navy-goes-big-on-destroyers-iaf-gets-a-new-chief-and-more-14056739.html",
+          "snippet": "it will take over as the new Chief of the Air Staff on Saturday (October 31) (File Photo: ANI) Vallari Parashar | Oct 31, 2026, 11:57:23 IST See more of "
+        }
+      }
+    },
+    "republicworld.com": {
+      "feed": "https://www.republicworld.com/rss/india.xml",
+      "feed_items": 99,
+      "feed_creator_fields_top": [
+        [
+          "author=editor@republicworld.com (Asian News Int",
+          36
+        ],
+        [
+          "author=editor@republicworld.com (Digital Desk)",
+          28
+        ],
+        [
+          "author=editor@republicworld.com (Namya Kapur)",
+          7
+        ],
+        [
+          "author=editor@republicworld.com (Abhishek Tiwar",
+          5
+        ],
+        [
+          "author=editor@republicworld.com (Shruti Sneha)",
+          5
+        ]
+      ],
+      "articles_sampled": 12,
+      "marker_counts": {
+        "ANI word": 5,
+        "Agency": 1
+      },
+      "examples": {
+        "ANI word": {
+          "url": "https://www.republicworld.com/india/youth-want-solutions-not-rhetoric-rjd-leaders-march-to-raj-bhavan-over-paper-leaks-unemployment-2026-08-19-135074",
+          "snippet": "ric': RJD Leaders March to Raj Bhavan Over Paper Leaks, Unemployment | Image: ANI Patna: Rashtriya Janata Dal (RJD) leaders and workers on Wednesday staged a foo"
+        }
+      }
+    }
+  },
+  "rules": "Independence key = publisher_group. Two items are NOT independent if (a) their domains map to the same group in domain_to_group, (b) either one is wire copy of the same agency (detect via byline markers below) - then both collapse to the WIRE's group (e.g. two outlets running the same PTI story count as ONE: 'pti'), (c) one is an aggregator page (Yahoo/MSN/Dailyhunt/Google News) - attribute it to the underlying provider when named, else drop it from independence counting, (d) titles are near-identical (e.g. normalized token Jaccard >= 0.8) and published within ~48h - treat as syndicated even if no marker is visible. Wire-copy detection, strongest first: (1) feed fields: Business Standard <bs:source>/<dc:creator> = 'Press Trust of India'; Republic <author> '(Asian News International)'; (2) page disclaimer 'the rest of the content is auto-generated from a syndicated feed' (Business Standard, observed) or 'has not been edited by <X> staff' style notes; (3) a byline/dateline token 'PTI' / 'ANI' / 'IANS' / 'UNI' / 'Reuters' / 'AFP' / 'AP' immediately after the city+date or as the author (e.g. HT: 'Published on: Oct 31, 2026 ... IST PTI'; The Hindu: 'New Delhi PTI'); (4) a parenthesized dateline '(PTI)' / '(ANI)' / '(IANS)' at the start of the body ('Hyderabad, Oct 30 (ANI):'); (5) closing note 'With inputs from PTI/ANI/agencies' => PARTIAL syndication: the outlet added its own reporting; count it as its own group but flag 'wire_derived'. CAUTION (observed 2026-10-31): bare 'PTI'/'ANI' tokens appear mostly in PHOTO CREDITS ('(PTI Photo)', 'Photo Credit: ANI', 'File Photo: ANI', image alt text) and in attributions ('told PTI', 'news agency ANI reported'). Those are NOT syndication - only use tokens in byline/dateline/author positions. Same-group examples: a Vishvas News fact check + a Dainik Jagran story = one group (jagran); Aaj Tak + India Today + The Lallantop = one group; Indian Express and New Indian Express are DIFFERENT owners. Government outlets (PIB, DD, AIR, ministries) = one group 'govt_india'."
+}

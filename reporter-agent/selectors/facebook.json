@@ -1,0 +1,17 @@
+{
+  "platform": "facebook",
+  "version": "2026-10-31 (best effort; login required in the persistent profile)",
+  "steps": [
+    {"action": "click", "description": "Open the post's actions (...) menu",
+     "selectors": ["[aria-label=\"Actions for this post\"]", "div[role=\"button\"][aria-haspopup=\"menu\"]"]},
+    {"action": "click", "description": "Choose 'Report post'",
+     "selectors": ["div[role=\"menuitem\"]:has-text(\"Report post\")", "div[role=\"menuitem\"]:has-text(\"Find support or report\")"]},
+    {"action": "wait", "description": "Wait for the report dialog",
+     "selectors": ["div[role=\"dialog\"]"]},
+    {"action": "fill", "optional": true, "text": "prefilled_text",
+     "description": "Paste the confirmed text if a text box is offered",
+     "selectors": ["div[role=\"dialog\"] textarea", "div[role=\"dialog\"] [contenteditable=\"true\"]"]}
+  ],
+  "final_submit": ["div[role=\"dialog\"] div[role=\"button\"]:has-text(\"Submit\")"],
+  "notes": ["Pick 'False information' and the closest sub-category."]
+}

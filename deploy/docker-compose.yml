@@ -1,0 +1,63 @@
+# One VPS: api + Postgres 16/pgvector + Caddy (automatic HTTPS). D-11.
+#   cp .env.example .env   # fill LLM_API_KEY etc. at the repo root
+#   VERILOOP_DOMAIN=verify.example.org POSTGRES_PASSWORD=... docker compose -f deploy/docker-compose.yml up -d --build
+name: veriloop
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: veriloop
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-veriloop}
+      POSTGRES_DB: veriloop
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veriloop -d veriloop"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    environment:
+      # Overrides for the container; secrets still come from ../.env.
+      DATABASE_URL: postgresql://veriloop:${POSTGRES_PASSWORD:-veriloop}@db:5432/veriloop
+      VERILOOP_HOME: /data
+      HOST: 0.0.0.0
+      PORT: "8000"
+      APP_BASE_URL: https://${VERILOOP_DOMAIN:-localhost}
+    volumes:
+      - veriloop_home:/data          # model weights, media, audit key
+    depends_on:
+      db:
+        condition: service_healthy
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      VERILOOP_DOMAIN: ${VERILOOP_DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  veriloop_home:
+  caddy_data:
+  caddy_config:

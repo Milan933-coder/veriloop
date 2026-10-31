@@ -1,0 +1,16 @@
+{
+  "source": "scripts/eval_forensics.py",
+  "dataset": "OpenRL/DeepFakeFace@eb2a54fbf2567790bd3dc61d09fdaade6bb6c31c",
+  "generated_at": "2026-10-31T13:33:11+00:00",
+  "auc": {
+    "dima806/deepfake_vs_real_image_detection": 0.5427,
+    "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.5398,
+    "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.8742
+  },
+  "weights": {
+    "dima806/deepfake_vs_real_image_detection": 0.0854,
+    "prithivMLmods/Deep-Fake-Detector-v2-Model": 0.0796,
+    "buildborderless/CommunityForensics-DeepfakeDet-ViT": 0.7484
+  },
+  "full_model_on_face_frames": true
+}

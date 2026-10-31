@@ -1,0 +1,305 @@
+{
+  "_source": [
+    {
+      "title": "Wikipedia: List of fake news websites (curated, every row cites sources)",
+      "url": "https://en.wikipedia.org/wiki/List_of_fake_news_websites",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Wikipedia: List of miscellaneous fake news websites",
+      "url": "https://en.wikipedia.org/wiki/List_of_miscellaneous_fake_news_websites",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "EU DisinfoLab: Indian Chronicles (9 Dec 2020)",
+      "url": "https://www.disinfo.eu/publications/indian-chronicles-deep-dive-into-a-15-year-operation-targeting-the-eu-and-un-to-serve-indian-interests/",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "DFRLab: Russia's so-called 'Pravda' network expands worldwide (24 Feb 2025)",
+      "url": "https://dfrlab.org/2025/02/24/russia-pravda-network-expands-worldwide/",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Alt News 2022 media misinformation roundup",
+      "url": "https://www.altnews.in/roundup-2022-how-parties-leaders-media-influencers-amplified-misinfo-this-year/",
+      "accessed": "2026-10-31"
+    }
+  ],
+  "_verified_at": "2026-10-31",
+  "_notes": "Inclusion rule: (a) a fact-checker, research lab, court/police action or government advisory explicitly documents REPEATED false content from the source, and for single domestic outlets also (b) the source appears on a curated, cited research list (Wikipedia fake-news-site lists). Use ONLY as provenance CONTEXT (Appearance.context_flags='known_disinfo'): 'the earliest appearance is on a source with a documented record of misinformation'. It must never by itself turn a claim FALSE, and never lower confidence in a claim that independent sources corroborate. Deliberately excluded: 'IndiaTimes.com' (appears on Wikipedia's misc list 'per PolitiFact' but indiatimes.com is the Times Group's legitimate domain - an example of why lists must not be imported blindly); mainstream outlets named in Alt News' 2022 tally (Times Group, Zee, India Today Group, NDTV) - repeat errors are not the same as being a disinformation source; indiavsdisinformation.com (on the Wikipedia list but the row only states ownership, no documented false content); worldnewsdailyreport.com (now redirects to an unrelated site); individual Meta CIB / X takedown accounts (no stable domains to match); Indian Chronicles domains (report page does not enumerate them). Handles in the Army-flagged entry are a single, government-attributed incident.",
+  "sources": [
+    {
+      "domain_or_handle": "postcard.news",
+      "aliases": [],
+      "platform": "web",
+      "name": "Postcard News",
+      "country": "IN",
+      "category": "repeat_misinformation_documented",
+      "status": "dns_unresolved_2026-10-31",
+      "evidence_urls": [
+        "https://www.altnews.in/postcard-news-a-mega-factory-of-fake-news-that-continues-to-spew-venom/",
+        "https://www.altnews.in/founder-of-fake-news-website-postcard-news-arrested/",
+        "https://www.thenewsminute.com/karnataka/postcard-news-founder-arrested-spreading-fake-news-targeting-muslim-youth-78718",
+        "https://en.wikipedia.org/wiki/List_of_miscellaneous_fake_news_websites"
+      ],
+      "evidence_note": "Alt News (6 Jul 2018): 'Postcard News, synonymous with misinformation in the garb of news, continues to post ... content which is communal in nature, provocative in tone and mostly untrue'. Alt News + The News Minute: founder Mahesh Vikram Hegde arrested by Karnataka police (March 2018) over a fake story about a Jain monk. Wikipedia list: 'In 2019, its founder ... was arrested for a second time on charges of spreading fake news.'",
+      "site_check": "postcard.news did not resolve in DNS on 2026-10-31 (keep for archived links/screenshots)",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "opindia.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "OpIndia",
+      "country": "IN",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/OpIndia",
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites",
+        "https://www.altnews.in/roundup-2022-how-parties-leaders-media-influencers-amplified-misinfo-this-year/",
+        "https://www.newslaundry.com/2023/01/04/among-media-outlets-times-group-zee-shared-most-misinformation-in-2022-alt-news"
+      ],
+      "evidence_note": "Wikipedia: 'In 2019, the International Fact-Checking Network (IFCN) rejected OpIndia's application'; 'IFCN-certified fact checkers identified 25 fake news stories and 14 misreported stories published by OpIndia' (Jan 2018-Jun 2020). Alt News 2022 roundup: OpIndia 'was seen sharing misinformation on 18 counts this year'. Listed on Wikipedia's 'List of fake news websites'. CAUTION: the same Alt News analysis also counted misinformation by mainstream groups (Times Group 45, Zee 32, India Today 23, NDTV 14) - those are NOT listed here because they are not on curated fake-news-site lists; repeat errors alone do not make an outlet a disinfo source.",
+      "site_check": "HTTP 403 to scripted fetch (domain resolves)",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "greatgameindia.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "GreatGameIndia",
+      "country": "IN",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_miscellaneous_fake_news_websites",
+        "https://www.politifact.com/factchecks/2020/jan/28/blog-posting/websites-spin-conspiracy-theory-about-coronavirus/"
+      ],
+      "evidence_note": "Wikipedia misc. fake news list: 'Spread COVID-19 vaccine misinformation'. PolitiFact (28 Jan 2020) on GreatGameIndia's coronavirus 'bioweapon' story: 'The story lacks evidence for its headline, so we rate it False.'",
+      "site_check": "HTTP 200 (title now 'GreatGameInternational')",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": null,
+      "aliases": [],
+      "platform": "web",
+      "name": "'Indian Chronicles' influence operation (Srivastava Group network)",
+      "country": "IN (targeting EU/UN)",
+      "category": "coordinated_inauthentic_network",
+      "status": "active",
+      "evidence_urls": [
+        "https://www.disinfo.eu/publications/indian-chronicles-deep-dive-into-a-15-year-operation-targeting-the-eu-and-un-to-serve-indian-interests/"
+      ],
+      "evidence_note": "EU DisinfoLab (9 Dec 2020): a 15-year operation 'led by the Srivastava Group and amplified by ANI' with '750+ fake media outlets, covering 119 countries; 550+ domain names registered'; fake EU magazines such as 'EP Today' and 'EU Chronicle'; 'Times of Geneva' and '4 News Agency' stopped activities after the 2019 investigation. The report page does not list the domains in machine-readable form, so no domains are included - match on outlet names only. NOTE: the report says ANI amplified this content; ANI itself is NOT listed as a disinfo source (it is a major wire - see syndication.json).",
+      "site_check": "",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text",
+      "outlet_names": [
+        "EP Today",
+        "EU Chronicle",
+        "Times of Geneva",
+        "4 News Agency"
+      ]
+    },
+    {
+      "domain_or_handle": null,
+      "aliases": [],
+      "platform": "x",
+      "name": "Accounts named by the Indian Army fact-check account (28 Oct 2026 campaign)",
+      "country": "PK (as attributed by the Indian Army)",
+      "category": "government_flagged_campaign",
+      "status": "single_incident",
+      "evidence_urls": [
+        "https://telanganatoday.com/indian-army-fact-check-exposes-pakistan-based-accounts-over-misleading-video-targeting-army-chief",
+        "https://www.ap7am.com/en/138415/indian-army-fact-check-exposes-pakistan-based-accounts-over-misleading-video-targeting-army-chief"
+      ],
+      "evidence_note": "Both articles (identical copy - treat as ONE source) quote the Indian Army's fact-check post on X: it 'identified 10 social media handles allegedly involved in circulating the content between 0040 hours and 0800 hours on October 28, 2026' (a misleading video/overlay targeting the Army Chief). SINGLE government attribution for a single campaign: use only as weak context (e.g. 'this handle was named in a government advisory'), never as a verdict on an account. Handles with personal-looking names may be impersonation or misattribution.",
+      "site_check": "",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text",
+      "handles": [
+        "@Keziabo2n",
+        "@Diksha_sharma03",
+        "@IndiaGenzzz",
+        "@ThokaReturns",
+        "@NilakshiRabhaIN",
+        "@BabaThokaIndia",
+        "@Clashfire_",
+        "@PatelKush51313",
+        "@khalsavision2",
+        "@NetaNamaX"
+      ]
+    },
+    {
+      "domain_or_handle": "news-pravda.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "'Pravda' network (formerly Portal Kombat)",
+      "country": "RU",
+      "category": "state_linked_disinfo_network",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Pravda_network",
+        "https://dfrlab.org/2025/02/24/russia-pravda-network-expands-worldwide/"
+      ],
+      "evidence_note": "Wikipedia: network of 'at least 224 sites, according to Viginum' (France); 'In 2024, many of its domains became centralized using versions of the news-pravda.com domain'; content used to influence LLM training data. DFRLab (24 Feb 2025): the network 'formerly known as Portal Kombat' expanded its infrastructure; uses 'pravda-' country-coded domains and subdomains such as usa./eu./nato.news-pravda.com. Match news-pravda.com incl. ALL subdomains, and treat 'pravda-<cc>.com' domains as candidates for manual review.",
+      "site_check": "news-pravda.com HTTP 522 on 2026-10-31",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "waronfakes.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "War on Fakes",
+      "country": "RU",
+      "category": "state_linked_disinfo_network",
+      "status": "defunct_seized_2024",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'A Russian website that promotes Russian propaganda and disinformation about the Russian invasion of Ukraine. Seized by the United States federal government in 2024.'",
+      "site_check": "HTTP 403",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "theinteldrop.org",
+      "aliases": [],
+      "platform": "web",
+      "name": "The Intel Drop",
+      "country": "unknown",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'Common Russian disinformation website.'",
+      "site_check": "HTTP 403 (domain resolves)",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "thepeoplesvoice.tv",
+      "aliases": [
+        "newspunch.com",
+        "yournewswire.com"
+      ],
+      "platform": "web",
+      "name": "The People's Voice (formerly NewsPunch / Your News Wire)",
+      "country": "US/GB",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'It has published fake stories, such as claims that the Queen had threatened to abdicate if the UK voted against Brexit. Its name was changed to NewsPunch in 2018 and The People's Voice in 2023.'",
+      "site_check": "thepeoplesvoice.tv and newspunch.com HTTP 403 (resolve)",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "neonnettle.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "Neon Nettle",
+      "country": "US",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'Per FactCheck.org and PolitiFact. Stated by Snopes to be \"interrelated\" with NewsPunch and Your News Wire.'",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "infowars.com",
+      "aliases": [
+        "banned.video"
+      ],
+      "platform": "web",
+      "name": "InfoWars",
+      "country": "US",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'Managed by Alex Jones. Has claimed ... that the Sandy Hook Elementary School shooting was a hoax, that the Boston Marathon bombing was a false flag attack ...'",
+      "site_check": "HTTP 403 (resolves); banned.video is listed as its sister site",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "nationalfile.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "National File",
+      "country": "US",
+      "category": "repeat_misinformation_documented",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'Sister site of InfoWars. It has promoted misinformation about COVID-19 and the COVID-19 vaccines.'",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "naturalnews.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "Natural News",
+      "country": "US",
+      "category": "health_misinformation",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: promotes 'various conspiracy theories, such as chemtrails' and 'purported health problems caused by allegedly toxic ingredients in vaccines, including the now-discredited link to autism'.",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "mercola.com",
+      "aliases": [],
+      "platform": "web",
+      "name": "Mercola.com",
+      "country": "US",
+      "category": "health_misinformation",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: founder 'cited by the Center for Countering Digital Hate as one of the \"Disinformation Dozen\" for frequently sharing anti-vaccine misinformation'.",
+      "site_check": "",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    },
+    {
+      "domain_or_handle": "childrenshealthdefense.org",
+      "aliases": [],
+      "platform": "web",
+      "name": "Children's Health Defense",
+      "country": "US",
+      "category": "health_misinformation",
+      "status": "active",
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/List_of_fake_news_websites"
+      ],
+      "evidence_note": "Wikipedia list: 'Cited by the Center for Countering Digital Hate as one of the \"Disinformation Dozen\"'; 'Banned by Facebook and Instagram in 2022 for repeatedly spreading medical misinformation.'",
+      "site_check": "",
+      "verified_at": "2026-10-31",
+      "verification_method": "each evidence_url fetched on 2026-10-31 (HTTP 200) and the quoted wording confirmed in the page text"
+    }
+  ]
+}

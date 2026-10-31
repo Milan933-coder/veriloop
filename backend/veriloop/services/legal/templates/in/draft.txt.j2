@@ -1,0 +1,75 @@
+{{ banner }}
+
+Template {{ template_version }} | VeriLoop job {{ job_id }} | generated {{ today }}
+
+======================================================================
+DRAFT 1 - COMPLAINT TO THE GRIEVANCE OFFICER OF {{ platform_name|upper }}
+Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, Rule 3(2)(b)
+======================================================================
+
+To:   The Grievance Officer, {{ platform_name }}
+      [GRIEVANCE OFFICER NAME AND EMAIL FROM THE PLATFORM'S CONTACT PAGE]
+From: [FULL NAME]
+      [POSTAL ADDRESS]
+      [EMAIL ADDRESS] | [PHONE NUMBER]
+Date: [DATE]
+
+Subject: Complaint under Rule 3(2)(b) of the IT Rules, 2021: content impersonating me in electronic form, including an artificially morphed / synthetic depiction. Request for removal within 24 hours.
+
+1. I, [FULL NAME], am [THE PERSON DEPICTED / AUTHORISED REPRESENTATIVE OF THE PERSON DEPICTED (STATE RELATIONSHIP)] in the content available at:
+   {{ content_url }}
+   It was posted by [ACCOUNT HANDLE THAT POSTED IT]. I first saw it on [DATE OF FIRST DISCOVERY].
+
+2. Description of the content: {{ content_description }}
+
+3. The content is in the nature of impersonation in an electronic form, including an artificially morphed depiction of me. I did not create, authorise or consent to it.
+
+4. Independent verification. {{ manipulation_summary }}
+{% for s in sources %}
+   - {{ s.name }}{% if s.date %} ({{ s.date }}){% endif %}: {{ s.title }}
+     {{ s.url }}
+{% endfor %}
+   Forensic analysis: {{ forensic_line }}
+   Signed, tamper-evident audit record: {{ audit_pdf_url }}
+   Independent verification of that record: {{ audit_verify_url }}
+{% if media_hashes %}
+   SHA-256 of the analysed media: {{ media_hashes|join(", ") }}
+{% endif %}
+
+5. Rule 3(2)(b) of the IT Rules, 2021 requires an intermediary, within 24 hours of receiving a complaint from an individual or a person on their behalf, to take all reasonable and practicable measures to remove or disable access to content that is in the nature of impersonation in an electronic form, including artificially morphed images of that individual. I therefore request that you:
+   (a) remove or disable access to the content above, and to identical or near-identical copies, within 24 hours;
+   (b) acknowledge this complaint and give me a ticket / reference number;
+   (c) preserve the content, its upload metadata and the uploading account's details, which may be needed for a police complaint.
+
+Declaration: the information in this complaint is true and correct to the best of my knowledge.
+
+[YOUR SIGNATURE]
+[FULL NAME]
+
+======================================================================
+DRAFT 2 - REQUEST FOR CORRECTION / ERASURE OF PERSONAL DATA
+Digital Personal Data Protection Act, 2023, Section 12 (and Section 13 grievance redressal)
+======================================================================
+
+To:   The Data Protection Officer / grievance contact, {{ platform_name }}
+      [CONTACT FROM THE PLATFORM'S PRIVACY POLICY]
+From: [FULL NAME], [EMAIL ADDRESS]
+Date: [DATE]
+
+Subject: Request to erase / correct my personal data (my likeness and identity) in manipulated content
+
+1. I am the Data Principal to whom the personal data in the content at {{ content_url }} relates: it uses my likeness and identity in a manipulated (synthetic) form that I did not consent to.
+2. To the extent Section 12 of the DPDP Act, 2023 applies, I ask you to erase this personal data and, where erasure is not possible, to correct it so that it no longer misrepresents me, and to tell me what action you have taken.
+3. Evidence: VeriLoop verdict {{ verdict }} (confidence {{ confidence }}), signed audit record {{ audit_pdf_url }}.
+4. If this request is not resolved, I intend to use your grievance redressal mechanism under Section 13 and, after that, approach the Data Protection Board of India.
+
+Note before sending: the DPDP Act's rights provisions take effect as the DPDP Rules commence, which happens in phases. Check which rights are in force on the date you file. Section 12 is framed around personal data processed on the basis of consent; whether and how it covers content uploaded by a third party is a question for your lawyer. Draft 1 (IT Rules) does not depend on this.
+
+[FULL NAME]
+
+======================================================================
+NOTE - CYBERCRIME REPORTING
+======================================================================
+If the content is being used to harass, extort, defame or deceive, you can also report it on the National Cyber Crime Reporting Portal (https://cybercrime.gov.in), call the national cybercrime helpline 1930, or file a complaint at your local police station. Attach the VeriLoop evidence bundle (bundle.zip) and the signed audit PDF ({{ audit_pdf_url }}).
+
+{{ banner }}

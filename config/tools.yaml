@@ -1,0 +1,31 @@
+# Per-tool resilience tunables for ToolClient (owned by foundation).
+#
+# Tool names, required keys and descriptions live in backend/veriloop/core/tools_registry.py; this
+# file only overrides the tunables below. Unknown tools or fields fail at startup (loudly).
+#   timeout_s    per-attempt deadline (seconds)
+#   cache_ttl_s  response cache TTL (0 = never cached); per-call `cache_ttl_s=` still wins
+#   retries      extra attempts after the first for transient failures (timeouts, 5xx, 429, network)
+#   secondary    fallback tools, in preference order (advisory: services call ToolClient.secondary_for)
+#   version      recorded in every audit row's tool_versions (G7)
+# LLM tools: timeout_s is always taken from LLM_TIMEOUT_S (.env), so it is not set here.
+tools:
+  factcheck:        {timeout_s: 6,  cache_ttl_s: 86400, retries: 2, secondary: [claimreview_feed]}
+  claimreview_feed: {timeout_s: 5,  cache_ttl_s: 0,     retries: 1}
+  gnews_rss:        {timeout_s: 6,  cache_ttl_s: 1800,  retries: 2, secondary: [bing_news_rss]}
+  bing_news_rss:    {timeout_s: 6,  cache_ttl_s: 1800,  retries: 2, secondary: [gnews_rss]}
+  wire_rss:         {timeout_s: 6,  cache_ttl_s: 1800,  retries: 2, secondary: [bing_news_rss]}
+  pib_rss:          {timeout_s: 6,  cache_ttl_s: 1800,  retries: 2}
+  gdelt:            {timeout_s: 10, cache_ttl_s: 3600,  retries: 2}
+  serper:           {timeout_s: 6,  cache_ttl_s: 3600,  retries: 2, secondary: [gnews_rss, bing_news_rss]}
+  wikipedia:        {timeout_s: 6,  cache_ttl_s: 86400, retries: 2}
+  wikidata:         {timeout_s: 8,  cache_ttl_s: 86400, retries: 2}
+  vision_web:       {timeout_s: 10, cache_ttl_s: 86400, retries: 2}
+  sightengine:      {timeout_s: 20, cache_ttl_s: 86400, retries: 2}
+  hf_inference:     {timeout_s: 20, cache_ttl_s: 86400, retries: 2}
+  # One retry only: an LLM attempt can take up to LLM_TIMEOUT_S, and the judge has a latency budget.
+  llm_primary:      {cache_ttl_s: 0, retries: 1, secondary: [llm_secondary]}
+  llm_secondary:    {cache_ttl_s: 0, retries: 1}
+  oembed:           {timeout_s: 6,  cache_ttl_s: 3600,  retries: 2, secondary: [page_fetch]}
+  page_fetch:       {timeout_s: 8,  cache_ttl_s: 3600,  retries: 2, secondary: [playwright_fetch]}
+  ytdlp:            {timeout_s: 60, cache_ttl_s: 0,     retries: 1, secondary: [playwright_fetch]}
+  playwright_fetch: {timeout_s: 30, cache_ttl_s: 0,     retries: 1}

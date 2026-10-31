@@ -1,0 +1,1351 @@
+{
+  "_source": [
+    {
+      "title": "IFCN Code of Principles signatories (site is a JS app; data read from the JSON API it calls)",
+      "url": "https://ifcncodeofprinciples.poynter.org/signatories",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "IFCN signatories JSON API (226 organizations: 136 Verified, 47 In Renewal, 43 Expired)",
+      "url": "https://ifcn-cop-prod-server-8q9x7.ondigitalocean.app/api/organization/signatories",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Google News RSS search 'site:<domain>' (hl=en-IN, gl=IN) - observed <source> names",
+      "url": "https://news.google.com/rss/search?q=site:altnews.in&hl=en-IN&gl=IN&ceid=IN:en",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Each listed rss_url fetched (HTTP 200, XML, item counts in rss_items_observed)",
+      "url": "(per entry)",
+      "accessed": "2026-10-31"
+    }
+  ],
+  "_verified_at": "2026-10-31",
+  "_notes": "ifcn_status values are copied verbatim from the IFCN API ('Verified Signatory' | 'In Renewal' | 'Expired Signatory' | not_listed). ifcn_status_approval_date is the API's signatory_status_approval_date. Treat every entry here as a ClaimReview-equivalent source when its article page is retrieved (fact-check verdict in title/snippet). An 'Expired' IFCN status does not make an outlet unreliable (e.g. Alt News), but rank Verified signatories first. Use a full desktop-browser User-Agent: several feeds (DigitEye, PolitiFact) refused a minimal UA. claimreview_publisher_names is intentionally empty: fill from the ClaimReview data feed (publisher.name / publisher.site) rather than guessing.",
+  "verdict_lexicon": {
+    "en": {
+      "false": [
+        "false",
+        "fake",
+        "fabricated",
+        "hoax",
+        "baseless",
+        "no evidence",
+        "not true",
+        "untrue",
+        "debunked",
+        "scam",
+        "pants on fire",
+        "mostly false"
+      ],
+      "misleading": [
+        "misleading",
+        "out of context",
+        "missing context",
+        "old video",
+        "old image",
+        "unrelated",
+        "falsely linked",
+        "falsely shared",
+        "misattributed",
+        "partly false",
+        "half true"
+      ],
+      "manipulated": [
+        "edited",
+        "doctored",
+        "morphed",
+        "manipulated",
+        "altered",
+        "digitally altered",
+        "deepfake",
+        "ai-generated",
+        "ai generated",
+        "made with ai",
+        "synthetic",
+        "voice clone",
+        "cloned voice"
+      ],
+      "satire": [
+        "satire",
+        "parody",
+        "spoof"
+      ],
+      "true": [
+        "true",
+        "correct",
+        "accurate"
+      ],
+      "negators": [
+        "not",
+        "no",
+        "isn't",
+        "wasn't",
+        "doesn't",
+        "didn't",
+        "never"
+      ]
+    },
+    "hi": {
+      "false": [
+        "फर्जी",
+        "फेक",
+        "झूठा",
+        "झूठी",
+        "झूठ",
+        "गलत",
+        "निराधार",
+        "अफवाह"
+      ],
+      "misleading": [
+        "भ्रामक",
+        "पुराना",
+        "पुरानी",
+        "असंबंधित",
+        "गुमराह"
+      ],
+      "manipulated": [
+        "एडिटेड",
+        "छेड़छाड़",
+        "डीपफेक",
+        "एआई",
+        "AI जनरेटेड",
+        "मॉर्फ्ड"
+      ],
+      "true": [
+        "सच",
+        "सही"
+      ]
+    },
+    "bn": {
+      "false": [
+        "ভুয়ো",
+        "ভুয়া",
+        "মিথ্যা"
+      ],
+      "misleading": [
+        "বিভ্রান্তিকর",
+        "পুরনো"
+      ]
+    },
+    "te": {
+      "false": [
+        "ఫేక్",
+        "తప్పు"
+      ],
+      "misleading": [
+        "పాత"
+      ]
+    },
+    "_note": "Seed lexicon for title/snippet verdict detection. Words in 'verdict_words_observed' per fact-checker were COUNTED in that outlet's live RSS titles/descriptions on 2026-10-31 (sample sizes in verdict_words_sample). Other words are standard rating vocabulary and should be validated on the ClaimReview feed. Hindi 'दावा' (claim) and 'सच' (truth) appear in neutral question-style headlines ('X का सच') - do NOT treat them as verdicts on their own. Always apply negation handling ('NOT True')."
+  },
+  "factcheckers": [
+    {
+      "domain": "altnews.in",
+      "other_domains": [],
+      "name": "Alt News",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "Expired Signatory",
+      "ifcn_status_approval_date": "2019-04-26",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/alt-news",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Alt News"
+      ],
+      "rss_url": [
+        "https://www.altnews.in/feed/",
+        "https://www.altnews.in/hindi/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 10,
+        "hi": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "एडिटेड",
+        "दावा",
+        "भ्रामक",
+        "सच",
+        "गलत"
+      ],
+      "verdict_words_sample": "20 feed items fetched 2026-10-31",
+      "notes": "IFCN API lists Alt News as 'Expired Signatory' (approval 2019-04-26) - still a widely cited Indian fact-checker; treat as credible but record IFCN status honestly. Hindi edition at altnews.in/hindi (hindi.altnews.in returned HTTP 521).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "boomlive.in",
+      "other_domains": [
+        "hindi.boomlive.in",
+        "bangla.boomlive.in"
+      ],
+      "name": "BOOM",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi",
+        "bn"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-08-26",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/boom",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "BOOM Fact Check",
+        "Boom Live"
+      ],
+      "rss_url": [
+        "https://www.boomlive.in/fact-check/feed",
+        "https://hindi.boomlive.in/google_feeds.xml",
+        "https://bangla.boomlive.in/google_feeds.xml"
+      ],
+      "rss_items_observed": {
+        "en_fact_check": 60,
+        "hi": 7,
+        "bn": 1
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "AI",
+        "unrelated",
+        "deepfake",
+        "fake",
+        "ai-generated",
+        "false",
+        "altered",
+        "manipulated",
+        "fabricated",
+        "old video",
+        "edited",
+        "पुराना",
+        "फेक",
+        "डीपफेक",
+        "एआई"
+      ],
+      "verdict_words_sample": "68 feed items fetched 2026-10-31",
+      "notes": "Subdomains hindi.boomlive.in, bangla.boomlive.in, elections.boomlive.in. /rss returns an empty channel; /fact-check/feed returned 60 items.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "factly.in",
+      "other_domains": [],
+      "name": "FACTLY",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "te"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-07-17",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/factly-media-&-research",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "FACTLY"
+      ],
+      "rss_url": [
+        "https://factly.in/feed/"
+      ],
+      "rss_items_observed": {
+        "mixed": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "పాత",
+        "unrelated",
+        "ఫేక్",
+        "AI"
+      ],
+      "verdict_words_sample": "10 feed items fetched 2026-10-31",
+      "notes": "Main feed mixes English and Telugu items. videos.factly.in also appears in Google News.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "newschecker.in",
+      "other_domains": [],
+      "name": "Newschecker",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "pa",
+        "gu",
+        "ta",
+        "te",
+        "ml",
+        "ur"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2024-10-08",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/newschecker",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Newschecker"
+      ],
+      "rss_url": [
+        "https://newschecker.in/feed/",
+        "https://newschecker.in/hi/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 10,
+        "hi": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "दावा",
+        "false",
+        "सच",
+        "unrelated",
+        "manipulated",
+        "out of context",
+        "old video",
+        "पुराना",
+        "फर्जी",
+        "भ्रामक"
+      ],
+      "verdict_words_sample": "20 feed items fetched 2026-10-31",
+      "notes": "Language editions under newschecker.in/<lang>/ (hi feed verified).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "vishvasnews.com",
+      "other_domains": [],
+      "name": "Vishvas News (Jagran New Media)",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "hi",
+        "en",
+        "pa",
+        "ur",
+        "mr",
+        "bn",
+        "as",
+        "or",
+        "gu",
+        "ml",
+        "te",
+        "ta"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2024-08-23",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/vishvas-news",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Vishvas News Fact Check Hindi"
+      ],
+      "rss_url": [
+        "https://www.vishvasnews.com/feed/",
+        "https://www.vishvasnews.com/english/feed/"
+      ],
+      "rss_items_observed": {
+        "hi": 10,
+        "en": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "fact check",
+        "फेक",
+        "पुराना",
+        "false",
+        "edited",
+        "दावा",
+        "fake",
+        "old video",
+        "AI",
+        "डीपफेक",
+        "गलत",
+        "एआई",
+        "ai-generated"
+      ],
+      "verdict_words_sample": "20 feed items fetched 2026-10-31",
+      "notes": "Root feed is Hindi; English at /english/. Same publisher group as Jagran (see syndication.json 'jagran').",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "thequint.com",
+      "other_domains": [],
+      "name": "The Quint - WebQoof",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2024-12-05",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/the-quint",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "The Quint"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Fact-check section https://www.thequint.com/news/webqoof (HTTP 200). stories.rss returned an empty channel, so no rss_url. Use Google News 'site:thequint.com/news/webqoof'.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "indiatoday.in",
+      "other_domains": [],
+      "name": "India Today Fact Check",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2024-10-08",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/india-today-fact-check",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "India Today"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Section https://www.indiatoday.in/fact-check (HTTP 200). No dedicated fact-check RSS found among the 15 India Today RSS section feeds (checked titles). Use Google News 'site:indiatoday.in/fact-check'. Same group as Aaj Tak / The Lallantop (Living Media).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "thelallantop.com",
+      "other_domains": [],
+      "name": "The Lallantop (TV Today Network)",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "hi"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-09-01",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/tv-today-network-limited---the-lallantop",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "The Lallantop"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN signatory entity is 'TV Today Network Limited - The Lallantop'. General news site with a fact-check section (thelallantop.com/fact-check HTTP 200).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "newsmobile.in",
+      "other_domains": [],
+      "name": "NewsMobile",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2025-02-27",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/newsmobile",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "News Mobile"
+      ],
+      "rss_url": [
+        "https://www.newsmobile.in/feed/"
+      ],
+      "rss_items_observed": {
+        "mixed": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "ai-generated",
+        "AI",
+        "fake"
+      ],
+      "verdict_words_sample": "10 feed items fetched 2026-10-31",
+      "notes": "Feed mixes general news with fact checks.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "factcrescendo.com",
+      "other_domains": [
+        "english.factcrescendo.com",
+        "srilanka.factcrescendo.com",
+        "myanmar.factcrescendo.com"
+      ],
+      "name": "Fact Crescendo",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "hi",
+        "en",
+        "ta",
+        "ml",
+        "mr",
+        "bn",
+        "as",
+        "or",
+        "gu",
+        "te",
+        "kn",
+        "pa",
+        "si",
+        "my"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-07-17",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/factcrescendo",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "FactCrescendo",
+        "Fact Crescendo Sri Lanka",
+        "Fact Crescendo Myanmar"
+      ],
+      "rss_url": [
+        "https://factcrescendo.com/feed/",
+        "https://english.factcrescendo.com/feed/"
+      ],
+      "rss_items_observed": {
+        "hi": 10,
+        "en": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "दावा",
+        "fact check",
+        "पुराना",
+        "गलत",
+        "फर्जी",
+        "misleading",
+        "एआई",
+        "सच",
+        "भ्रामक",
+        "false",
+        "edited"
+      ],
+      "verdict_words_sample": "20 feed items fetched 2026-10-31",
+      "notes": "Root (factcrescendo.com) feed is Hindi; english.factcrescendo.com; also srilanka./myanmar. regional subdomains.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "digiteye.in",
+      "other_domains": [],
+      "name": "DigitEye India",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2024-10-08",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/digiteye",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "DigitEye India"
+      ],
+      "rss_url": [
+        "https://digiteye.in/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 6
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Feed returned 6 items with a full browser User-Agent but HTTP 406 with a minimal 'Mozilla/5.0' UA - send a full browser UA.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "newsmeter.in",
+      "other_domains": [
+        "telugu.newsmeter.in"
+      ],
+      "name": "NewsMeter",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "te"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2025-11-04",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/newsmeter-fifth-estate-digital-private-limited",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "NewsMeter",
+        "NewsMeter Telugu"
+      ],
+      "rss_url": [
+        "https://newsmeter.in/feed"
+      ],
+      "rss_items_observed": {
+        "mixed": 55
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "fact check",
+        "unrelated",
+        "manipulated",
+        "AI",
+        "fake"
+      ],
+      "verdict_words_sample": "55 feed items fetched 2026-10-31",
+      "notes": "Feed is general news + fact checks (55 items); fact-check section https://newsmeter.in/fact-check.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "thip.media",
+      "other_domains": [],
+      "name": "The Healthy Indian Project (THIP)",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "mr",
+        "ta",
+        "te",
+        "kn",
+        "gu",
+        "pa",
+        "ml",
+        "or"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-08-26",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/thip-healthtech-pvt-ltd",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "The Healthy Indian Project (THIP)"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Health fact-checks. /feed/ returned HTTP 403.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "ptinews.com",
+      "other_domains": [],
+      "name": "PTI Fact Check (Press Trust of India)",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-07-17",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/press-trust-of-india",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Press Trust of India"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "PTI is ALSO a wire agency (see syndication.json 'pti'). Fact-check section https://www.ptinews.com/fact-check (HTTP 200); no fact-check RSS found (/rss/fact-check returns HTML).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "lighthousejournalism.com",
+      "other_domains": [],
+      "name": "Lighthouse Journalism",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "In Renewal",
+      "ifcn_status_approval_date": "2025-06-20",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/lighthousejournalism.com",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Lighthouse Journalism",
+        "lighthousejournalism.com",
+        "www.lighthousejournalism.com"
+      ],
+      "rss_url": [
+        "https://www.lighthousejournalism.com/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "fact check",
+        "misleading",
+        "unrelated",
+        "ai-generated",
+        "AI",
+        "fake",
+        "false",
+        "deepfake",
+        "old video",
+        "manipulated",
+        "ai generated"
+      ],
+      "verdict_words_sample": "10 feed items fetched 2026-10-31",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "youturn.in",
+      "other_domains": [
+        "en.youturn.in"
+      ],
+      "name": "YouTurn",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "ta",
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-01-14",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/youturn",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "youturn.in",
+        "en.youturn.in"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "/feed/ returns HTML (no RSS).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "telugupost.com",
+      "other_domains": [],
+      "name": "Telugu Post",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "te",
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-01-14",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/telugupost.com",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Telugu Post"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "General news site with fact checks; google_feeds.xml (60 items) is general news, so not listed as a fact-check feed.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "manoramaonline.com",
+      "other_domains": [],
+      "name": "Manorama Online",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "ml"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-07-17",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/manorama-online",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": null,
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "General Malayalam news site; IFCN signatory for its fact-check unit. Group 'malayala_manorama' in syndication.json.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "medicaldialogues.in",
+      "other_domains": [],
+      "name": "Medical Dialogues",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-05-19",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/medical-dialogues",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Medical Dialogues"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Health/medical fact-checks.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "firstcheck.in",
+      "other_domains": [],
+      "name": "First Check",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "In Renewal",
+      "ifcn_status_approval_date": "2025-07-14",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/first-check",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "firstcheck.in"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN status 'In Renewal'. /feed returns HTML.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "dfrac.org",
+      "other_domains": [],
+      "name": "DFRAC (Digital Forensics, Research and Analytics Centre)",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi",
+        "ur"
+      ],
+      "ifcn_status": "Expired Signatory",
+      "ifcn_status_approval_date": "2024-03-27",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/digital-forensics,-research-and-analytics-centre-(d-frac)",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "DFRAC ORG",
+        "DFRAC"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN status 'Expired Signatory'. /en/feed/ returned HTTP 500.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "factchecker.in",
+      "other_domains": [],
+      "name": "FactChecker.in",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Expired Signatory",
+      "ifcn_status_approval_date": "2023-01-19",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/factcheckerin",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Factchecker",
+        "factchecker.in"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN 'Expired Signatory'; Google News items are mostly 2021-2023 (low recent activity).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "thelogicalindian.com",
+      "other_domains": [],
+      "name": "The Logical Indian",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Expired Signatory",
+      "ifcn_status_approval_date": "2022-09-09",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/the-logical-indian",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "The Logical Indian"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN 'Expired Signatory'.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "cyberpeace.org",
+      "other_domains": [],
+      "name": "CyberPeace Foundation",
+      "kind": "factchecker",
+      "country": "IN",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "not_listed",
+      "ifcn_status_approval_date": null,
+      "ifcn_profile_url": null,
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "CyberPeace Foundation",
+        "CyberPeace"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Not in the IFCN list (2026-10-31). Publishes '#FactCheck' articles that appear in Google News. /feed returned 404.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "logicallyfacts.com",
+      "other_domains": [],
+      "name": "Logically Facts",
+      "kind": "factchecker",
+      "country": "GB/IN",
+      "languages": [
+        "en",
+        "hi",
+        "bn",
+        "ml",
+        "ta",
+        "te",
+        "kn",
+        "as"
+      ],
+      "ifcn_status": "Expired Signatory",
+      "ifcn_status_approval_date": "2023-01-26",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/logically-facts",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": null,
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN 'Expired Signatory' (2023-01-26). logicallyfacts.com did NOT resolve in DNS on 2026-10-31 and Google News 'site:logicallyfacts.com' returned 0 items - treat as defunct; keep only for matching old fact-check links.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "pib.gov.in",
+      "other_domains": [],
+      "name": "PIB Fact Check (Press Information Bureau, Govt of India)",
+      "kind": "govt_factcheck",
+      "country": "IN",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "ifcn_status": "not_listed",
+      "ifcn_status_approval_date": null,
+      "ifcn_profile_url": null,
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Press Information Bureau",
+        "pib.gov.in",
+        "www.pib.gov.in"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "GOVERNMENT fact-check unit, not an IFCN signatory. Page https://pib.gov.in/factcheck.aspx (embeds 'Tweets by PIBFactCheck'); portal https://factcheck.pib.gov.in/ lists WhatsApp +91-8799711259 and socialmedia[at]pib[dot]gov[dot]in. X handle @PIBFactCheck. Debunks are widely republished by newsonair.gov.in ('News On AIR'). Treat as authoritative for claims ABOUT the Government of India (fake schemes, fake notices), but it is a party to claims about the government: independence group 'govt_india'.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "factcheck.afp.com",
+      "other_domains": [
+        "factcheckhindi.afp.com"
+      ],
+      "name": "AFP Fact Check",
+      "kind": "factchecker",
+      "country": "FR (global; India desk)",
+      "languages": [
+        "en",
+        "hi",
+        "fr",
+        "es",
+        "ar",
+        "pt",
+        "de",
+        "+more"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-09-15",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/afp-fact-check",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "AFP Fact Check",
+        "AFP.com"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "RSS endpoints returned HTTP 403 to scripted fetch. Hindi edition factcheckhindi.afp.com (Google News source name 'AFP.com'). AFP is also a wire agency (syndication.json 'afp').",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "reuters.com",
+      "other_domains": [],
+      "name": "Reuters Fact Check",
+      "kind": "factchecker",
+      "country": "GB/US",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2025-04-23",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/reuters",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Reuters"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Section https://www.reuters.com/fact-check/ returned HTTP 401 to scripted fetch (bot wall). IFCN entry lists reutersagency.com. Match path prefix /fact-check/ to distinguish fact checks from wire news.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "snopes.com",
+      "other_domains": [],
+      "name": "Snopes",
+      "kind": "factchecker",
+      "country": "US",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2025-07-11",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/snopes.com",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Snopes",
+        "Snopes.com"
+      ],
+      "rss_url": [
+        "https://www.snopes.com/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 20
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "edited",
+        "false",
+        "unrelated"
+      ],
+      "verdict_words_sample": "20 feed items fetched 2026-10-31",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "politifact.com",
+      "other_domains": [],
+      "name": "PolitiFact",
+      "kind": "factchecker",
+      "country": "US",
+      "languages": [
+        "en",
+        "es"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-03-13",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/politifact",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "PolitiFact"
+      ],
+      "rss_url": [
+        "https://www.politifact.com/rss/factchecks/"
+      ],
+      "rss_items_observed": {
+        "en": 20
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Feed returned 20 items with a full browser UA, HTTP 403 with a minimal UA.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "factcheck.org",
+      "other_domains": [],
+      "name": "FactCheck.org",
+      "kind": "factchecker",
+      "country": "US",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-05-20",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/factcheck.org",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "FactCheck.org"
+      ],
+      "rss_url": [
+        "https://www.factcheck.org/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "no evidence",
+        "false",
+        "misleading",
+        "out of context"
+      ],
+      "verdict_words_sample": "10 feed items fetched 2026-10-31",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "fullfact.org",
+      "other_domains": [],
+      "name": "Full Fact",
+      "kind": "factchecker",
+      "country": "GB",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-08-26",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/full-fact",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Full Fact"
+      ],
+      "rss_url": [
+        "https://fullfact.org/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 10
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "false",
+        "baseless",
+        "no evidence",
+        "fake",
+        "satire",
+        "AI"
+      ],
+      "verdict_words_sample": "10 feed items fetched 2026-10-31",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "leadstories.com",
+      "other_domains": [],
+      "name": "Lead Stories",
+      "kind": "factchecker",
+      "country": "US",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-05-20",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/lead-stories",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "Lead Stories"
+      ],
+      "rss_url": [
+        "https://leadstories.com/atom.xml"
+      ],
+      "rss_items_observed": {
+        "en": 15
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "fact check",
+        "true",
+        "fake",
+        "ai-generated",
+        "AI",
+        "fabricated",
+        "false",
+        "unrelated",
+        "no evidence"
+      ],
+      "verdict_words_sample": "15 feed items fetched 2026-10-31",
+      "notes": "Atom feed. Titles use 'Fact Check: X Is NOT ...' - the 'true' hits come from 'NOT True' phrasing; negation-aware matching required.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "aap.com.au",
+      "other_domains": [],
+      "name": "AAP FactCheck",
+      "kind": "factchecker",
+      "country": "AU",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-03-13",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/aap-factcheck",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": null,
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Fact checks under https://www.aap.com.au/factcheck/ ; /factcheck/feed/ and /feed/ returned 404. Google News source names for site:aap.com.au/factcheck were inconsistent ('Education – Australian Associated Press', 'www.aap.com.au').",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "usatoday.com",
+      "other_domains": [],
+      "name": "USA TODAY Fact Check",
+      "kind": "factchecker",
+      "country": "US",
+      "languages": [
+        "en"
+      ],
+      "ifcn_status": "Expired Signatory",
+      "ifcn_status_approval_date": "2024-06-18",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/usa-today",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "USA Today"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "IFCN 'Expired Signatory' (2024-06-18). Fact-check page returned HTTP 402 to scripted fetch.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "dw.com",
+      "other_domains": [],
+      "name": "DW Fact check (Deutsche Welle)",
+      "kind": "factchecker",
+      "country": "DE",
+      "languages": [
+        "en",
+        "de",
+        "+more"
+      ],
+      "ifcn_status": "Verified Signatory",
+      "ifcn_status_approval_date": "2026-09-15",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/deutsche-welle",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "DW.com"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Fact-check topic page https://www.dw.com/en/fact-check/t-56584214 (HTTP 200). rss.dw.com/xml/rss-en-all is ALL DW news, not fact-check only. DW is a German public broadcaster (state-funded) but is an IFCN Verified Signatory.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "misbar.com",
+      "other_domains": [],
+      "name": "Misbar",
+      "kind": "factchecker",
+      "country": "Arab region",
+      "languages": [
+        "ar",
+        "en",
+        "fr"
+      ],
+      "ifcn_status": "not_listed",
+      "ifcn_status_approval_date": null,
+      "ifcn_profile_url": null,
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "موقع مسبار"
+      ],
+      "rss_url": null,
+      "rss_items_observed": null,
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [],
+      "verdict_words_sample": null,
+      "notes": "Not found in IFCN list (2026-10-31). English section https://www.misbar.com/en (HTTP 200); /en/rss 404.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "annielab.org",
+      "other_domains": [],
+      "name": "Annie Lab (HKU)",
+      "kind": "factchecker",
+      "country": "HK",
+      "languages": [
+        "en",
+        "zh"
+      ],
+      "ifcn_status": "In Renewal",
+      "ifcn_status_approval_date": "2025-04-25",
+      "ifcn_profile_url": "https://ifcncodeofprinciples.poynter.org/profile/annie-lab",
+      "ifcn_checked_at": "2026-10-31",
+      "gnews_source_name": [
+        "annie lab"
+      ],
+      "rss_url": [
+        "https://annielab.org/feed/"
+      ],
+      "rss_items_observed": {
+        "en": 15
+      },
+      "claimreview_publisher_names": [],
+      "verdict_words_observed": [
+        "misleading",
+        "AI",
+        "false",
+        "manipulated",
+        "ai-generated",
+        "altered"
+      ],
+      "verdict_words_sample": "15 feed items fetched 2026-10-31",
+      "notes": "IFCN 'In Renewal'.",
+      "verified_at": "2026-10-31"
+    }
+  ]
+}

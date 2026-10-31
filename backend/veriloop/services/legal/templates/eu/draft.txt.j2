@@ -1,0 +1,50 @@
+{{ banner }}
+
+Template {{ template_version }} | VeriLoop job {{ job_id }} | generated {{ today }}
+
+======================================================================
+REQUEST FOR ERASURE OF PERSONAL DATA - ARTICLE 17 GDPR
+======================================================================
+
+To:   Data Protection Officer, {{ platform_name }}
+      [DPO EMAIL OR PRIVACY REQUEST FORM FROM THE PLATFORM'S PRIVACY POLICY]
+From: [FULL NAME]
+      [POSTAL ADDRESS]
+      [EMAIL ADDRESS]
+Date: [DATE]
+
+Subject: Request for erasure of my personal data under Article 17 of Regulation (EU) 2016/679 (GDPR)
+
+1. I, [FULL NAME], am [THE DATA SUBJECT DEPICTED / AUTHORISED REPRESENTATIVE OF THE DATA SUBJECT (STATE RELATIONSHIP)]. The content at
+   {{ content_url }}
+   (posted by [ACCOUNT HANDLE THAT POSTED IT]) contains my personal data, namely my image and likeness{% if has_media %} and possibly my voice{% endif %}, in a manipulated (synthetic) form.
+
+2. Description of the content: {{ content_description }}
+
+3. I request that you erase this personal data, and identical or near-identical copies, without undue delay under Article 17(1) GDPR, in particular because:
+   (a) the personal data are processed unlawfully (Art. 17(1)(d)): the content is a fabricated depiction of me published without my consent and, as far as I can see, without any other legal basis under Article 6; and
+   (b) I object to the processing under Article 21(1) and there are no overriding legitimate grounds for it (Art. 17(1)(c)).
+
+4. Evidence that the content is manipulated. {{ manipulation_summary }}
+{% for s in sources %}
+   - {{ s.name }}{% if s.date %} ({{ s.date }}){% endif %}: {{ s.title }}
+     {{ s.url }}
+{% endfor %}
+   Forensic analysis: {{ forensic_line }}
+   Signed, tamper-evident audit record: {{ audit_pdf_url }} (verification: {{ audit_verify_url }})
+{% if media_hashes %}
+   SHA-256 of the analysed media: {{ media_hashes|join(", ") }}
+{% endif %}
+
+5. As you made this personal data public, please also take reasonable steps to inform other controllers processing it that I have requested erasure of any links to, copies or replications of it (Art. 17(2)), and notify recipients to whom it was disclosed (Art. 19).
+
+6. Please confirm the erasure, or explain any refusal and the exception you rely on under Article 17(3), within one month of receiving this request (Art. 12(3)). If you have reasonable doubts about my identity you may ask for additional information (Art. 12(6)).
+
+7. If this request is not resolved I may lodge a complaint with a supervisory authority, [NAME OF YOUR NATIONAL DATA PROTECTION AUTHORITY] (Art. 77).
+
+Yours faithfully,
+
+[YOUR SIGNATURE]
+[FULL NAME]
+
+{{ banner }}

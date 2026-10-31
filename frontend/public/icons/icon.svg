@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="VeriLoop">
+  <rect width="512" height="512" rx="112" fill="#0f3d5e"/>
+  <g transform="translate(256 256) scale(1) translate(-256 -256)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 391.9 192.6 A 150 150 0 1 1 307.3 115" stroke-width="34" stroke-linecap="butt"/>
+    <polygon points="350.5,130.8 313.5,74.7 286.1,149.9" fill="#fff" stroke="none"/>
+    <polyline points="180,262 234,316 340,206" stroke-width="40"/>
+  </g>
+</svg>

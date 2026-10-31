@@ -1,0 +1,37 @@
+# Fusion signal weights and decision parameters (owner: reasoning; BUILD_SPEC §7).
+# Printed into every audit payload via FusionResult.weights_version / thresholds (SPEC §5: "weights are
+# configurable and printed in the audit record"). Bump `version` whenever a number changes.
+#
+# T = sum(w * s * r) / sum(w) over PRESENT signals only (absent signals are excluded, never negative: E4/G8).
+version: "weights-2026-10-31.1"
+
+weights:
+  claimreview: 0.35   # normalized rating x similarity of matched ClaimReviews (feed / API / fact-check pages)
+  news_stance: 0.25   # (support_groups - refute_groups) / max(1, stance_groups) over independent publisher groups
+  gdelt: 0.10         # corroboration volume in [0, 1]; no coverage => absent
+  wikidata: 0.10      # +1 consistent / -1 contradicted / absent
+  provenance: 0.20    # known-fake match -1; out-of-context -0.7 * out_of_context_score; else absent
+
+# Per-signal reliability r (multiplies s; the denominator stays sum(w), so low reliability pulls T to 0).
+reliability:
+  claimreview_published: 1.0       # schema.org ClaimReview (feed, Fact Check API, page JSON-LD)
+  claimreview_headline: 0.8        # verdict inferred from a fact-check headline/snippet (lexicon)
+  claimreview_unknown_publisher: 0.9
+  gdelt: 0.5                       # keyword-matched coverage volume, not stance
+  wikidata_consistent: 0.5         # entity facts agree; says little about the event itself
+  wikidata_contradicted: 1.0
+  provenance: 1.0
+  news_stance_floor: 0.5           # lower bound for the mean group stance confidence
+
+params:
+  claimreview_min_similarity: 0.60   # BUILD_SPEC §7 (rescaled e5 similarity, see docs/reasoning.md)
+  fast_path_similarity: 0.85         # >= 2 independent agreeing ClaimReviews at this similarity -> fast path
+  conflict_truth_score: 0.50         # E5: T >= +0.5 with >= 2 supporting groups AND forensic MANIPULATED
+  relevance_min: 0.30                # an item is "relevant" (NO_EVIDENCE test) at this relevance
+  neutral_relevance_min: 0.50        # neutral groups count in the news_stance denominator only when on-topic
+  gdelt_relevance_min: 0.50
+  gdelt_saturation_groups: 5         # 5 independent GDELT publisher groups => corroboration 1.0
+  manipulation_claimreview_score: 0.90
+  manipulation_known_fake_score: 0.90
+  second_judge_penalty: 0.70         # confidence multiplier when the second judge disagrees
+  strong_text_score: 0.50            # |T| below this = "no strong textual evidence" (forensic abstain band rule)

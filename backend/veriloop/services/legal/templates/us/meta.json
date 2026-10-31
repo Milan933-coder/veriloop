@@ -1,0 +1,21 @@
+{
+  "jurisdiction": "US",
+  "version": "us-2026.10.1",
+  "title": "US: DMCA 512(c) notice (only if you own the copyright) + TAKE IT DOWN Act note + state law note",
+  "checklist": [
+    "Decide which section applies: Section A only if YOU own the copyright in the original photo or video that was manipulated; Section B only for intimate imagery; delete the sections that do not apply.",
+    "Replace every [PLACEHOLDER] in brackets with your own details.",
+    "Do not send a DMCA notice unless you own (or are authorised by the owner of) the copyright: knowingly false notices can make you liable for damages (17 U.S.C. 512(f)).",
+    "Find the platform's designated DMCA agent (its copyright page or the U.S. Copyright Office DMCA Designated Agent Directory).",
+    "For intimate imagery, use the platform's TAKE IT DOWN Act / non-consensual intimate imagery removal form.",
+    "Attach the VeriLoop evidence bundle (bundle.zip) and the signed audit PDF; keep screenshots with URL, date and time.",
+    "Check your state's laws on non-consensual intimate imagery and deepfakes with a lawyer or victim-support organisation.",
+    "Have a lawyer verify the cited provisions before filing. VeriLoop never sends this draft."
+  ],
+  "filing_instructions": [
+    "Section A (DMCA): send to the platform's designated agent; a notice must contain the six elements of 17 U.S.C. 512(c)(3)(A), all included below.",
+    "Section B (TAKE IT DOWN Act, enacted May 19, 2025): covered platforms must run a notice-and-removal process and remove a validly reported non-consensual intimate depiction, including a computer-generated digital forgery, within 48 hours; the platform obligations apply from May 19, 2026.",
+    "Section C: state statutes on non-consensual intimate imagery and on sexual or election deepfakes vary by state; some give a private right of action.",
+    "If you are in danger or being extorted, contact local law enforcement; you can also report online crime to the FBI's Internet Crime Complaint Center (ic3.gov)."
+  ]
+}

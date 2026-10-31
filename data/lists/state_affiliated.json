@@ -1,0 +1,427 @@
+{
+  "_source": [
+    {
+      "title": "US Department of State, 'Designation of Additional Chinese Media Entities as Foreign Missions' (Morgan Ortagus, June 22 2020)",
+      "url": "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "YouTube Help: Information panel providing publisher context",
+      "url": "https://support.google.com/youtube/answer/7630512?hl=en",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "English Wikipedia article per outlet (see evidence_urls)",
+      "url": "https://en.wikipedia.org/",
+      "accessed": "2026-10-31"
+    }
+  ],
+  "_verified_at": "2026-10-31",
+  "_notes": "category: state_controlled = owned/operated or editorially controlled by a government or ruling party; state_affiliated = government-sponsored/funded with weaker documented editorial control; public_broadcaster_government_funded = statutory public broadcasters (here India's Prasar Bharati family): government sources, NOT disinformation. Use only as CONTEXT (Appearance.context_flags='state_affiliated'); never as a falsity signal by itself. YouTube's policy (fetched) shows a publisher-context panel when 'a channel is owned by a news publisher that is funded by a government, or publicly funded'. Could not be fetched on 2026-10-31 and therefore NOT cited: EUR-Lex Council Regulation (EU) 2022/350 (HTTP 202 empty bot challenge), Council of the EU press release (HTTP 403), X state-affiliated label policy (HTTP 403), Meta state-controlled media page (404). The EU RT/Sputnik bans are cited via Wikipedia instead. Match on registrable domain incl. subdomains, plus aliases.",
+  "domains": [
+    {
+      "domain": "rt.com",
+      "aliases": [
+        "rt-english.com"
+      ],
+      "name": "RT (formerly Russia Today)",
+      "country": "RU",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Russian state-controlled international television network'",
+        "Wikipedia: 'the European Union and Canada formally banned RT' during the 2022 invasion of Ukraine"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/RT_(TV_network)"
+      ],
+      "notes": "Language editions use subdomains (e.g. arabic.rt.com, actualidad.rt.com, de.rt.com); match on registrable domain.",
+      "site_check": "rt.com -> rt-english.com HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "sputnikglobe.com",
+      "aliases": [
+        "sputniknews.com",
+        "sputniknews.in"
+      ],
+      "name": "Sputnik (incl. Sputnik India / Sputnik Bharat)",
+      "country": "RU",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Russian state-owned news agency', owner Rossiya Segodnya ('owned and operated by the Russian government')",
+        "Wikipedia: 'Sputnik was banned in the European Union in February 2022 (along with RT)'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Sputnik_(news_agency)"
+      ],
+      "notes": "India-relevant: sputniknews.in (title 'Sputnik India') and hindi.sputniknews.in ('Sputnik भारत'). sputnikglobe.com / sputniknews.com timed out from this network.",
+      "site_check": "sputniknews.in + hindi.sputniknews.in HTTP 200; sputnikglobe.com, sputniknews.com timed out",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "ria.ru",
+      "aliases": [],
+      "name": "RIA Novosti",
+      "country": "RU",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Russian state-owned news agency'; owner Rossiya Segodnya (owned and operated by the federal government); has a 'Sanctions' section"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/RIA_Novosti"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "tass.com",
+      "aliases": [
+        "tass.ru"
+      ],
+      "name": "TASS",
+      "country": "RU",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Russian state-owned news agency'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/TASS"
+      ],
+      "notes": "",
+      "site_check": "tass.com HTTP 200 'TASS Russian News Agency'; tass.ru HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "cgtn.com",
+      "aliases": [],
+      "name": "CGTN (China Global Television Network)",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Chinese state-owned broadcaster'; owner Publicity Department of the CCP; parent China Media Group",
+        "US State Dept: Feb 18 2020 designation of China Global Television Network as a foreign mission (referenced in the June 22 2020 statement)"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/CGTN",
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "cctv.com",
+      "aliases": [],
+      "name": "China Central Television (CCTV)",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "US State Dept June 22 2020: designated the U.S. operations of China Central Television as a foreign mission"
+      ],
+      "evidence_urls": [
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "xinhuanet.com",
+      "aliases": [
+        "news.cn",
+        "english.news.cn"
+      ],
+      "name": "Xinhua News Agency",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Chinese state-owned news agency'",
+        "US State Dept: Feb 18 2020 designation of Xinhua News Agency as a foreign mission"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Xinhua_News_Agency",
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "all three HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "chinadaily.com.cn",
+      "aliases": [],
+      "name": "China Daily",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia: 'owned by the Publicity Department of the Chinese Communist Party'",
+        "US State Dept: Feb 18 2020 designation of China Daily Distribution Corporation"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/China_Daily",
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "globaltimes.cn",
+      "aliases": [],
+      "name": "Global Times",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia: published under the auspices of People's Daily, 'the most important party-owned newspaper in China'",
+        "US State Dept June 22 2020: designated the U.S. operations of the Global Times as a foreign mission"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Global_Times",
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "people.com.cn",
+      "aliases": [
+        "en.people.cn"
+      ],
+      "name": "People's Daily",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia: 'the official newspaper of the Central Committee of the Chinese Communist Party'",
+        "US State Dept June 22 2020: designated the U.S. operations of the People's Daily as a foreign mission"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/People's_Daily",
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "both HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "chinanews.com.cn",
+      "aliases": [],
+      "name": "China News Service",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "US State Dept June 22 2020: designated the U.S. operations of China News Service as a foreign mission"
+      ],
+      "evidence_urls": [
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "cri.cn",
+      "aliases": [],
+      "name": "China Radio International",
+      "country": "CN",
+      "category": "state_controlled",
+      "basis": [
+        "US State Dept: Feb 18 2020 designation of China Radio International as a foreign mission"
+      ],
+      "evidence_urls": [
+        "https://2017-2021.state.gov/designation-of-additional-chinese-media-entities-as-foreign-missions/"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "presstv.ir",
+      "aliases": [
+        "presstv.co.uk"
+      ],
+      "name": "Press TV",
+      "country": "IR",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'Iranian state-owned English-language news network'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Press_TV"
+      ],
+      "notes": "presstv.ir redirected to presstv.co.uk on 2026-10-31.",
+      "site_check": "HTTP 200 -> presstv.co.uk",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "irna.ir",
+      "aliases": [],
+      "name": "Islamic Republic News Agency (IRNA)",
+      "country": "IR",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia: 'the official news agency of Iran ... government-funded and controlled under the Iranian Ministry of Culture and Islamic Guidance'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Islamic_Republic_News_Agency"
+      ],
+      "notes": "English edition en.irna.ir",
+      "site_check": "irna.ir and en.irna.ir HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "kcna.kp",
+      "aliases": [],
+      "name": "Korean Central News Agency (KCNA)",
+      "country": "KP",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia lead: 'North Korean state news agency'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Korean_Central_News_Agency"
+      ],
+      "notes": "",
+      "site_check": "http://www.kcna.kp HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "telesurtv.net",
+      "aliases": [
+        "telesurenglish.net"
+      ],
+      "name": "teleSUR",
+      "country": "VE",
+      "category": "state_affiliated",
+      "basis": [
+        "Wikipedia: headquartered in Caracas and 'sponsored by the governments of Venezuela, Cuba and Nicaragua'; per The Boston Globe (cited there) the Venezuelan government provided 70% of its funds"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/TeleSUR"
+      ],
+      "notes": "",
+      "site_check": "both HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "ptv.com.pk",
+      "aliases": [],
+      "name": "Pakistan Television Corporation (PTV)",
+      "country": "PK",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia: 'the Pakistani government-owned television network'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Pakistan_Television_Corporation"
+      ],
+      "notes": "",
+      "site_check": "HTTP 403 to scripted fetch (domain resolves)",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "app.com.pk",
+      "aliases": [],
+      "name": "Associated Press of Pakistan (APP)",
+      "country": "PK",
+      "category": "state_controlled",
+      "basis": [
+        "Wikipedia: 'a government-operated national news agency of Pakistan'; owner Government of Pakistan; parent Ministry of Information & Broadcasting"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Associated_Press_of_Pakistan"
+      ],
+      "notes": "",
+      "site_check": "HTTP 200 'Associated Press Of Pakistan'",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "bssnews.net",
+      "aliases": [],
+      "name": "Bangladesh Sangbad Sangstha (BSS)",
+      "country": "BD",
+      "category": "state_affiliated",
+      "basis": [
+        "Wikipedia: 'the national news agency of Bangladesh ... established on 1 January 1972 by the Government of Bangladesh'"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Bangladesh_Sangbad_Sangstha"
+      ],
+      "notes": "",
+      "site_check": "HTTP 403 to scripted fetch (domain resolves)",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "prasarbharati.gov.in",
+      "aliases": [],
+      "name": "Prasar Bharati",
+      "country": "IN",
+      "category": "public_broadcaster_government_funded",
+      "basis": [
+        "Wikipedia: 'India's state-owned public broadcaster ... a statutory autonomous body set up by an Act of Parliament', comprising Doordarshan and All India Radio"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/Prasar_Bharati"
+      ],
+      "notes": "Indian government source, NOT disinformation. Independence group 'govt_india' (with PIB, DD News, AIR).",
+      "site_check": "HTTP 200 'Prasar Bharati – Public Service Broadcaster'",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "ddnews.gov.in",
+      "aliases": [],
+      "name": "DD News (Doordarshan)",
+      "country": "IN",
+      "category": "public_broadcaster_government_funded",
+      "basis": [
+        "Wikipedia infobox: owner Prasar Bharati, Ministry of Information and Broadcasting"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/DD_News",
+        "https://en.wikipedia.org/wiki/Prasar_Bharati"
+      ],
+      "notes": "Indian government source; independence group 'govt_india'.",
+      "site_check": "https://ddnews.gov.in/en/ HTTP 200 'Home | DD News'",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    },
+    {
+      "domain": "newsonair.gov.in",
+      "aliases": [],
+      "name": "All India Radio / Akashvani News",
+      "country": "IN",
+      "category": "public_broadcaster_government_funded",
+      "basis": [
+        "Wikipedia infobox: owner Prasar Bharati, parent Government of India"
+      ],
+      "evidence_urls": [
+        "https://en.wikipedia.org/wiki/All_India_Radio",
+        "https://en.wikipedia.org/wiki/Prasar_Bharati"
+      ],
+      "notes": "Indian government source; independence group 'govt_india'. Often republishes PIB Fact Check debunks (Google News source name 'News On AIR').",
+      "site_check": "HTTP 200 'Home | Akashvani News'",
+      "verified_at": "2026-10-31",
+      "verification_method": "fetched evidence_urls (HTTP 200) and confirmed the quoted wording; homepage fetched for site_check"
+    }
+  ]
+}

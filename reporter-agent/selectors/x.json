@@ -1,0 +1,17 @@
+{
+  "platform": "x",
+  "version": "2026-10-31 (best effort; X changes its markup often: failures fall back to manual steps)",
+  "steps": [
+    {"action": "click", "description": "Open the More (...) menu on the post",
+     "selectors": ["article[data-testid=\"tweet\"] [data-testid=\"caret\"]", "article [aria-label=\"More\"]"]},
+    {"action": "click", "description": "Choose 'Report post'",
+     "selectors": ["[data-testid=\"report\"]", "div[role=\"menuitem\"]:has-text(\"Report\")"]},
+    {"action": "wait", "description": "Wait for the report dialog",
+     "selectors": ["div[role=\"dialog\"]", "[data-testid=\"sheetDialog\"]"]},
+    {"action": "fill", "optional": true, "text": "prefilled_text",
+     "description": "Paste the confirmed text if the dialog offers a text box",
+     "selectors": ["div[role=\"dialog\"] textarea"]}
+  ],
+  "final_submit": ["div[role=\"dialog\"] button:has-text(\"Submit\")", "div[role=\"dialog\"] [data-testid=\"ChoiceSelectionNextButton\"]"],
+  "notes": ["X asks for a category first; pick the one closest to the plan's report_category."]
+}

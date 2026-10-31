@@ -1,0 +1,17 @@
+{
+  "platform": "instagram",
+  "version": "2026-10-31 (best effort; login required in the persistent profile)",
+  "steps": [
+    {"action": "click", "description": "Open the More options (...) menu on the post",
+     "selectors": ["div[role=\"button\"]:has(svg[aria-label=\"More options\"])", "[aria-label=\"More options\"]"]},
+    {"action": "click", "description": "Choose 'Report'",
+     "selectors": ["div[role=\"dialog\"] button:has-text(\"Report\")", "button:has-text(\"Report\")"]},
+    {"action": "wait", "description": "Wait for the report dialog",
+     "selectors": ["div[role=\"dialog\"]"]},
+    {"action": "fill", "optional": true, "text": "prefilled_text",
+     "description": "Paste the confirmed text if a text box is offered",
+     "selectors": ["div[role=\"dialog\"] textarea"]}
+  ],
+  "final_submit": ["div[role=\"dialog\"] button:has-text(\"Submit report\")"],
+  "notes": ["Instagram's flow: Report -> category (False information) -> details -> Submit report (you press it)."]
+}

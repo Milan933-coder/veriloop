@@ -1,0 +1,20 @@
+{
+  "jurisdiction": "EU",
+  "version": "eu-2026.10.1",
+  "title": "EU: GDPR Article 17 erasure request",
+  "checklist": [
+    "Replace every [PLACEHOLDER] in brackets with your own details.",
+    "Confirm you are the data subject depicted, or authorised in writing to act for them.",
+    "Find the platform's Data Protection Officer contact or privacy request form in its privacy policy.",
+    "Attach the VeriLoop evidence bundle (bundle.zip) and the signed audit PDF; keep screenshots with URL, date and time.",
+    "Only send identity documents if the controller has reasonable doubts about your identity and asks for them (Art. 12(6)).",
+    "Diary the one-month response deadline (Art. 12(3)); note the date you sent the request.",
+    "Have a lawyer verify the cited provisions before filing. VeriLoop never sends this draft."
+  ],
+  "filing_instructions": [
+    "Send the request to the controller's DPO or through its privacy request form, by a channel that gives you a timestamped copy.",
+    "The controller must respond without undue delay and in any event within one month of receipt; it may extend by two further months for complex requests, telling you why (Art. 12(3)).",
+    "If the controller refuses or does not answer, you can lodge a complaint with a supervisory authority, in particular in your Member State of residence or work (Art. 77).",
+    "Separately, very large and other online platforms in the EU must offer a notice-and-action mechanism for allegedly illegal content (Digital Services Act, Art. 16); you can submit the same evidence there."
+  ]
+}

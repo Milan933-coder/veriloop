@@ -1,0 +1,22 @@
+{
+  "jurisdiction": "IN",
+  "version": "in-2026.10.1",
+  "title": "India: IT Rules 2021 Rule 3(2)(b) grievance complaint + DPDP Act 2023 correction/erasure request",
+  "checklist": [
+    "Replace every [PLACEHOLDER] in brackets with your own details; delete any section that does not apply.",
+    "Confirm you are the person depicted, or are authorised in writing to act for them.",
+    "Find the platform's Grievance Officer contact: intermediaries must publish it on their website or app (IT Rules 2021, Rule 3(2)).",
+    "Attach the VeriLoop evidence bundle (bundle.zip) and the signed audit PDF; keep your own screenshots with the URL, date and time.",
+    "Send Draft 1 through the platform's grievance form or by email, and write down the ticket / acknowledgement number.",
+    "Check whether DPDP Act Section 12 rights are in force on the filing date before sending Draft 2 (the DPDP Rules commence in phases).",
+    "If the content is used to harass, extort or deceive, also report it on cybercrime.gov.in or to the local police.",
+    "Have a lawyer verify the cited provisions before filing. VeriLoop never sends this draft."
+  ],
+  "filing_instructions": [
+    "Draft 1 (IT Rules): submit to the platform's Grievance Officer. Rule 3(2)(b) asks the intermediary to act within 24 hours of the complaint for content in the nature of impersonation in electronic form, including artificially morphed images.",
+    "Rule 3(2)(a)(i) requires the Grievance Officer to acknowledge a complaint within 24 hours and resolve it within 15 days; keep the acknowledgement.",
+    "If the platform does not act or you disagree with its decision, you may appeal to the Grievance Appellate Committee constituted under Rule 3A (check the current procedure and deadline).",
+    "Draft 2 (DPDP Act): send to the platform's Data Protection Officer / grievance contact named in its privacy policy, once the relevant rights are in force.",
+    "Criminal angle: National Cyber Crime Reporting Portal https://cybercrime.gov.in (national helpline 1930), or your local police station."
+  ]
+}

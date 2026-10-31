@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+# Node
+node_modules/
+frontend/dist/
+# Env / secrets
+.env
+*.pem
+# Local runtime data (lives in ~/.veriloop by default)
+.veriloop/
+data/fixtures/cassettes/_scratch/

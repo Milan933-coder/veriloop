@@ -1,0 +1,257 @@
+{
+  "_source": [
+    {
+      "title": "English Wikipedia articles on each outlet (REST summary endpoint)",
+      "url": "https://en.wikipedia.org/api/rest_v1/page/summary/The_Onion",
+      "url_template": "https://en.wikipedia.org/api/rest_v1/page/summary/{Title}",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Live homepage check of each domain (HTTP status + <title>)",
+      "url": "(per-entry site_check)",
+      "accessed": "2026-10-31"
+    }
+  ],
+  "_verified_at": "2026-10-31",
+  "_notes": "Satire/parody domains. Use as CONTEXT only (Appearance.context_flags='satire'): an earliest appearance on a satire domain means the 'claim' likely originated as a joke that was later shared as real. Never treat a satire page as corroborating evidence. Match on registrable domain incl. subdomains; also match `aliases`. Deliberately excluded: Private Eye (satirical but ALSO publishes real investigative journalism, so a blanket satire flag would mislabel real reporting); The Shovel / The Hard Times (sites resolve but no independent satire reference fetched); 'Hasi Toh Phasi' (no such satire site found - the name is a 2014 film).",
+  "domains": [
+    {
+      "domain": "theonion.com",
+      "aliases": [],
+      "name": "The Onion",
+      "country": "US",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Onion",
+      "evidence_note": "Wikipedia: 'publishes satirical articles on international, national, and local news'.",
+      "site_check": "HTTP 200, title 'Home - The Onion'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "clickhole.com",
+      "aliases": [],
+      "name": "ClickHole",
+      "country": "US",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/ClickHole",
+      "evidence_note": "Wikipedia: 'a satirical website that parodies clickbait websites'.",
+      "site_check": "HTTP 403 to scripted fetch (bot protection); domain resolves",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "babylonbee.com",
+      "aliases": [],
+      "name": "The Babylon Bee",
+      "country": "US",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Babylon_Bee",
+      "evidence_note": "Wikipedia: 'American conservative Christian news satire website'.",
+      "site_check": "HTTP 403 to scripted fetch (bot protection); domain resolves",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "duffelblog.com",
+      "aliases": [],
+      "name": "Duffel Blog",
+      "country": "US",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/Duffel_Blog",
+      "evidence_note": "Wikipedia: 'American military news satire organization'.",
+      "site_check": "HTTP 200, title 'Duffel Blog'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "thebeaverton.com",
+      "aliases": [],
+      "name": "The Beaverton",
+      "country": "CA",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Beaverton",
+      "evidence_note": "Wikipedia: 'primarily online Canadian news satire publication'.",
+      "site_check": "HTTP 200, title 'The Beaverton'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "ungerreview.com",
+      "aliases": [
+        "dailybonnet.com"
+      ],
+      "name": "The Unger Review (formerly The Daily Bonnet)",
+      "country": "CA",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Daily_Bonnet",
+      "evidence_note": "Wikipedia: 'satirical Mennonite website, known as The Unger Review as of 2023'. dailybonnet.com redirects to ungerreview.com (site title 'Satire By Andrew Unger').",
+      "site_check": "dailybonnet.com -> ungerreview.com HTTP 200",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "waterfordwhispersnews.com",
+      "aliases": [],
+      "name": "Waterford Whispers News",
+      "country": "IE",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/Waterford_Whispers_News",
+      "evidence_note": "Wikipedia: 'Irish satirical news website'. Site title: 'Waterford Whispers News – Irish Satire news'.",
+      "site_check": "HTTP 200, title includes 'Irish Satire news'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "newsthump.com",
+      "aliases": [],
+      "name": "NewsThump",
+      "country": "GB",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/NewsThump",
+      "evidence_note": "Wikipedia: 'British news satire website that publishes spoof articles'.",
+      "site_check": "HTTP 403 to scripted fetch (bot protection); domain resolves",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "thedailymash.co.uk",
+      "aliases": [],
+      "name": "The Daily Mash",
+      "country": "GB",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Daily_Mash",
+      "evidence_note": "Wikipedia: 'British satirical website providing parodic commentary on current affairs'.",
+      "site_check": "HTTP 200, title 'The Daily Mash'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "newsbiscuit.com",
+      "aliases": [],
+      "name": "NewsBiscuit",
+      "country": "GB",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/NewsBiscuit",
+      "evidence_note": "Wikipedia: 'British satirical news website'.",
+      "site_check": "HTTP 200, title 'NewsBiscuit Home'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "der-postillon.com",
+      "aliases": [],
+      "name": "Der Postillon",
+      "country": "DE",
+      "language": "de",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/Der_Postillon",
+      "evidence_note": "Wikipedia: 'German website ... featuring satirical articles'; also has an English edition 'The Postillon'.",
+      "site_check": "HTTP 200, title 'Der Postillon'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "legorafi.fr",
+      "aliases": [],
+      "name": "Le Gorafi",
+      "country": "FR",
+      "language": "fr",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/Le_Gorafi",
+      "evidence_note": "Wikipedia: 'Le Gorafi is a news satire website'.",
+      "site_check": "HTTP 200, title 'Home - Le Gorafi.fr Gorafi News Network'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "elmundotoday.com",
+      "aliases": [],
+      "name": "El Mundo Today",
+      "country": "ES",
+      "language": "es",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/El_Mundo_Today",
+      "evidence_note": "Wikipedia: 'online satirical newspaper published in Spain ... content of the publication is totally fictitious and humorous'.",
+      "site_check": "HTTP 403 to scripted fetch (bot protection); domain resolves",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "lercio.it",
+      "aliases": [],
+      "name": "Lercio",
+      "country": "IT",
+      "language": "it",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/Lercio",
+      "evidence_note": "Wikipedia: 'Italian site of news satire'.",
+      "site_check": "HTTP 200, title 'Lercio | Lo sporco che fa notizia'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "chaser.com.au",
+      "aliases": [],
+      "name": "The Chaser",
+      "country": "AU",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Chaser",
+      "evidence_note": "Wikipedia: 'Australian satirical comedy group, best known for their television programmes and satirical news masthead'.",
+      "site_check": "HTTP 200, title 'The Chaser — Striving for mediocrity in a world of excellence'",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "thefauxy.com",
+      "aliases": [],
+      "name": "The Fauxy",
+      "country": "IN",
+      "language": "en",
+      "status": "active",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_Fauxy",
+      "evidence_note": "Wikipedia: 'Indian satirical website ... referred to as India's answer to The Onion'. Site title: 'The Fauxy - India's Premier Satirical News Platform'.",
+      "site_check": "HTTP 200 (thefauxy.com -> www.thefauxy.com), title confirms satire",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "fakingnews.com",
+      "aliases": [
+        "fakingnews.firstpost.com"
+      ],
+      "name": "Faking News",
+      "country": "IN",
+      "language": "en",
+      "status": "defunct_dns_unresolved",
+      "evidence_url": "https://en.wikipedia.org/wiki/Faking_News",
+      "evidence_note": "Wikipedia (past tense): 'was an Indian news satire website that published fake news reports containing satire'. Historic content was also hosted at fakingnews.firstpost.com.",
+      "site_check": "DNS lookup failed for fakingnews.com and fakingnews.firstpost.com on 2026-10-31; keep for matching archived/screenshotted articles",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    },
+    {
+      "domain": "unrealtimes.com",
+      "aliases": [],
+      "name": "The UnReal Times",
+      "country": "IN",
+      "language": "en",
+      "status": "defunct_domain_for_sale",
+      "evidence_url": "https://en.wikipedia.org/wiki/The_UnReal_Times",
+      "evidence_note": "Wikipedia (past tense): 'was an Indian satire, spoof, parody and humour portal'.",
+      "site_check": "unrealtimes.com now shows 'UnrealTimes.com is for sale'. Only treat archived content (pre-sale) as satire; new content on this domain is NOT from the original satire outlet",
+      "verified_at": "2026-10-31",
+      "verification_method": "Wikipedia REST summary (en.wikipedia.org/api/rest_v1/page/summary) fetched; extract describes outlet as satire"
+    }
+  ]
+}

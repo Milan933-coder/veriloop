@@ -1,0 +1,430 @@
+{
+  "_source": [
+    {
+      "title": "GOV.IN Domain Registry FAQ ('Government Organizations can get domain name under GOV.IN as per the guidelines'; educational institutions are directed to AC.IN/EDU.IN/RES.IN)",
+      "url": "https://registry.gov.in/faq.php",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "GOV.IN Registration Guidelines (PDF, HTTP 200, 1.09 MB; text not machine-extractable here)",
+      "url": "https://registry.gov.in/pdfdocs/Gov.In_Guidelines.pdf",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "PIB RSS directory page (lists Press Releases / Photos / Features feeds)",
+      "url": "https://www.pib.gov.in/ViewRss.aspx?reg=3&lang=1",
+      "accessed": "2026-10-31"
+    },
+    {
+      "title": "Live homepage check of each listed domain (HTTP status + <title>)",
+      "url": "(per-entry site_check)",
+      "accessed": "2026-10-31"
+    }
+  ],
+  "_verified_at": "2026-10-31",
+  "suffix_rules": [
+    {
+      "suffix": ".gov.in",
+      "government_source": true,
+      "country": "IN",
+      "basis": "registry.gov.in FAQ: GOV.IN names are for Government Organizations as per the registry guidelines.",
+      "default_group": "govt_india"
+    },
+    {
+      "suffix": ".nic.in",
+      "government_source": true,
+      "country": "IN",
+      "basis": "nic.in is the National Informatics Centre's domain (www.nic.in redirects to www.nic.gov.in); government bodies are hosted under it (e.g. indianarmy.nic.in, indiacode.nic.in verified). No separate policy document was fetched for .nic.in - treat as strong but not registry-guaranteed.",
+      "default_group": "govt_india"
+    },
+    {
+      "suffix": ".mil.in",
+      "government_source": null,
+      "country": "IN",
+      "basis": "Not verified in this pass; do not auto-flag.",
+      "default_group": null
+    }
+  ],
+  "state_portal_pattern": {
+    "pattern": "<state>.gov.in / <dept>.<state>.gov.in / <state>.nic.in",
+    "group": "govt_<state> (e.g. govt_maharashtra); a state government is independent of the central government for corroboration purposes only when the claim is not about the shared programme",
+    "note": "Covered by the suffix rules above; no individual state portals were verified in this pass."
+  },
+  "flagging": "1) Mark evidence items from matching domains (suffix rule OR explicit domain/alias) with government_source=true and show a 'Government source' badge (SPEC 3: 'flag government-source matches explicitly'). 2) Government pages are PRIMARY sources for claims about government actions (a scheme exists, a notice was issued, a date/schedule, an official statistic). 3) They are NOT independent corroboration for claims about the government's own performance or for politically contested claims: count all central-government outlets (PIB, ministries, PMO, Prasar Bharati/DD/AIR, PIB Fact Check) as ONE publisher group 'govt_india'. 4) Wire copies of a PIB release (PTI/ANI/IANS reprints) are syndication of the same source - collapse via syndication.json. 5) Judiciary (sci.gov.in), Parliament (sansad.in), RBI and SEBI get their own groups. 6) PIB Fact Check debunks of fake government notices/schemes count as a fact-check (ClaimReview-equivalent) item with publisher group 'govt_india'.",
+  "domains": [
+    {
+      "domain": "pib.gov.in",
+      "aliases": [
+        "www.pib.gov.in",
+        "factcheck.pib.gov.in"
+      ],
+      "name": "Press Information Bureau (PIB)",
+      "type": "central_govt_press_office",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 (homepage redirects to index.aspx?reg=48&lang=2, Hindi by default)",
+      "notes": "Official press releases of the Government of India. RSS gotcha: the URL published on https://www.pib.gov.in/ViewRss.aspx (RssMain.aspx?ModId=6&Lang=1&Regid=3, without '&reg=3') 301s to www and then 302s to the HINDI feed (Lang=2&reg=48). Append '&reg=3' to get English. Items carry ONLY <title> and <link> (no pubDate/description): fetch the PRID page for date and text. PIB Fact Check: https://pib.gov.in/factcheck.aspx, portal https://factcheck.pib.gov.in/, X @PIBFactCheck.",
+      "verified_at": "2026-10-31",
+      "rss": [
+        {
+          "url": "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3&reg=3",
+          "content": "Press releases, English (national)",
+          "http": 200,
+          "content_type": "text/xml",
+          "items_observed": 20,
+          "item_fields": [
+            "title",
+            "link"
+          ],
+          "link_pattern": "https://pib.gov.in/PressReleaseIframePage.aspx?PRID=<int>"
+        },
+        {
+          "url": "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=2&Regid=3&reg=3",
+          "content": "Press releases, Hindi",
+          "http": 200,
+          "content_type": "text/xml",
+          "items_observed": 20,
+          "item_fields": [
+            "title",
+            "link"
+          ]
+        },
+        {
+          "url": "https://www.pib.gov.in/RssMain.aspx?ModId=8&Lang=1&Regid=3&reg=3",
+          "content": "Photos, English",
+          "http": 200,
+          "content_type": "text/xml",
+          "items_observed": 20,
+          "item_fields": [
+            "title",
+            "link"
+          ]
+        },
+        {
+          "url": "https://www.pib.gov.in/RssMain.aspx?ModId=18&Lang=1&Regid=3&reg=3",
+          "content": "Features, English",
+          "http": 200,
+          "content_type": "text/xml",
+          "items_observed": 20,
+          "item_fields": [
+            "title",
+            "link"
+          ]
+        }
+      ]
+    },
+    {
+      "domain": "mygov.in",
+      "aliases": [],
+      "name": "MyGov",
+      "type": "central_govt_portal",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'MyGov: A Platform for Citizen Engagement towards Good Governance in India'",
+      "notes": "Government citizen-engagement platform on a .in domain (not .gov.in) - must be listed explicitly.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "india.gov.in",
+      "aliases": [],
+      "name": "National Portal of India",
+      "type": "central_govt_portal",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Home | National Portal of India'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "pmindia.gov.in",
+      "aliases": [],
+      "name": "Prime Minister of India (PMO)",
+      "type": "central_govt_office",
+      "independence_group": "govt_india",
+      "site_check": "https://www.pmindia.gov.in/en/ HTTP 200 'Prime Minister of India' (root timed out once)",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "presidentofindia.gov.in",
+      "aliases": [
+        "presidentofindia.nic.in"
+      ],
+      "name": "President of India",
+      "type": "constitutional_office",
+      "independence_group": "govt_india",
+      "site_check": "presidentofindia.gov.in HTTP 200 'Home | President of India'",
+      "notes": "presidentofindia.nic.in did NOT resolve on 2026-10-31; current domain is presidentofindia.gov.in.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "eci.gov.in",
+      "aliases": [],
+      "name": "Election Commission of India",
+      "type": "constitutional_body",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Election Commission of India'",
+      "notes": "Primary source for election schedules/results/EVM claims.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mea.gov.in",
+      "aliases": [],
+      "name": "Ministry of External Affairs",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Home | Ministry of External Affairs, Government of India'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mha.gov.in",
+      "aliases": [],
+      "name": "Ministry of Home Affairs",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Home | Ministry of Home Affairs'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mod.gov.in",
+      "aliases": [],
+      "name": "Ministry of Defence",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "indianarmy.nic.in",
+      "aliases": [],
+      "name": "Indian Army",
+      "type": "armed_forces",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Indian Army - The Official Home Page of the Indian Army'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mohfw.gov.in",
+      "aliases": [],
+      "name": "Ministry of Health and Family Welfare",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "meity.gov.in",
+      "aliases": [],
+      "name": "Ministry of Electronics and IT",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mib.gov.in",
+      "aliases": [],
+      "name": "Ministry of Information and Broadcasting",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mospi.gov.in",
+      "aliases": [],
+      "name": "Ministry of Statistics and Programme Implementation",
+      "type": "central_ministry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "Primary source for official statistics (GDP, CPI releases).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "niti.gov.in",
+      "aliases": [],
+      "name": "NITI Aayog",
+      "type": "central_govt_body",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'NITI Aayog'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "rbi.org.in",
+      "aliases": [],
+      "name": "Reserve Bank of India",
+      "type": "central_bank",
+      "independence_group": "rbi",
+      "site_check": "HTTP 200 'Home | Official website of Reserve Bank of India'",
+      "notes": "Statutory body on .org.in - NOT caught by the .gov.in/.nic.in suffix rules; list explicitly.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "sebi.gov.in",
+      "aliases": [],
+      "name": "Securities and Exchange Board of India",
+      "type": "statutory_regulator",
+      "independence_group": "sebi",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "isro.gov.in",
+      "aliases": [],
+      "name": "Indian Space Research Organisation",
+      "type": "central_govt_agency",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "mausam.imd.gov.in",
+      "aliases": [
+        "imd.gov.in"
+      ],
+      "name": "India Meteorological Department",
+      "type": "central_govt_agency",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 (Hindi title 'भारत मौसम विज्ञान विभाग')",
+      "notes": "Primary source for cyclone/rain/heatwave warnings.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "ndma.gov.in",
+      "aliases": [],
+      "name": "National Disaster Management Authority",
+      "type": "central_govt_agency",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Welcome! | NDMA'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "uidai.gov.in",
+      "aliases": [],
+      "name": "Unique Identification Authority of India (Aadhaar)",
+      "type": "central_govt_agency",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "cert-in.org.in",
+      "aliases": [],
+      "name": "CERT-In",
+      "type": "central_govt_agency",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Indian - Computer Emergency Response Team'",
+      "notes": "On .org.in - list explicitly.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "cybercrime.gov.in",
+      "aliases": [],
+      "name": "National Cyber Crime Reporting Portal",
+      "type": "central_govt_portal",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Cybercrime Portal'",
+      "notes": "Relevant to legal-escalation module (reporting deepfake/impersonation).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "sci.gov.in",
+      "aliases": [],
+      "name": "Supreme Court of India",
+      "type": "judiciary",
+      "independence_group": "judiciary_india",
+      "site_check": "HTTP 200 'Supreme Court of India | India'",
+      "notes": "Judiciary: independent of the executive; use group 'judiciary_india', not govt_india.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "sansad.in",
+      "aliases": [],
+      "name": "Digital Sansad (Parliament of India)",
+      "type": "legislature",
+      "independence_group": "parliament_india",
+      "site_check": "HTTP 200 'Digital Sansad' (redirects to /phistory)",
+      "notes": "Parliament on a .in domain - list explicitly.",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "indiacode.nic.in",
+      "aliases": [],
+      "name": "India Code (central acts)",
+      "type": "legal_repository",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'India Code - Site Migration'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "egazette.gov.in",
+      "aliases": [],
+      "name": "e-Gazette of India",
+      "type": "legal_repository",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'eGazette Home'",
+      "notes": "Official gazette notifications (primary source for notified rules).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "data.gov.in",
+      "aliases": [],
+      "name": "Open Government Data Platform India",
+      "type": "data_portal",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "prasarbharati.gov.in",
+      "aliases": [],
+      "name": "Prasar Bharati",
+      "type": "public_broadcaster",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200",
+      "notes": "Public broadcaster (see state_affiliated.json, category public_broadcaster_government_funded).",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "ddnews.gov.in",
+      "aliases": [],
+      "name": "DD News",
+      "type": "public_broadcaster",
+      "independence_group": "govt_india",
+      "site_check": "https://ddnews.gov.in/en/ HTTP 200 'Home | DD News'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "newsonair.gov.in",
+      "aliases": [],
+      "name": "All India Radio News (Akashvani)",
+      "type": "public_broadcaster",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Home | Akashvani News'",
+      "notes": "",
+      "verified_at": "2026-10-31"
+    },
+    {
+      "domain": "registry.gov.in",
+      "aliases": [],
+      "name": "GOV.IN Domain Registry (NIC)",
+      "type": "registry",
+      "independence_group": "govt_india",
+      "site_check": "HTTP 200 'Domain Registration'",
+      "notes": "Source for the .gov.in eligibility rule (see suffix_rules).",
+      "verified_at": "2026-10-31"
+    }
+  ]
+}
