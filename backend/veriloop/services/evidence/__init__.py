@@ -15,7 +15,8 @@ async def prewarm(deps: Deps) -> None:
     NLI is the stance fallback for LLM batches that fail or time out (and the whole stance step when
     the LLM is disabled); loading ~560 MB lazily mid-job stalls the shared CPU pool for every job.
     """
-    await deps.embedder.load()
+    if await deps.embedder.load():
+        await deps.embedder.embed(["warm-up"], kind="query")  # first inference is the slow one
     if deps.nli.available:
         await deps.nli.load()
 

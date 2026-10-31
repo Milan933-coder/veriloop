@@ -70,7 +70,7 @@ async def search_feed(
     passage_vecs: np.ndarray | None = None,
     *,
     limit: int = 6,
-    timeout_s: float = 5.0,
+    timeout_s: float = 4.0,
 ) -> SourceOutcome:
     """`query_vecs` / `passage_vecs`: the claim text(s) embedded with the e5 query / passage prefix
     (rows = texts). Similarity = text.claim_match over both scales, max over the claim texts."""
@@ -297,7 +297,7 @@ def extract_page_data(html: str) -> dict[str, Any]:
 
 
 async def fetch_factcheck_page(
-    deps: Deps, url: str, *, timeout_s: float = 4.0
+    deps: Deps, url: str, *, timeout_s: float = 3.0
 ) -> tuple[dict[str, Any] | None, ToolError | None]:
     async def fetch() -> dict[str, Any]:
         resp = await deps.tools.http.get(url, headers=BROWSER_UA)

@@ -53,7 +53,7 @@ from .models_config import (
 log = structlog.get_logger(__name__)
 
 MAX_DETECT_FRAMES = 16
-MAX_FACE_FRAMES = 8
+MAX_FACE_FRAMES = 6  # <= 12 crops per model: top-3 needs few frames; bounds CPU latency
 MAX_NOFACE_FRAMES = 4
 MAX_REMOTE_FRAMES = 3
 # "Absence of C2PA Content Credentials is not evidence of manipulation." (single source: the contract)

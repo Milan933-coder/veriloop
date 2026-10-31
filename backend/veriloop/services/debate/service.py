@@ -40,7 +40,8 @@ from veriloop.services.fusion import extractive_rationale_for
 
 log = structlog.get_logger(__name__)
 
-FOLLOWUP_BUDGET_S = 5.0  # both follow-up searches run in parallel; each has its own 4 s source deadline
+FOLLOWUP_BUDGET_S = 3.5  # both follow-up searches run in parallel (each has a 4 s source deadline)
+FOLLOWUP_MIN_GROUPS = 2  # a side that already has this many independent groups gets no follow-up
 _DECISIVE = (VerdictLabel.TRUE, VerdictLabel.FALSE, VerdictLabel.MANIPULATED)
 
 
@@ -202,6 +203,20 @@ async def _run(
             else:
                 args.append(res[0])
                 queries.append(res[1])
+        # ONE follow-up per agent, granted only when its side is thin: a side that already has >= 2
+        # independent groups gains nothing decisive from 5 more headlines, and every follow-up adds a
+        # search round trip before the judge can start (measured 5 s in live runs).
+        side_groups = (fusion.groups_support, max(fusion.groups_refute, fusion.groups_manipulation))
+        granted = [
+            q if q and g < FOLLOWUP_MIN_GROUPS else None for q, g in zip(queries, side_groups, strict=True)
+        ]
+        if granted != queries:
+            log.info(
+                "debate_followup_skipped",
+                requested=sum(1 for q in queries if q),
+                granted=sum(1 for q in granted if q),
+            )
+        queries = granted
         if any(queries):
             t = time.perf_counter()
             followup_items, per_agent = await _followups(deps, queries, items)

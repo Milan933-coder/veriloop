@@ -48,7 +48,8 @@ calibrated summary of the same evidence; depart from their candidate only if the
 requires it.
 Rationale: 2-4 short sentences that justify the label. Each sentence restates what its cited items'
 TITLE/TEXT say (you may name the item's source exactly as shown in the table), with the ids it
-restates. Use only facts, numbers and dates that appear in the cited items; do not copy details from
+restates. Copy every number and date exactly as the cited text writes it, or leave it out; use only facts
+that appear in the cited items; do not copy details from
 the CLAIM into a sentence unless the cited text states them (e.g. do not add the claim's date). Prefer
 one sentence per source or per pair of sources over long summaries. Do not cite forensic scores or
 signals as sentences on their own: they have no evidence id.

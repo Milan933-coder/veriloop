@@ -356,10 +356,13 @@ async def main(argv: list[str] | None = None) -> int:
             }
         )
     ok = [s for s in sweep if (s["train"]["selective_precision"] or 0) >= args.target_precision]
+    # Among thresholds meeting the precision target: best train coverage; ties -> the HIGHEST threshold
+    # (most conservative at no measured cost). With precision flat at 1.0 the "lowest" rule picked 0.50,
+    # which would emit on any net-positive evidence that clears the 2-group rule.
     chosen = (
-        min(ok, key=lambda s: s["threshold"])
+        max(ok, key=lambda s: (s["train"]["coverage"] or 0, s["threshold"]))
         if ok
-        else max(sweep, key=lambda s: (s["train"]["selective_precision"] or 0, -s["threshold"]))
+        else max(sweep, key=lambda s: (s["train"]["selective_precision"] or 0, s["threshold"]))
     )
     thr = chosen["threshold"]
     final = evaluate(rows, gathered, with_threshold(settings, thr), cal)
@@ -401,7 +404,8 @@ async def main(argv: list[str] | None = None) -> int:
         "created_at": report["created_at"],
         "recommended_abstain_threshold": thr,
         "threshold_rule": (
-            f"lowest ABSTAIN_THRESHOLD whose TRAIN selective precision >= {args.target_precision:.2f}"
+            f"highest ABSTAIN_THRESHOLD with the best TRAIN coverage among those whose TRAIN selective "
+            f"precision >= {args.target_precision:.2f}"
             + ("" if ok else " (none reached it: best train precision chosen)")
         ),
         "metrics": metrics,

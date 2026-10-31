@@ -28,7 +28,7 @@ log = structlog.get_logger(__name__)
 
 NLI_DECISIVE = 0.60
 LLM_BATCH = 8  # items per stance call; batches run in parallel
-LLM_TIMEOUT_S = 5.5  # per batch; a late batch falls back to local NLI / lexicon
+LLM_TIMEOUT_S = 5.0  # per batch; a late batch falls back to local NLI / lexicon
 STANCE_TEXT_CHARS = 450  # prompt size drives latency; quotes are still located in the full snippet
 
 
@@ -56,6 +56,13 @@ Rules:
 - "neutral": a different event (e.g. a state-level decision when the claim is about the central government,
   a different date or a different number), speculation or projections ("may", "could", "expected", "likely",
   "will it be", calculators, what-if tables), questions, opinion, or text that only mentions the topic.
+- Dates: each item shows its PUBLISHED date (tool metadata, not your knowledge). A report published on day D
+  saying a decision "was approved" / "approves" confirms it was approved on D or the day before. An
+  "effective from" / "with effect from" date is a different date from the approval date and is NOT a
+  mismatch. Only call a date a mismatch when the text or PUBLISHED date places the event on another day.
+- Judge the claim's core fact (event, actors, numbers). If the text confirms that core fact and contradicts
+  nothing, answer "support" even if it omits a minor detail the claim adds (e.g. it names employees but not
+  pensioners); the quote must cover the core fact.
 - Also "neutral": text that only relays what ONE involved party asserts about a contested event
   ("Iran says it shot down...", "X claims...", "according to state media...") without confirming it.
   Reporting that someone claims something is not confirmation. (An official body announcing its own
@@ -132,7 +139,11 @@ def _render(cands: list[Candidate]) -> str:
     for c in cands:
         kind = "fact-check" if (c.is_fact_check or c.claimreview) else "news"
         text = c.snippet[:STANCE_TEXT_CHARS]
-        lines.append(f"[{c.item_id}] ({kind}; {c.source_name})\nTITLE: {c.title}\nTEXT: {text}")
+        # Publication date is tool metadata; without it a dated claim ("approved on 28 Oct") can never match.
+        published = c.published_at.date().isoformat() if c.published_at else "unknown"
+        lines.append(
+            f"[{c.item_id}] ({kind}; {c.source_name}; PUBLISHED: {published})\nTITLE: {c.title}\nTEXT: {text}"
+        )
     return "\n\n".join(lines)
 
 
@@ -168,7 +179,7 @@ async def llm_stance(deps: Deps, claim: str, cands: list[Candidate]) -> list[str
 
 async def nli_stance(deps: Deps, claim: str, cands: list[Candidate]) -> list[str]:
     """Extractive fallback (LLM disabled): local NLI premise=snippet, hypothesis=claim."""
-    pairs = [(c.snippet[:600], claim) for c in cands]
+    pairs = [(c.snippet[:300], claim) for c in cands]  # short premises: NLI on CPU is ~1 s/pair loaded
     scores = await deps.nli.score(pairs)
     for cand, sc in zip(cands, scores, strict=True):
         if sc.entailment >= NLI_DECISIVE and sc.entailment > sc.contradiction:

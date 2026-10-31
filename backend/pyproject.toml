@@ -110,3 +110,9 @@ target-version = "py312"
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "ASYNC", "RUF"]
 ignore = ["RUF001", "RUF002", "RUF003", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+# Contracts are pydantic models: list/dict defaults are copied per instance (RUF012 is a false
+# positive), `str, Enum` keeps the wire format explicit, and __init__ re-exports via __all__.
+"veriloop/contracts/*" = ["RUF012", "UP042", "UP017", "E501"]
+"veriloop/contracts/__init__.py" = ["F401"]

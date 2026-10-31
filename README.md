@@ -19,6 +19,16 @@ Edit one database row and the same endpoint reports exactly where the chain brok
 
 ---
 
+## Screenshots (live runs, real sources)
+
+| TRUE with 5 independent sources | Deepfake → MANIPULATED |
+|---|---|
+| ![Case a TRUE](docs/screenshots/case_a_true.png) | ![Case c MANIPULATED](docs/screenshots/case_c_manipulated.png) |
+| **Cited rationale + parallel orchestrator trace** | **Tamper-evident audit, verified in the browser** |
+| ![Case b trace](docs/screenshots/case_b_trace.png) | ![Audit verify](docs/screenshots/audit_verify.png) |
+| **Report + legal escalation (never sent)** | **"No evidence" is not "false" (G8)** |
+| ![Actions](docs/screenshots/case_c_actions.png) | ![No evidence state](docs/screenshots/no_evidence_state.png) |
+
 ## What makes it different
 
 | | Typical fact-check bot | VeriLoop |
@@ -159,10 +169,30 @@ The public face-swap detectors are near chance on this set, which is exactly why
 and why forensics alone can never produce a MANIPULATED verdict. Details: [docs/media.md](docs/media.md).
 
 **Claim verification** (`scripts/calibrate.py` → `config/calibration.json`): Platt scaling fitted on the
-train split of our 40-claim labelled set (`data/eval/claims.jsonl`), measured on the test split.
-The current calibration is deliberately conservative: it abstains on most test claims, and the
-verdicts it does emit were correct. Final numbers are in [docs/reasoning.md](docs/reasoning.md).
-The test split is small (11 TRUE/FALSE rows), so treat these as indicative only.
+train split of our 40-claim labelled set (`data/eval/claims.jsonl`), measured on the held-out test split.
+
+| split | rows | coverage (emitted a verdict) | selective precision (emitted verdicts correct) | abstain rate |
+|---|---|---|---|---|
+| train | 24 | 75 % | **100 %** (18/18) | 25 % |
+| test | 11 | 45 % | **100 %** (5/5) | 55 % |
+
+Abstentions come mostly from the 2-independent-source rule. For example, several FALSE rows are rated
+by only one fact-checker, so the system refuses rather than guesses. The test split is tiny, so treat
+these numbers as indicative. Details: [docs/reasoning.md](docs/reasoning.md).
+
+**End-to-end demo runs** (live server, real aicredits models, real sources, CPU-only laptop, 2026-10-31):
+
+| case | input | verdict | confidence | time | audit verify |
+|---|---|---|---|---|---|
+| a | DA-hike text (4 runs) | **TRUE** ×4, 5 independent sources | 0.95 | 18–24 s | ✓ |
+| b | Cyclone Arnab clip (upload) | **FALSE** (known-fake match + 3 fact-checks) | 0.91 | 28–36 s | ✓ |
+| c | Blumenthal deepfake clip (upload) | **MANIPULATED**, legal draft offered | 0.90 | 27–35 s | ✓ |
+| d | Pay Commission text | **UNVERIFIABLE** (SINGLE_SOURCE) | 0.68 | 6–11 s | ✓ |
+
+Also checked live:
+* `tamper_demo.py` → `ok:false, broken_at:22, "payload was modified"`, then `restore_chain.py` → `ok:true`;
+* the legal draft without all 4 acknowledgements → HTTP 422;
+* the browser's own SHA-256 and Ed25519 checks → "matches".
 
 ## Demo
 
@@ -215,8 +245,12 @@ deploy/             Dockerfile, docker-compose (api + pgvector + Caddy), Caddyfi
 
 ## Status and known limitations
 
-* **Latency** is above the spec targets on this CPU-only laptop. Evidence fetching and the multi-step
-  debate dominate. Profiling and parallelisation are in progress; see `docs/reasoning.md` for current numbers.
+* **Latency** is above the spec targets (text < 5 s, video < 20 s): text claims take 18–24 s and videos
+  27–36 s on this CPU-only laptop. Four LLM round trips are inherent to the debate design (stance →
+  proponent ∥ opponent → judge → verifier ∥ second judge), and on-device ASR/OCR dominates video. Cheap
+  abstains (case d) finish in 6–11 s. Options and trade-offs are in `docs/reasoning.md` §6.
+* The local ClaimReview search can exceed its 4 s budget under CPU load. It is then reported as a
+  degraded tool and never replaced with invented data, and the news and fact-check sources still decide the case.
 * The face-swap detectors are weak (measured above). There is no synthetic-speech detector yet.
 * Without a Cloud Vision key, provenance finds re-uploads of *indexed* media but not the original of new media.
 * reporter-agent selectors haven't been run against logged-in platform accounts. If a selector fails,

@@ -26,7 +26,8 @@ from veriloop.contracts import (
     VerdictLabel,
 )
 
-pytestmark = [pytest.mark.network, pytest.mark.ml]
+# startup + model prewarm alone takes 60-75 s on a contended laptop: beyond the 120 s default
+pytestmark = [pytest.mark.network, pytest.mark.ml, pytest.mark.timeout(600)]
 
 CASES = {
     "a": (
@@ -93,8 +94,11 @@ async def test_live_demo_cases_a_and_d():
     summary: dict[str, Any] = {"models": deps.resolved_models}
     try:
         t = time.perf_counter()
-        await deps.embedder.load()
-        await deps.nli.load()
+        from veriloop.services import debate as debate_pkg
+        from veriloop.services import evidence as evidence_pkg
+
+        await evidence_pkg.prewarm(deps)  # what the app runs at startup (ML_PREWARM)
+        await debate_pkg.prewarm(deps)
         summary["prewarm_ms"] = int((time.perf_counter() - t) * 1000)
         summary["nli"] = deps.nli.status()
         deps.tools.cache = ToolCache()  # cold tool caches (memory only, empty)

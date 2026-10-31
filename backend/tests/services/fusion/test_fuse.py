@@ -398,3 +398,16 @@ def test_provenance_items_are_counted(settings):
     res = run([item("E1", "factly", R)], prov=prov, p=0.05, settings=settings)
     assert res.groups_refute == 2
     assert res.candidate is VerdictLabel.FALSE
+
+
+@pytest.mark.parametrize(
+    ("stances", "state"),
+    [
+        ((S,), EvidenceState.INSUFFICIENT),
+        ((R,), EvidenceState.INSUFFICIENT),
+        ((S, S), EvidenceState.SUPPORTS),
+    ],
+)
+def test_evidence_state_needs_two_groups_like_a_verdict(settings, stances, state):
+    items = [item(f"E{n}", f"g{n}", st) for n, st in enumerate(stances, 1)]
+    assert run(items, p=0.5, settings=settings).evidence_state is state

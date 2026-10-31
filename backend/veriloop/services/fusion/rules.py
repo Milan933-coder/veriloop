@@ -120,9 +120,10 @@ def _evidence_state(a: _Analysis, t: float, m_ok: bool) -> EvidenceState:
         return EvidenceState.MANIPULATED
     if gs >= 2 and gr >= 2 and gs < 2 * gr and gr < 2 * gs:
         return EvidenceState.CONFLICTING
-    if gr > gs and t < 0:
+    # Like a verdict (G4), "the evidence says X" needs >= 2 independent groups; one group = insufficient.
+    if gr > gs and gr >= 2 and t < 0:
         return EvidenceState.REFUTES
-    if gs > gr and t > 0:
+    if gs > gr and gs >= 2 and t > 0:
         return EvidenceState.SUPPORTS
     return EvidenceState.INSUFFICIENT
 

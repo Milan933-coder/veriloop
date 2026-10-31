@@ -1,58 +1,64 @@
 {
   "version": "platt-2026-10-31-n21",
   "method": "platt",
-  "a": 3.354216,
-  "b": 0.263364,
+  "a": 3.744819,
+  "b": 0.407215,
   "n": 21,
   "fitted_on": "data/eval/claims.jsonl split=train, TRUE/FALSE rows (Platt smoothed targets, L2=0.01)",
   "input": "fusion truth score T (extraction-free evidence gathering; no media)",
   "weights_version": "weights-2026-10-31.1",
-  "created_at": "2026-10-31T13:44:58.566541+00:00",
-  "recommended_abstain_threshold": 0.95,
-  "threshold_rule": "lowest ABSTAIN_THRESHOLD whose TRAIN selective precision >= 0.90",
+  "created_at": "2026-10-31T14:42:53.128167+00:00",
+  "recommended_abstain_threshold": 0.75,
+  "threshold_rule": "highest ABSTAIN_THRESHOLD with the best TRAIN coverage among those whose TRAIN selective precision >= 0.90",
   "metrics": {
     "test": {
       "n": 11,
-      "emitted": 1,
-      "coverage": 0.0909,
-      "abstain_rate": 0.9091,
+      "emitted": 5,
+      "coverage": 0.4545,
+      "abstain_rate": 0.5455,
       "selective_precision": 1.0,
-      "accuracy_incl_abstain": 0.2727,
+      "selective_precision_strict_deepfake_only": 1.0,
+      "accuracy_incl_abstain": 0.6364,
       "abstain_reasons": {
-        "LOW_CONFIDENCE": 7,
-        "SINGLE_SOURCE": 3
+        "SINGLE_SOURCE": 5,
+        "LOW_CONFIDENCE": 1
       },
       "labels": {
-        "UNVERIFIABLE": 10,
-        "TRUE": 1
+        "MANIPULATED": 1,
+        "FALSE": 2,
+        "UNVERIFIABLE": 6,
+        "TRUE": 2
       },
       "binary_n": 9,
-      "binary_brier": 0.0356,
-      "binary_ece_5bin": 0.149
+      "binary_brier": 0.0443,
+      "binary_ece_5bin": 0.1875
     },
     "train": {
       "n": 24,
-      "emitted": 2,
-      "coverage": 0.0833,
-      "abstain_rate": 0.9167,
+      "emitted": 18,
+      "coverage": 0.75,
+      "abstain_rate": 0.25,
       "selective_precision": 1.0,
-      "accuracy_incl_abstain": 0.2083,
+      "selective_precision_strict_deepfake_only": 0.7778,
+      "accuracy_incl_abstain": 0.875,
       "abstain_reasons": {
-        "LOW_CONFIDENCE": 19,
-        "SINGLE_SOURCE": 3
+        "SINGLE_SOURCE": 4,
+        "LOW_CONFIDENCE": 2
       },
       "labels": {
-        "UNVERIFIABLE": 22,
-        "TRUE": 2
+        "MANIPULATED": 5,
+        "FALSE": 4,
+        "UNVERIFIABLE": 6,
+        "TRUE": 9
       },
       "binary_n": 21,
-      "binary_brier": 0.0574,
-      "binary_ece_5bin": 0.1722
+      "binary_brier": 0.0134,
+      "binary_ece_5bin": 0.0982
     },
     "test_prior_uncalibrated": {
       "binary_n": 9,
-      "binary_brier": 0.036,
-      "binary_ece_5bin": 0.1283
+      "binary_brier": 0.0595,
+      "binary_ece_5bin": 0.198
     },
     "factly_only_false_rows_note": "10 of 15 FALSE rows have one fact-check group (Factly) in the eval notes; the 2-group rule (G4) is expected to abstain on them unless retrieval finds a second group."
   },

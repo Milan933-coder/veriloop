@@ -81,7 +81,7 @@ async def search_gnews(
     method: RetrievalMethod = RetrievalMethod.GOOGLE_NEWS_RSS,
     op: str = "search",
     limit: int = 40,
-    timeout_s: float = 5.0,
+    timeout_s: float = 4.0,
 ) -> SourceOutcome:
     hl, gl, ceid = google_news_locale(locale)
     params = {"q": query, "hl": hl, "gl": gl, "ceid": ceid}
@@ -91,7 +91,9 @@ async def search_gnews(
         raise_for_status(resp)
         return resp.text
 
-    value, outcome = await tool_call(deps, tool, op, params, fetch, timeout_s=timeout_s, retries=1)
+    # No retry: a 4 s attempt + backoff + retry cannot fit the 5 s source deadline; the failed
+    # search is re-run on its secondary tool instead (pipeline._secondary_jobs).
+    value, outcome = await tool_call(deps, tool, op, params, fetch, timeout_s=timeout_s, retries=0)
     if value is None:
         return outcome
     for row in rss.parse_gnews(value)[:limit]:
@@ -142,7 +144,7 @@ def gnews_article_id(link: str) -> str | None:
 
 
 async def decode_gnews(
-    deps: Deps, link: str, *, timeout_s: float = 4.0
+    deps: Deps, link: str, *, timeout_s: float = 3.0
 ) -> tuple[str | None, ToolError | None]:
     """news.google.com/rss/articles/<id> -> publisher URL, or (None, error). Cached for 7 days."""
     gid = gnews_article_id(link)
@@ -220,7 +222,7 @@ async def decode_gnews(
 
 
 # ---- Bing News RSS ------------------------------------------------------------------------------
-async def search_bing(deps: Deps, query: str, locale: str, *, timeout_s: float = 5.0) -> SourceOutcome:
+async def search_bing(deps: Deps, query: str, locale: str, *, timeout_s: float = 4.0) -> SourceOutcome:
     market = locale if re.match(r"^[a-z]{2}-[A-Z]{2}$", locale or "") else "en-IN"
     params = {"q": query, "format": "rss", "mkt": market}
 
@@ -230,7 +232,7 @@ async def search_bing(deps: Deps, query: str, locale: str, *, timeout_s: float =
         return resp.text
 
     value, outcome = await tool_call(
-        deps, "bing_news_rss", "search", params, fetch, timeout_s=timeout_s, retries=1
+        deps, "bing_news_rss", "search", params, fetch, timeout_s=timeout_s, retries=0
     )
     if value is None:
         return outcome

@@ -59,9 +59,9 @@ MAX_ITEMS = 24  # items kept in the branch result
 DECODE_K = 10  # Google News links decoded to publisher URLs
 FACTCHECK_PAGES = 4  # fact-check pages fetched for JSON-LD per job
 RELEVANCE_MIN = 0.30
-SOURCE_DEADLINE_S = 6.0
-ENRICH_DEADLINE_S = 9.0  # stance LLM batches (5.5 s cap) + local fallback, decode, fact-check pages
-PREFILTER_K = 60  # candidates embedded for ranking (CPU cost grows linearly with this)
+SOURCE_DEADLINE_S = 5.0
+ENRICH_DEADLINE_S = 7.0  # stance batches (5 s cap), decode + fact-check page (3 s + 3 s)
+PREFILTER_K = 48  # candidates embedded for ranking (CPU cost grows linearly with this)
 OPTIONAL_SOURCES = frozenset({"gdelt"})  # never awaited past the required sources (research.md)
 KEY_TOOLS = frozenset({"gnews_rss", "bing_news_rss", "wire_rss", "claimreview_feed", "factcheck", "serper"})
 _background: set[asyncio.Task[Any]] = set()  # slow optional calls allowed to finish and fill the cache
@@ -284,7 +284,7 @@ async def _score(
     run: _Run,
 ) -> None:
     """Relevance (query-passage scale) for every candidate; claim similarity (both scales) for reviews."""
-    passages = [c.title if c.snippet == c.title else f"{c.title}. {c.snippet}"[:500] for c in cands]
+    passages = [c.title if c.snippet == c.title else f"{c.title}. {c.snippet}"[:320] for c in cands]
     vecs = await _embed(deps, passages, "passage") if qvecs is not None else None
     for i, c in enumerate(cands):
         if vecs is not None and qvecs is not None:
@@ -705,7 +705,7 @@ def _tool_for(job_name: str) -> str:
 
 # ---- debate follow-up ---------------------------------------------------------------------------
 FOLLOWUP_K = 5
-FOLLOWUP_DEADLINE_S = 4.0
+FOLLOWUP_DEADLINE_S = 2.5  # must fit the debate's 3.5 s follow-up budget incl. ranking
 
 
 async def followup_search(query: str, deps: Deps, *, start_index: int = 1) -> list[EvidenceItem]:

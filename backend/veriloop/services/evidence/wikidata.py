@@ -21,6 +21,7 @@ from typing import Any
 from rapidfuzz import fuzz
 
 from veriloop.contracts import RetrievalMethod, Stance
+from veriloop.core.http import raise_for_status
 from veriloop.deps import Deps
 from veriloop.services.evidence.lexicon import mentions_death
 from veriloop.services.evidence.models import Candidate, SourceOutcome
@@ -145,7 +146,7 @@ async def ground_person(
 
     async def search() -> Any:
         resp = await deps.tools.http.get("https://www.wikidata.org/w/api.php", params=params, headers=headers)
-        resp.raise_for_status()
+        raise_for_status(resp)  # core.http mapping: 429 -> rate_limited, 5xx retryable
         return resp.json()
 
     value, outcome = await tool_call(
@@ -175,7 +176,7 @@ async def ground_person(
             params={"query": query, "format": "json"},
             headers={**headers, "Accept": "application/sparql-results+json"},
         )
-        resp.raise_for_status()
+        raise_for_status(resp)  # core.http mapping: 429 -> rate_limited, 5xx retryable
         return resp.json()
 
     facts, sp_outcome = await tool_call(

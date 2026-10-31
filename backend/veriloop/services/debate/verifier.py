@@ -43,7 +43,7 @@ log = structlog.get_logger(__name__)
 _URL = re.compile(r"https?://[^\s\"'<>)\]]+", re.IGNORECASE)
 _BRACKETED_IDS = re.compile(r"\s*[\[(]\s*(?:[EPD]\d+\s*[,;/]?\s*(?:and\s+)?)+[\])]", re.IGNORECASE)
 _QUOTED = re.compile(r'"([^"]{4,})"')
-PREMISE_CHARS = 700  # NLI cost grows with premise length (CPU); headline + snippet start is enough
+PREMISE_CHARS = 450  # NLI cost grows with premise length (CPU); headline + snippet start is enough
 ITEM_CHARS = 600  # per cited item in the LLM verifier prompt
 NLI_CONTRADICTION_VETO = 0.50
 LEXICAL_COVERAGE_MIN = 0.75
@@ -66,7 +66,12 @@ def _date_text(item: EvidenceItem) -> str:
 def _header(item: EvidenceItem) -> str:
     """Tool-returned metadata a sentence may legitimately rely on (who published it, and when)."""
     date = _date_text(item)
-    return f"{item.source_name} ({item.domain})" + (f", published {date}" if date else "")
+    if not date:
+        return f"{item.source_name} ({item.domain})"
+    # Judges cite dates as "28 October 2026" or "2026-10-28"; both come from tool metadata, so both
+    # forms count as covered (otherwise the month "10" looks like an invented number).
+    iso = item.published_at.date().isoformat() if item.published_at else ""
+    return f"{item.source_name} ({item.domain}), published {date} ({iso})"
 
 
 def _item_text(item: EvidenceItem) -> str:
@@ -90,7 +95,7 @@ def hypothesis_text(sentence: str) -> str:
 # X, not who reported it, so NLI would score the attribution as unsupported; whether the attribution
 # matches the cited item is checked by the LLM key (it sees each item's source) and by the coverage check.
 _ATTRIBUTION = re.compile(
-    r"^(?:according to [^,]{1,80},\s*|[^.,;:]{1,80}?\b(?:reports?|reported|says?|said|states?|stated|"
+    r"^(?:according to [^,]{1,80},\s*|[^.;:]{1,100}?\b(?:reports?|reported|says?|said|states?|stated|"
     r"confirms?|confirmed|announces?|announced|notes?|noted|writes?|wrote)\s+(?:that\s+)?)",
     re.IGNORECASE,
 )
@@ -104,12 +109,31 @@ def nli_hypothesis(sentence: str) -> str:
     return stripped[0].upper() + stripped[1:]
 
 
+# Fact-check headlines pose the claim as a question ("Video shows X? No, it's from Odisha"); NLI reads
+# the question as an assertion of X and scores "the video does not show X" as a contradiction (0.98
+# measured live). For the NLI premise only, the question is rewritten into the statement it makes.
+_FC_LABEL = re.compile(
+    r"(?:^|(?<=\.\s))\s*(?:#?fact[\s-]?check|factcheck|verified|webqoof)\s*[:|\-]\s*", re.I
+)
+_QUESTION_DENIED = re.compile(
+    r"([^?.!]{8,}?)\?\s*(?:no|not really|false|fake|wrong|misleading)\b[\s,.!:;\-]*", re.IGNORECASE
+)
+_QUESTION = re.compile(r"([^?.!]{8,}?)\?")
+
+
+def nli_readable(text: str) -> str:
+    text = _FC_LABEL.sub("", text)
+    text = _QUESTION_DENIED.sub(lambda m: f"It is not true that {m.group(1).strip()}. ", text)
+    text = _QUESTION.sub(lambda m: f"It is claimed that {m.group(1).strip()}.", text)
+    return " ".join(text.split())
+
+
 def nli_premise(ids: Sequence[str], by_id: dict[str, EvidenceItem]) -> str:
     texts = []
     for i in ids:
         if i in by_id:
             date = _date_text(by_id[i])
-            texts.append(_item_text(by_id[i]) + (f" Published on {date}." if date else ""))
+            texts.append(nli_readable(_item_text(by_id[i])) + (f" Published on {date}." if date else ""))
     return " ".join(texts)[:PREMISE_CHARS]
 
 
@@ -217,6 +241,10 @@ class _NLIScore:
     contradiction: float
 
 
+NLI_TIMEOUT_S = 4.0  # runs in parallel with the LLM key (2.5-5 s), so it rarely adds latency
+NLI_TIMED_OUT: dict[int, _NLIScore] = {}  # sentinel, compared by identity
+
+
 async def _nli(
     deps: Deps, judge: JudgeOutput, indices: list[int], by_id: dict[str, EvidenceItem]
 ) -> dict[int, _NLIScore] | None:
@@ -231,10 +259,15 @@ async def _nli(
             hyp = " ".join(_QUOTED.findall(s.text)) or hyp
         pairs.append((nli_premise(s.evidence_ids, by_id), hyp))
     try:
-        scores = await deps.nli.score(pairs)
+        scores = await asyncio.wait_for(deps.nli.score(pairs), NLI_TIMEOUT_S)
     except MLUnavailable as exc:
         log.warning("verifier_nli_unavailable", error=str(exc)[:200])
         return None
+    except TimeoutError:
+        # CPU / memory contention (live: 4 pairs took 85 s while the weights were paged out). The
+        # local key then uses the deterministic coverage check alone instead of blocking the job.
+        log.warning("verifier_nli_timeout", timeout_s=NLI_TIMEOUT_S, pairs=len(pairs))
+        return NLI_TIMED_OUT
     return {
         n: _NLIScore(float(sc.entailment), float(sc.contradiction))
         for n, sc in zip(indices, scores, strict=True)
@@ -260,6 +293,16 @@ def _local_key(
     )
 
 
+def _lexical_key(sentence: str, ids: Sequence[str], by_id: dict[str, EvidenceItem]) -> tuple[bool, str]:
+    """Local key when NLI timed out: the deterministic coverage check alone (numbers + content words)."""
+    coverage, missing_numbers = lexical_coverage(sentence, ids, by_id)
+    if missing_numbers:
+        return False, f"NLI timed out; number(s) {missing_numbers} not in the cited text"
+    if coverage < LEXICAL_COVERAGE_MIN:
+        return False, f"NLI timed out; only {coverage:.0%} of the words are in the cited text"
+    return True, f"NLI timed out ({NLI_TIMEOUT_S:g}s); passed on {coverage:.0%} lexical coverage"
+
+
 async def verify(judge: JudgeOutput, items: Sequence[EvidenceItem], deps: Deps) -> VerifierOutput:
     """Check every rationale sentence of `judge` against this job's items. Never raises."""
     by_id = {i.id: i for i in items}
@@ -283,7 +326,11 @@ async def verify(judge: JudgeOutput, items: Sequence[EvidenceItem], deps: Deps) 
         _nli(deps, judge, passed, by_id),
     )
     methods.append("exact_quote" if judge.extractive else "llm")
-    if nli is not None:
+    nli_timed_out = nli is NLI_TIMED_OUT
+    if nli_timed_out:
+        methods += ["nli_timeout", "lexical"]
+        nli = None
+    elif nli is not None:
         methods.append("nli")
     thr = deps.settings.nli_entail_min
     checks: list[GroundingCheck] = []
@@ -305,7 +352,9 @@ async def verify(judge: JudgeOutput, items: Sequence[EvidenceItem], deps: Deps) 
                 reason = (
                     f"LLM verifier unavailable ({llm_error})" if llm_error else "LLM verifier gave no verdict"
                 )
-            if ok and score is not None:
+            if ok and nli_timed_out:
+                ok, reason = _lexical_key(s.text, s.evidence_ids, by_id)
+            elif ok and score is not None:
                 ok, reason = _local_key(s.text, s.evidence_ids, by_id, score, thr)
                 if (
                     "coverage" in reason or "words" in reason or "number" in reason

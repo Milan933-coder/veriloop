@@ -201,6 +201,7 @@ async def test_followups_are_renumbered_and_deduped(deps, fake_llm, settings, mo
     items[1] = items[1].model_copy(update={"url": "https://thehindu.com/article/e2"})
     script_debate(fake_llm, pro_query="pro q", con_query="con q")
     ext, fusion, items, fx, prov = setup(settings, items)
+    fusion = fusion.model_copy(update={"groups_support": 1, "groups_refute": 0})  # both sides thin
     result = await run_debate(ext, fusion, items, fx, prov, deps)
     assert sorted(calls) == ["con q", "pro q"]
     assert [(i.id, i.url) for i in result.followup_items] == [
@@ -525,3 +526,21 @@ def test_nli_hypothesis_strips_multi_source_attribution():
     from veriloop.services.debate.verifier import nli_hypothesis
 
     assert nli_hypothesis("PIB, The Hindu and Moneycontrol report a 3% DA hike [E1, E2].") == "A 3% DA hike."
+
+
+async def test_followup_only_for_a_thin_side(deps, fake_llm, settings, monkeypatch):
+    """A side that already has >= 2 independent groups gets no follow-up (latency); a thin side does."""
+    deps.nli = entail(0.9)
+    calls: list[str] = []
+
+    async def fake(query, deps, *, start_index=1):
+        calls.append(query)
+        return []
+
+    monkeypatch.setattr(service, "followup_search", fake)
+    script_debate(fake_llm, pro_query="pro q", con_query="con q")
+    ext, fusion, items, fx, prov = setup(settings)
+    assert fusion.groups_support >= 2 and fusion.groups_refute == 0
+    result = await run_debate(ext, fusion, items, fx, prov, deps)
+    assert calls == ["con q"]  # proponent's side is strong: its request is not granted
+    assert result.proponent.followup_queries == [] and result.opponent.followup_queries == ["con q"]

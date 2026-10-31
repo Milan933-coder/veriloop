@@ -20,7 +20,7 @@ from veriloop.contracts import (
     ProvenanceResult,
 )
 
-SNIPPET_CHARS = 420
+SNIPPET_CHARS = 320  # judge prompt size drives latency
 MAX_TABLE_ITEMS = 32
 _ID = re.compile(r"\b([EPD])\s*0*(\d{1,3})\b", re.IGNORECASE)
 _FACTCHECK_TOOLS = frozenset({"claimreview_feed", "factcheck"})

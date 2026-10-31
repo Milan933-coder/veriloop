@@ -97,6 +97,14 @@ ITEMS = [
         "Fact Check: Video shows Cyclone Arnab hitting Andhra Pradesh coast? No, it’s from Odisha",
         tool="gnews_rss",
     ),
+    _item(
+        "E15",
+        "Fact Crescendo",
+        "factcrescendo.com",
+        "factcrescendo.com",
+        "Fact Check: Cyclone Arnab impact? No, viral video is old",
+        "Fact Check: Cyclone Arnab impact? No, viral video is old. A video showing trees bending violently in strong winds is circulating on social media with claims that it shows Cyclone Arnab.",
+    ),
 ]
 
 GOOD = [  # sentences the live judge wrote (cases a and b) + a multi-item summary
@@ -118,11 +126,16 @@ GOOD = [  # sentences the live judge wrote (cases a and b) + a multi-item summar
         "NewsMeter says the video does not show Cyclone Arnab hitting the Andhra Pradesh coast and is from Odisha.",
         ["E10"],
     ),
+    (  # live run 2: NLI vetoed this (0.98) because it read the question headline as an assertion
+        "NewsMeter says the video is old and does not show Cyclone Arnab hitting the Andhra Pradesh coast.",
+        ["E10", "E15"],
+    ),
 ]
 BAD = [  # each must fail the local key even though the LLM key below says "supported"
     ("The Union Cabinet approved a 4% Dearness Allowance hike for central government employees.", ["E1"]),
     ("The Cabinet also doubled the house rent allowance and transport subsidy for pensioners.", ["E2"]),
     ("PIB announced the increase on 28 October 2026.", ["E3"]),  # PIB item is undated: date not in evidence
+    ("The video shows Cyclone Arnab hitting the Andhra Pradesh coast.", ["E10"]),  # polarity flipped
 ]
 
 
@@ -135,6 +148,8 @@ def realistic_nli(premise: str, hypothesis: str) -> NLIScore:
         return NLIScore(entailment=0.0, neutral=0.997, contradiction=0.003)
     if "does not show" in h:
         return NLIScore(entailment=0.484, neutral=0.329, contradiction=0.187)
+    if "shows cyclone arnab" in h:
+        return NLIScore(entailment=0.01, neutral=0.09, contradiction=0.90)
     return NLIScore(entailment=0.956, neutral=0.044, contradiction=0.0)
 
 
@@ -167,7 +182,7 @@ async def test_grounded_demo_rationales_pass(deps, fake_llm):
     assert all(len(p) <= 700 for p, _ in deps.nli.calls)
 
 
-@pytest.mark.parametrize("bad", BAD, ids=["changed-number", "added-fact", "date-not-in-evidence"])
+@pytest.mark.parametrize("bad", BAD, ids=["changed-number", "added-fact", "date-not-in-evidence", "polarity"])
 async def test_ungrounded_sentences_fail_the_local_key_even_if_llm_says_supported(deps, fake_llm, bad):
     deps.nli = FakeNLI(realistic_nli)
     fake_llm.script("verify", all_supported(1))
@@ -184,10 +199,14 @@ async def test_llm_key_still_rejects_on_its_own(deps, fake_llm):
 
 
 @pytest.mark.ml
-async def test_real_nli_on_the_regression_set(deps, fake_llm, make_settings):
-    """Same set with the real local NLI model (ml marker: loads mDeBERTa from VERILOOP_HOME/models)."""
+async def test_real_nli_on_the_regression_set(deps, fake_llm, monkeypatch):
+    """Same set with the real local NLI model (ml marker: loads mDeBERTa from VERILOOP_HOME/models).
+    Measures NLI quality, not latency: the time cap is lifted."""
     from veriloop.core.config import get_settings
     from veriloop.core.ml import NLI
+    from veriloop.services.debate import verifier as vmod
+
+    monkeypatch.setattr(vmod, "NLI_TIMEOUT_S", 300.0)
 
     deps.nli = NLI(get_settings())
     assert await deps.nli.load(), deps.nli.error
@@ -198,3 +217,45 @@ async def test_real_nli_on_the_regression_set(deps, fake_llm, make_settings):
         fake_llm.script("verify", all_supported(1))
         res = await verify(judge([bad]), ITEMS, deps)
         assert not res.ok, (bad, res.checks[0].nli_entailment, res.checks[0].reason)
+
+
+async def test_nli_timeout_falls_back_to_lexical_coverage(deps, fake_llm, monkeypatch):
+    """Contention (weights paged out) must not block the job: past NLI_TIMEOUT_S the local key is the
+    deterministic coverage check alone; grounded sentences pass, an added fact still fails."""
+    import asyncio
+
+    from veriloop.services.debate import verifier as vmod
+
+    class SlowNLI(FakeNLI):
+        async def score(self, pairs):
+            await asyncio.sleep(1.0)
+            return await super().score(pairs)
+
+    monkeypatch.setattr(vmod, "NLI_TIMEOUT_S", 0.05)
+    deps.nli = SlowNLI(realistic_nli)
+    fake_llm.script("verify", all_supported(2))
+    out = await verify(judge([GOOD[2], BAD[1]]), ITEMS, deps)
+    assert "nli_timeout" in out.methods and "lexical" in out.methods
+    assert [c.ok for c in out.checks] == [True, False]
+    assert "NLI timed out" in out.checks[0].reason and out.checks[0].nli_entailment is None
+
+
+def test_iso_published_date_in_sentence_counts_as_covered() -> None:
+    """Live false negative (case a): the judge cited the publish date as 2026-10-28 and the number
+    check flagged the month '10' as invented. Tool-returned dates in either form are covered."""
+    from veriloop.services.debate.verifier import lexical_coverage
+
+    item = _item(
+        "E1", "The Financial Express", "financialexpress.com", "indian_express_group",
+        "Cabinet approves 3% DA hike for central government employees",
+        "The Union Cabinet approved a 3% Dearness Allowance hike for central government employees.",
+    )
+    sentence = (
+        "The Financial Express, dated 2026-10-28, reports that the Union Cabinet approved a 3% "
+        "Dearness Allowance hike for central government employees [E1]."
+    )
+    _, missing = lexical_coverage(sentence, ["E1"], {"E1": item})
+    assert missing == []
+    # A number that is in neither the text nor the metadata is still caught.
+    _, missing = lexical_coverage(sentence.replace("3%", "4%"), ["E1"], {"E1": item})
+    assert missing == ["4"]

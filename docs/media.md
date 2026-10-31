@@ -48,7 +48,13 @@ from veriloop.services.provenance import run_provenance, prewarm, status # (job_
 
 ## Extraction (`services/extraction`)
 * **ASR**: faster-whisper with ASR_MODEL `small` (int8, CPU, VAD, greedy). It switches to `base` when the predicted run exceeds 6 s; the prediction uses the measured real-time factor, updated every run. Transcript language comes from Whisper.
-* **OCR**: EasyOCR en+hi on up to 4 keyframes, chosen to be pHash-distinct and downscaled to 960 px.
+  * We decode the 16 kHz WAV to numpy ourselves. faster-whisper 1.2.1's own PyAV path passes `metadata_errors=`, which the installed PyAV 19 rejects with a TypeError.
+  * Measured on 34 s of audio: `small` 4.2 s, `base` 1.3 s.
+* **OCR**: EasyOCR on up to 4 keyframes, chosen to be pHash-distinct.
+  * Frames are downscaled to 640 px. At 960 px the cost was about 2x.
+  * The English reader is the default (about 3 s per frame). The English+Hindi Devanagari reader (about 8 s per frame) is used only when the caption, title or locale contains or asks for Hindi, Marathi or Nepali.
+  * A 6 s budget stops new frames from starting; at least one frame is always read.
+  * Both readers are prewarmed.
 * **Visual query expansion**: up to 2 keyframes go to `deps.llm` (effort `none`), all in parallel with ASR and OCR.
 * **Claims**: one structured LLM call (`extract_claims`, effort `none`) over title, caption, transcript and OCR text. It returns:
   * atomic claims with an English `text_en` for search (E9)
@@ -178,10 +184,52 @@ Timing: scoring 120 images took 416 s on the first pass. That included the cold 
   * the still images, and `info.json` with the yt-dlp metadata.
 
 ## Latencies (warm models, this laptop)
-SMOKE_TABLE
+All runs below happened while other engineers' test suites kept the CPU at 75–94 % load. Treat them as upper bounds. The reports are saved as `VERILOOP_HOME/tmp/smoke_*.json`.
+
+**Case (b) video path** (`test_smoke_video.py`; YouTube XeYAGU1Z6l8, 34 s, 720p, no speech):
+
+| step | measured |
+|---|---|
+| model prewarm (Whisper small+base, EasyOCR en and en+hi) | 38.7 s, once per process |
+| resolve: oEmbed ∥ yt-dlp | 1.3 s ∥ **21.0 s** (the same download alone took 7.3 s earlier) |
+| resolve: ffprobe / 16 frames + audio / hashing | 0.8 / 1.8 / 0.5 s |
+| extract: ASR ∥ OCR ∥ visual-query LLM | 20.5 ∥ 23.0 ∥ 6.0 s |
+| extract: claim LLM (gpt-6-luna, effort none) | 4.6 s |
+| **total (resolve + extract)** | **51.9 s** |
+
+What dominated the 51.9 s:
+* The yt-dlp download, which varies with the network.
+* ASR and OCR under external CPU load. In an isolated A/B on the same files, ASR ∥ OCR took 6.4–7.6 s concurrently and 11.6–12.4 s sequentially.
+
+From the component measurements, an unloaded run is estimated at about 22 s: 7.3 + 2.7 + 7 + 4.6. That is close to the 20 s target, but the estimate is not a measurement.
+
+Output of that run:
+* 16 frames, with the label "Sampled 16 frames of 34 s video".
+* OCR read the news overlay ("Super Typhoon Bavi made landfall on Monday over the U.S. Mariana Islands…").
+* 2 grounded claims, worthiness 0.91.
+* 4 visual queries, e.g. `"Rota Island, Northern Mariana Islands" "July 6, 2026" storm`. They come from the on-screen text and are marked as queries.
+
+**Forensics** (`test_smoke_models.py`; prewarm 68.8 s):
+* One real IMDB-WIKI photo: INCONCLUSIVE in 4.0 s. Its face was under 64 px, so only one model voted.
+* One InsightFace swap: INCONCLUSIVE in 2.8 s. The face models scored 0.01 and 0.49 and CommunityForensics 0.0001, a disagreement of 0.49 > DELTA.
+* The case (c) PIB deepfake video, 16 frames: INCONCLUSIVE in 57.7 s. The face models said fake (0.95 / 0.86) and the AI-image detector said real (3e-6). A lip-sync fake is not an AI-generated image.
+
+  An isolated profile on those frames: decode + YuNet 6.4 s; per 29 face crops 6.7–35 s per ViT-base model (contended); CommunityForensics 3.7 s for 16 frames. Face frames are now capped at 6 (at most 12 crops per model).
+
+Case (c) therefore gets its MANIPULATED verdict from the known-fake match plus the fact-checks, never from forensics alone.
+
+**Provenance** (`test_smoke_match.py`; the case (b) clip uploaded against a test database seeded with KF-004 the same way the scripts do):
+* **KF-004 matched at pHash Hamming 0 and CLIP 1.000.**
+* Items P1–P3 are the 3 manifest fact-checks (Newschecker, Fact Crescendo, The Quint).
+* First seen: `youtube.com/watch?v=XeYAGU1Z6l8` @ 2026-07-06. Out-of-context score 0.70: 1.0 discounted because the claim states no date.
+* The stamped Fact Crescendo thumbnail also matched (Hamming 0 / CLIP 1.0).
+* run_provenance took 22.5 s on the first run, which included a cold e5 embedder load. With CLIP and e5 prewarmed, a rerun took **2.44 s** for 15 frames: decode 0.39, CLIP embed 1.42, index search 0.22, claim similarity 0.41 s.
+* Model prewarm (CLIP) took 41.6 s once per process.
 
 ## Limitations
-* The face-deepfake detectors are weak on our set (above). Forensics mostly abstains or leans on the AI-generated-image detector. There is no synthetic-speech classifier: audio is transcribed, not authenticated (stated in the notes).
+* The face-deepfake detectors are weak on our set (above). Forensics mostly abstains or leans on the AI-generated-image detector.
+  * I started a screen of 4 more HF candidates on the same 120 images and stopped it unfinished because of CPU contention: `prithivMLmods/deepfake-detector-model-v1`, `Wvolf/ViT_Deepfake_Detection`, `prithivMLmods/AI-vs-Deepfake-vs-Real-Siglip2` and `prithivMLmods/open-deepfake-detection`.
+  * Swapping a model in is a `ModelSpec` edit followed by a rerun of `scripts/eval_forensics.py`. The classifier already sums several "fake" labels, which 3-class models need. There is no synthetic-speech classifier: audio is transcribed, not authenticated (stated in the notes).
 * Instagram and Facebook media are usually login-walled. We then analyse the caption or `og:` description only, and keep any thumbnail for provenance but never for forensics.
 * pHash and CLIP match re-uploads and crops of indexed media. They do not find the *original* of new media; that needs `GOOGLE_VISION_API_KEY` (Cloud Vision) or the LLM visual queries that feed the evidence search.
 * First-seen dates for known fakes are the manifest's earliest fact-check date unless a frame variant carries an origin date. Without keys there is no web-wide earliest copy.
