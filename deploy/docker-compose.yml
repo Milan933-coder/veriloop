@@ -61,3 +61,10 @@ volumes:
   veriloop_home:
   caddy_data:
   caddy_config:
+
+networks:
+  default:
+    # Google Cloud VPC MTU is 1460; Docker's 1500 default silently drops large packets
+    # (e.g. the TLS handshake carrying the certificate chain), so HTTPS hangs.
+    driver_opts:
+      com.docker.network.driver.mtu: "1460"

@@ -1,0 +1,13 @@
+# Google Cloud override: run Caddy on the host network.
+#   docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.gcp.yml up -d
+# On GCE, large packets on Docker's bridge/NAT path for published ports were dropped (the TLS
+# handshake never completed while small HTTP replies worked). Host networking avoids that path.
+services:
+  api:
+    ports:
+      - "127.0.0.1:8000:8000"
+  caddy:
+    network_mode: host
+    ports: !reset []
+    environment:
+      VERILOOP_UPSTREAM: 127.0.0.1:8000

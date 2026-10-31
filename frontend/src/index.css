@@ -58,61 +58,63 @@
   --color-band: rgb(220 104 3 / 0.16);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0b1220;
-    --color-surface: #111a2b;
-    --color-surface-2: #18233a;
-    --color-border: #2a3850;
-    --color-border-strong: #5b6b85;
-    --color-fg: #e6ebf2;
-    --color-muted: #a3b0c2;
-    --color-primary: #7cb4ec;
-    --color-primary-hover: #a5cdf5;
-    --color-primary-fg: #0b1220;
-    --color-primary-soft: #15304d;
-    --color-focus: #93c5fd;
+/*
+ * High-contrast theme (always on, VS Code "Dark High Contrast" style): pure black surfaces, white
+ * text, blue edges, orange keyboard focus. Verdict colours stay distinct and bright on black.
+ */
+:root {
+  --color-bg: #000000;
+  --color-surface: #000000;
+  --color-surface-2: #0b0b0b;
+  --color-border: #3794ff;
+  --color-border-strong: #6fc3df;
+  --color-fg: #ffffff;
+  --color-muted: #d4d4d4;
+  --color-primary: #3794ff;
+  --color-primary-hover: #75beff;
+  --color-primary-fg: #000000;
+  --color-primary-soft: #001a33;
+  --color-focus: #f38518;
 
-    --color-true-solid: #15803d;
-    --color-true-soft: #0d2a1b;
-    --color-true-fg: #86efac;
-    --color-true-line: #22c55e;
+  --color-true-solid: #15803d;
+  --color-true-soft: #000000;
+  --color-true-fg: #4ade80;
+  --color-true-line: #22c55e;
 
-    --color-false-solid: #b42318;
-    --color-false-soft: #2d1414;
-    --color-false-fg: #fca5a5;
-    --color-false-line: #f04438;
+  --color-false-solid: #b42318;
+  --color-false-soft: #000000;
+  --color-false-fg: #ff7b72;
+  --color-false-line: #f04438;
 
-    --color-manip-solid: #7e22ce;
-    --color-manip-soft: #241434;
-    --color-manip-fg: #d8b4fe;
-    --color-manip-line: #a855f7;
+  --color-manip-solid: #7e22ce;
+  --color-manip-soft: #000000;
+  --color-manip-fg: #d2a8ff;
+  --color-manip-line: #a855f7;
 
-    --color-abstain-solid: #b54708;
-    --color-abstain-soft: #2b1d0b;
-    --color-abstain-fg: #fdc97a;
-    --color-abstain-line: #f79009;
+  --color-abstain-solid: #b54708;
+  --color-abstain-soft: #000000;
+  --color-abstain-fg: #ffb86b;
+  --color-abstain-line: #f79009;
 
-    --color-neutral-soft: #111a2b;
-    --color-neutral-fg: #d0d5dd;
-    --color-neutral-line: #8392a8;
+  --color-neutral-soft: #000000;
+  --color-neutral-fg: #ffffff;
+  --color-neutral-line: #6fc3df;
 
-    --color-notcheck-soft: #1a2333;
-    --color-notcheck-fg: #cbd5e1;
-    --color-notcheck-line: #8090a8;
+  --color-notcheck-soft: #000000;
+  --color-notcheck-fg: #ffffff;
+  --color-notcheck-line: #6fc3df;
 
-    --color-mock-bg: #facc15;
-    --color-mock-fg: #1c1303;
-    --color-replay-bg: #4338ca;
-    --color-replay-fg: #ffffff;
+  --color-mock-bg: #facc15;
+  --color-mock-fg: #000000;
+  --color-replay-bg: #3794ff;
+  --color-replay-fg: #000000;
 
-    --color-band: rgb(247 144 9 / 0.2);
-  }
+  --color-band: rgb(247 144 9 / 0.28);
 }
 
 @layer base {
   html {
-    color-scheme: light dark;
+    color-scheme: dark;
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
   }

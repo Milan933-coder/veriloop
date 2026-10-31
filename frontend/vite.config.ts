@@ -35,8 +35,8 @@ export default defineConfig(({ command, mode }) => {
           start_url: '/',
           scope: '/',
           display: 'standalone',
-          background_color: '#f6f7f9',
-          theme_color: '#0f3d5e',
+          background_color: '#000000',
+          theme_color: '#000000',
           categories: ['news', 'utilities', 'productivity'],
           icons: [
             { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },

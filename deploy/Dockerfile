@@ -3,7 +3,7 @@
 # Untested on the dev box (Docker daemon not running there); written to match the local setup.
 
 # ---- frontend build ----------------------------------------------------------------------------
-FROM node:20-slim AS web
+FROM node:22-slim AS web
 WORKDIR /web
 COPY frontend/package*.json ./
 RUN npm ci --no-audit --no-fund
@@ -11,7 +11,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # ---- api ---------------------------------------------------------------------------------------
-FROM python:3.12-slim
+FROM python:3.12-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
@@ -27,6 +27,7 @@ RUN apt-get update \
 WORKDIR /app
 COPY backend/pyproject.toml backend/pyproject.toml
 COPY backend/veriloop backend/veriloop
+COPY backend/scripts backend/scripts
 # Editable install keeps the package at /app/backend/veriloop, so repo-relative paths
 # (config/tools.yaml, data/fixtures/cassettes) resolve to /app/... exactly as in development.
 # CPU-only torch wheels keep the image small enough for a single VPS.
